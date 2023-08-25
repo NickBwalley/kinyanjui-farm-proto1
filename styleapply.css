@@ -1,83 +1,74 @@
-@import url('https://fonts.googleapis.com/css?family=Lobster');
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700');
+@import url("https://fonts.googleapis.com/css?family=Lobster");
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
 
-body{
-	margin: 0px;
+body {
+  margin: 0px;
 }
 
-header{
-	background: black;
-	color: white;
-	padding: 16px 20px 6px 40px;
-	height: 60px;
+header {
+  background: black;
+  color: white;
+  padding: 16px 20px 6px 40px;
+  height: 60px;
 }
 
-header h1{
-	display: inline;
-	font-family: 'Lobster', cursive;
-	font-weight: 400;
-	font-size: 32px;
-	float: left;
-	margin-top: 0px;
-	margin-right: 10px;
+header h1 {
+  display: inline;
+  font-family: "Lobster", cursive;
+  font-weight: 400;
+  font-size: 32px;
+  float: left;
+  margin-top: 0px;
+  margin-right: 10px;
 }
 
 nav ul {
-	display: inline;
-	padding: 0px;
-	float: right;
+  display: inline;
+  padding: 0px;
+  float: right;
 }
 
-nav ul li{
-	display: inline-block;
-	list-style-type: none;
-	color: white;
-	float: left;
-	margin-left: 12px;
-	
-
+nav ul li {
+  display: inline-block;
+  list-style-type: none;
+  color: white;
+  float: left;
+  margin-left: 12px;
 }
 
-nav ul li a{
-	color: white;
-	text-decoration: none;	
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }
 
-
-nav ul ul{
-	display: none;
-	position: absolute;
+nav ul ul {
+  display: none;
+  position: absolute;
 }
 
-#navli ul li ul:hovar{
-	visibility: visible;
-	display: block;
+#navli ul li ul:hovar {
+  visibility: visible;
+  display: block;
 }
 
-
-
-
-
-#navli{
-	font-family: 'Montserrat', sans-serif;
+#navli {
+  font-family: "Montserrat", sans-serif;
 }
 
-.homered{
-	background-color: red;
-	padding: 30px 10px 25px 10px;
+.homered {
+  background-color: green;
+  padding: 30px 10px 25px 10px;
 }
 
-.divider{
-	background-color: red;
-	height: 5px;
+.divider {
+  background-color: green;
+  height: 5px;
 }
 
-.homeblack:hover{
-	background-color: blue;
-	padding: 30px 10px 25px 10px;
-
+.homeblack:hover {
+  background-color: blue;
+  padding: 30px 10px 25px 10px;
 }
-
 
 /* ==========================================================================
    #FONT
@@ -138,7 +129,9 @@ html {
   margin: 0;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
@@ -151,12 +144,23 @@ html {
  * A very simple reset that sits on top of Normalize.css.
  */
 /*body,*/
-h1, h2, h3, h4, h5, h6,
-blockquote, p, pre,
-dl, dd, ol, ul,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+blockquote,
+p,
+pre,
+dl,
+dd,
+ol,
+ul,
 figure,
 hr,
-fieldset, legend {
+fieldset,
+legend {
   margin: 0;
   padding: 0;
 }
@@ -206,7 +210,12 @@ button {
   font-size: 14px;
 }*/
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-weight: 400;
 }
 
@@ -238,7 +247,7 @@ h6 {
    #BACKGROUND
    ========================================================================== */
 .bg-blue {
-  background: #F8F9F9;
+  background: #f8f9f9;
 }
 
 /* ==========================================================================
@@ -310,7 +319,8 @@ input[type="date" i] {
   padding: 14px;
 }
 
-.table-condensed td, .table-condensed th {
+.table-condensed td,
+.table-condensed th {
   font-size: 14px;
   font-family: "Roboto", "Arial", "Helvetica Neue", sans-serif;
   font-weight: 400;
@@ -331,7 +341,8 @@ input[type="date" i] {
   margin-top: 5px;
 }
 
-.daterangepicker::after, .daterangepicker::before {
+.daterangepicker::after,
+.daterangepicker::before {
   display: none;
 }
 
@@ -434,13 +445,19 @@ input {
   height: 34px;
 }
 
-.rs-select2 .select2-container .select2-selection--single .select2-selection__rendered {
+.rs-select2
+  .select2-container
+  .select2-selection--single
+  .select2-selection__rendered {
   line-height: 34px;
   padding-left: 0;
   color: #555;
 }
 
-.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow {
+.rs-select2
+  .select2-container
+  .select2-selection--single
+  .select2-selection__arrow {
   height: 32px;
   right: 4px;
   display: -webkit-box;
@@ -460,13 +477,20 @@ input {
   align-items: center;
 }
 
-.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow b {
+.rs-select2
+  .select2-container
+  .select2-selection--single
+  .select2-selection__arrow
+  b {
   display: none;
 }
 
-.rs-select2 .select2-container .select2-selection--single .select2-selection__arrow:after {
+.rs-select2
+  .select2-container
+  .select2-selection--single
+  .select2-selection__arrow:after {
   font-family: "Material-Design-Iconic-Font";
-  content: '\f2f9';
+  content: "\f2f9";
   font-size: 18px;
   color: #ccc;
   -webkit-transition: all 0.4s ease;
@@ -475,7 +499,10 @@ input {
   transition: all 0.4s ease;
 }
 
-.rs-select2 .select2-container.select2-container--open .select2-selection--single .select2-selection__arrow::after {
+.rs-select2
+  .select2-container.select2-container--open
+  .select2-selection--single
+  .select2-selection__arrow::after {
   -webkit-transform: rotate(-180deg);
   -moz-transform: rotate(-180deg);
   -ms-transform: rotate(-180deg);
@@ -539,37 +566,37 @@ input {
   }
 }
 
-
 table {
-margin: 0px;
-margin-bottom: 100px;
+  margin: 0px;
+  margin-bottom: 100px;
   border-collapse: collapse;
   width: 100%;
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 
-th, td {
+th,
+td {
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even){background-color: #f2f2f2}
-tr:hover {background-color:#76D7C4;}
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+tr:hover {
+  background-color: #76d7c4;
+}
 
 th {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
-#sub{
-	width: 350px;
-	height: 50px;
-	padding: 5px;
-	border-radius: 5px;
-	outline: 0px;
-	background-color: #0c6996;
+#sub {
+  width: 350px;
+  height: 50px;
+  padding: 5px;
+  border-radius: 5px;
+  outline: 0px;
+  background-color: #0c6996;
 }
-
-
-
-

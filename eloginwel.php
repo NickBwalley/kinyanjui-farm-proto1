@@ -24,7 +24,7 @@ $result3 = mysqli_query($conn, $sql3);
 
 <html>
 <head>
-	<title>Employee Panel | XYZ Corporation</title>
+	<title>Employee Panel | Kinyanjui Farm.</title>
 	<link rel="stylesheet" type="text/css" href="styleemplogin.css">
 	<link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat" rel="stylesheet">
 </head>
@@ -32,7 +32,7 @@ $result3 = mysqli_query($conn, $sql3);
 	
 	<header>
 		<nav>
-			<h1>XYZ Corp.</h1>
+			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
 				<li><a class="homered" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
 				<li><a class="homeblack" href="myprofile.php?id=<?php echo $id?>"">My Profile</a></li>
@@ -48,7 +48,7 @@ $result3 = mysqli_query($conn, $sql3);
 	<div>
 		<!-- <h2>Welcome <?php echo "$empName"; ?> </h2> -->
 
-		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Empolyee Leaderboard </h2>
+		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Employee Leaderboard </h2>
     	<table>
 
 			<tr bgcolor="#000">

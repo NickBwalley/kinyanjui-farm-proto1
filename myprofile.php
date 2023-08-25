@@ -35,7 +35,7 @@ $result = mysqli_query($conn, $sql);
 
 <html>
 <head>
-  <title>My Profile | XYZ Corporation</title>
+  <title>My Profile | Kinyanjui Farm.</title>
   <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -52,7 +52,7 @@ $result = mysqli_query($conn, $sql);
 <body>
   <header>
     <nav>
-      <h1>XYZ Corp.</h1>
+      <h1>Kinyanjui Farm.</h1>
       <ul id="navli">
         <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
         <li><a class="homered" href="myprofile.php?id=<?php echo $id?>"">My Profile</a></li>
