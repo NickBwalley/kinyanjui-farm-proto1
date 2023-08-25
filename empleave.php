@@ -14,14 +14,14 @@ $result = mysqli_query($conn, $sql);
 
 <html>
 <head>
-	<title>Employee Leave | Admin Panel | XYZ Corporation</title>
+	<title>Employee Leave | Admin Panel </title>
 	<link rel="stylesheet" type="text/css" href="styleview.css">
 </head>
 <body>
 	
 	<header>
 		<nav>
-			<h1>XYZ Corp.</h1>
+			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
 				<li><a class="homeblack" href="aloginwel.php">HOME</a></li>
 				
