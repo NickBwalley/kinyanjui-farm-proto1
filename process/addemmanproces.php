@@ -1,3 +1,20 @@
+<?php 
+require_once('dbh.php');
+
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+
+if (!empty($id)) {
+    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerResult = mysqli_query($conn, $managerSql);
+
+    if (!$managerResult) {
+        die("Error fetching manager: " . mysqli_error($conn));
+    }
+
+    $manager = mysqli_fetch_array($managerResult);
+    $empName = $manager['firstName'];
+}
+?>
 <?php
 
 require_once ('dbh.php');
@@ -41,7 +58,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//mviewemployee.php';
+    window.location.href='..//mviewemployee.php?id=" . $id . "';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
@@ -71,7 +88,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//mviewemployee.php';
+    window.location.href='..//mviewemployee.php?id=" . $id . "';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
