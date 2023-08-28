@@ -1,7 +1,7 @@
 <?php 
 	$id = (isset($_GET['id']) ? $_GET['id'] : '');
 	require_once ('process/dbh.php');
-	 $sql1 = "SELECT * FROM `employee` where id = '$id'";
+	 $sql1 = "SELECT * FROM `manager` where id = '$id'";
 	 $result1 = mysqli_query($conn, $sql1);
 	 $employeen = mysqli_fetch_array($result1);
 	 $empName = ($employeen['firstName']);
@@ -42,7 +42,6 @@ $result3 = mysqli_query($conn, $sql3);
                 <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
-                <li><a class="homeblack" href="mempproject.php?id=<?php echo $id?>"">Employees Projects</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
 		</nav>

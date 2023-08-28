@@ -8,20 +8,23 @@ $sql = "SELECT * FROM `employee` e
 $result = mysqli_query($conn, $sql);
 ?>
 
-
 <?php 
-	if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-  $sql1 = "SELECT * FROM `employee` where id = '$id'";
-  $result = mysqli_query($conn, $sql1);
-  $employee = mysqli_fetch_array($result);
-  $empName = ($employee['firstName']);
-} else {
-  echo "The id parameter is not set.";
+require_once('process/dbh.php');
+
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+
+if (!empty($id)) {
+    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerResult = mysqli_query($conn, $managerSql);
+
+    if (!$managerResult) {
+        die("Error fetching manager: " . mysqli_error($conn));
+    }
+
+    $manager = mysqli_fetch_array($managerResult);
+    $empName = $manager['firstName'];
 }
-
 ?>
-
 
 
 
@@ -44,7 +47,6 @@ $result = mysqli_query($conn, $sql);
                 <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
-                <li><a class="homeblack" href="mempproject.php?id=<?php echo $id?>"">Employees Projects</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
 		</nav>
@@ -101,3 +103,13 @@ $result = mysqli_query($conn, $sql);
 	
 </body>
 </html>
+
+<?php 
+	$id = (isset($_GET['id']) ? $_GET['id'] : '');
+	require_once ('process/dbh.php');
+	$sql = "SELECT * FROM `manager` where id = '$id'";
+	$result = mysqli_query($conn, $sql);
+	$manager = mysqli_fetch_array($result);
+	$empName = ($manager['firstName']);
+	//echo "$id";
+?>
