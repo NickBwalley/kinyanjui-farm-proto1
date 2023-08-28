@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 require_once ('dbh.php');
 
@@ -22,7 +23,9 @@ if(mysqli_num_rows($result) == 1){
 	//echo ("$empid");
 	
 	header("Location: ..//eloginwel.php?id=$empid");
+	
 }
+
 
 else{
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
@@ -30,4 +33,5 @@ else{
     window.location.href='javascript:history.go(-1)';
     </SCRIPT>");
 }
+
 ?>

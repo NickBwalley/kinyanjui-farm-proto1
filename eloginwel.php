@@ -18,8 +18,8 @@ $result = mysqli_query($conn, $sql);
 $result1 = mysqli_query($conn, $sql1);
 $result2 = mysqli_query($conn, $sql2);
 $result3 = mysqli_query($conn, $sql3);
-?>
 
+?>
 
 
 <html>
