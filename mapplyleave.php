@@ -19,16 +19,17 @@
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<!-- <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li> -->
-                <li><a class="homeblack" href="maddemp.php">Add Employee</a></li>
-                <li><a class="homeblack" href="mviewemployee.php">View Employee</a></li>
-                <li><a class="homeblack" href="massign.php">Assign Project</a></li>
-                <li><a class="homeblack" href="massignproject.php">Project Status</a></li>
-                <li><a class="homeblack" href="msalaryemp.php">Salary Table</a></li> 
-                <li><a class="homeblack" href="mempleave.php">Employee Leave</a></li>
+            <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
+                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
+                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
+                <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
                 <li><a class="homeblack" href="mempproject.php?id=<?php echo $id?>"">Employees Projects</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
+
 			</ul>
 		</nav>
 	</header>
