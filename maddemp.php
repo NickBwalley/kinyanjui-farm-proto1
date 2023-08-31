@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
@@ -13,6 +14,13 @@ if (!empty($id)) {
 
     $manager = mysqli_fetch_array($managerResult);
     $empName = $manager['firstName'];
+}
+
+// Debug: Check if session is set
+if (isset($_SESSION['userID'])) {
+    echo "User ID set in session: " . $_SESSION['userID'];
+} else {
+    echo "User ID not found.";
 }
 ?>
 
