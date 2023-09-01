@@ -62,7 +62,7 @@ if (!empty($id)) {
                 <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
-                <li><a class="homeblack" href="elogin.html">Log Out</a></li>
+                <li><a class="homeblack" href="logout.php">Log Out</a></li>
                 
                 
                 
