@@ -63,8 +63,9 @@ if(isset($_POST['update']))
 $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`nid`='$nid',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Updated')
-    window.location.href='mviewemployee.php';
     </SCRIPT>");
+
+    header("Location: mviewemployee.php?id=$userID");
 
 
 	
