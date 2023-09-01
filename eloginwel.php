@@ -1,7 +1,9 @@
 <?php 
 	session_start();
-	$id = (isset($_GET['id']) ? $_GET['id'] : '');
 	require_once ('process/dbh.php');
+	$id = (isset($_GET['id']) ? $_GET['id'] : '');
+	$managerID = $_SESSION['manID'] = $id;
+	echo "$managerID";
 	 $sql4 = "SELECT * FROM `manager` where id = '$id'";
 	 
 	 $result1 = mysqli_query($conn, $sql4);
@@ -23,19 +25,19 @@ $result3 = mysqli_query($conn, $sql3);
 $result4 = mysqli_query($conn, $sql4);
 
 // Check if the query executed successfully
-if ($result1) {
-    // Fetch the row from the result
-    $row = mysqli_fetch_assoc($result4);
+// if ($result1) {
+//     // Fetch the row from the result
+//     $row = mysqli_fetch_assoc($result4);
 
-    // Access the 'id' column from the fetched row
-    $userID = $row['id'];
+//     // Access the 'id' column from the fetched row
+//     $userID = $row['id'];
 
-    // Now you can use $userID in your code
-    echo "User ID: $userID";
-} else {
-    // Handle the case where the query failed
-    echo "user ID not found...";
-}
+//     // Now you can use $userID in your code
+//     echo "User ID: $userID";
+// } else {
+//     // Handle the case where the query failed
+//     echo "user ID not found...";
+// }
 
 ?>
 

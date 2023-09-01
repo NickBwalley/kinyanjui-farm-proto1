@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
 // Fetch employees and their ranks using JOIN
@@ -13,17 +14,25 @@ if (!empty($id)) {
     $employeeResult = mysqli_query($conn, $employeeSql);
 
     if (!$employeeResult) {
-        die("Error fetching manager: " . mysqli_error($conn));
+        die("Error fetching employee: " . mysqli_error($conn));
     }
 
     $manager = mysqli_fetch_array($employeeResult);
     $empName = $manager['firstName'];
 }
-?>
 
-<?php
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['manID'])) {
+    // Access the userID from the session
+    $userID = $_SESSION['manID'];
 
-require_once ('process/dbh.php');
+    // Now you can use $userID in your code
+    echo "User ID: $userID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "User ID not found in session.";
+}
+
 $sql = "SELECT * FROM `employee` WHERE 1";
 
 //echo "$sql";
@@ -108,7 +117,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+				<li><a class="homeblack" href="eloginwel.php?id=<?php echo $userID?>"">HOME</a></li>
 				<li><a class="homered" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>

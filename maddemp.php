@@ -3,6 +3,8 @@ session_start();
 require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+$managerID = $_SESSION['manID'] = $id;
+echo "$managerID";
 
 if (!empty($id)) {
     $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
@@ -17,11 +19,11 @@ if (!empty($id)) {
 }
 
 // Debug: Check if session is set
-if (isset($_SESSION['userID'])) {
-    echo "User ID set in session: " . $_SESSION['userID'];
-} else {
-    echo "User ID not found.";
-}
+// if (isset($_SESSION['userID'])) {
+//     echo "User ID set in session: " . $_SESSION['userID'];
+// } else {
+//     echo "User ID not found.";
+// }
 ?>
 
 <!DOCTYPE html>
