@@ -134,7 +134,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Update Employee Info</h2>
-                    <form id = "registration" action="edit2.php" method="POST">
+                    <form id = "registration" action="edit2.php?id=<?php echo $userID?>"" method="POST">
 
                         <div class="row row-space">
                             <div class="col-2">
