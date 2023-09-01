@@ -1,4 +1,5 @@
 <?php
+session_start();
 require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
@@ -11,6 +12,17 @@ $sql = "SELECT pid, project.eid, pname, duedate, subdate, mark, points, firstNam
         WHERE project.eid = '$id' AND project.pid = '$pid'";
 
 $result = mysqli_query($conn, $sql);
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['manID'])) {
+    // Access the userID from the session
+    $userID = $_SESSION['manID'];
+
+    // Now you can use $userID in your code
+    echo "User ID: $userID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "User ID not found in session.";
+}
 
 if (isset($_POST['update'])) {
     $eid = mysqli_real_escape_string($conn, $_POST['eid']);
@@ -31,9 +43,10 @@ if (isset($_POST['update'])) {
     mysqli_query($conn, "UPDATE rank SET points='$upPoint' WHERE eid=$eid");
     mysqli_query($conn, "UPDATE salary SET bonus='$upBonus', total='$upSalary' WHERE id=$eid");
 
-    header("Location: assignproject.php");
-    exit;
+    header("Location: massignproject.php?id=$userID");
 }
+
+
 
 $id = isset($_GET['id']) ? $_GET['id'] : '';
 $pid = isset($_GET['pid']) ? $_GET['pid'] : '';
