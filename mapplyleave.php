@@ -52,6 +52,10 @@ if (!empty($id)) {
 
 
                         <div class="input-group">
+                            <input class="input--style-1" type="number" placeholder="EmpID" name="empid">
+                        </div>
+
+                        <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Reason" name="reason">
                         </div>
                         <div class="row row-space">
