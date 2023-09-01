@@ -22,6 +22,18 @@ if (!empty($id)) {
     $_SESSION['managerID'] = $managerId;
 }
 
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['manID'])) {
+    // Access the userID from the session
+    $userID = $_SESSION['manID'];
+
+    // Now you can use $userID in your code
+    echo "User ID: $userID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "User ID not found in session.";
+}
+
 //getting id of the data from url
 $id = $_GET['id'];
 
@@ -29,6 +41,6 @@ $id = $_GET['id'];
 $result = mysqli_query($conn, "DELETE FROM employee WHERE id=$id");
 
 //redirecting to the display page (index.php in our case)
-header("Location:mviewemployee.php?managerID=$managerId");
+header("Location: mviewemployee.php?id=$userID");
 ?>
 

@@ -4,7 +4,7 @@ require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 $managerID = $_SESSION['manID'] = $id;
-echo "$managerID";
+// echo "$managerID";
 
 if (!empty($id)) {
     $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";

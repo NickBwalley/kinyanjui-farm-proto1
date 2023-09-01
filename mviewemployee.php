@@ -4,7 +4,7 @@ session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 $managerID = $_SESSION['manID'] = $id;
-echo "$managerID";
+//echo "$managerID";
 
 // Fetch employees and their ranks using JOIN
 $sql = "SELECT * FROM `employee` e
