@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once ('dbh.php');
 
 $pname = $_POST['pname'];
@@ -17,6 +17,18 @@ if (mysqli_num_rows($result_check_eid) == 0) {
     </SCRIPT>");
 }
 
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['manID'])) {
+    // Access the userID from the session
+    $userID = $_SESSION['manID'];
+
+    // Now you can use $userID in your code
+    echo "User ID: $userID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "User ID not found in session.";
+}
+
 $sql = "INSERT INTO `project`(`eid`, `pname`, `duedate` , `status`) VALUES ('$eid' , '$pname' , '$subdate' , 'Due')";
 
 $result = mysqli_query($conn, $sql);
@@ -24,8 +36,7 @@ $result = mysqli_query($conn, $sql);
 
 if(($result) == 1){
     
-    
-    header("Location: ..//assignproject.php");
+    header("Location: ..//massignproject.php?id=$userID");
 }
 
 else{
