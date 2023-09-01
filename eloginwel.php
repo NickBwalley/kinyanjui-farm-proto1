@@ -56,12 +56,6 @@ $result4 = mysqli_query($conn, $sql4);
 			<ul id="navli">
 			    <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Employees</a></li>
-                <!-- <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
-                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
-                <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-                <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
 				<li><a class="homeblack" href="../chartjs-template-acers/index.php">Analytics</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
@@ -181,7 +175,7 @@ $result4 = mysqli_query($conn, $sql4);
 
 
 
-		<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Leave Satus</h2>
+		<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Leave Status</h2>
     	
 
     	<table>
