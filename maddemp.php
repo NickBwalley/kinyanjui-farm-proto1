@@ -146,7 +146,7 @@ if (!empty($id)) {
 
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Salary" name="salary">
+                            <input class="input--style-1" type="number" placeholder="Salary (price Ksh8 per kg)" readonly name="salary">
                         </div>
 
                         <div class="input-group">
