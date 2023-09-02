@@ -72,7 +72,7 @@ if (!empty($id)) {
 				<th align = "center">Contact</th>
 				<th align = "center">Address</th>
 				<th align = "center">Department</th>
-				<th align = "center">Point</th>
+				<th align = "center">Harvested (KSH)</th>
 				
 				
 				<th align = "center">Options</th>
