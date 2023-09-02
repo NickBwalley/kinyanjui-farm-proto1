@@ -82,7 +82,7 @@ $result4 = mysqli_query($conn, $sql4);
 				<th align = "center">Seq.</th>
 				<th align = "center">Emp. ID</th>
 				<th align = "center">Name</th>
-				<th align = "center">Points</th>
+				<th align = "center">Total Harvested (Kgs)</th>
 				
 
 			</tr>

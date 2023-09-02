@@ -60,7 +60,7 @@ if (!empty($id)) {
 				<th align = "center">Project Name</th>
 				<th align = "center">Due Date</th>
 				<th align = "center">Submission Date</th>
-				<th align = "center">Mark</th>
+				<th align = "center">Kgs Harvested</th>
 				<th align = "center">Status</th>
 				<th align = "center">Option</th>
 				
@@ -76,7 +76,7 @@ if (!empty($id)) {
 					echo "<td>".$employee['subdate']."</td>";
 					echo "<td>".$employee['mark']."</td>";
 					echo "<td>".$employee['status']."</td>";
-					echo "<td><a href=\"mark.php?id=$employee[eid]&pid=$employee[pid]\">Mark</a>"; 
+					echo "<td><a href=\"mark.php?id=$employee[eid]&pid=$employee[pid]\">Harvested</a>"; 
 
 				}
 

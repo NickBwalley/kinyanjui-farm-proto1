@@ -153,7 +153,7 @@ if ($result1) {
 
 
                         <div class="input-group">
-                          <p>Assign Mark</p>
+                          <p>Kgs Harvested</p>
                             <input class="input--style-1" type="text"  name="mark" value="<?php echo $mark;?>">
                         </div>
 
@@ -165,7 +165,7 @@ if ($result1) {
                         <input type="hidden" name="bonus" id="textField" value="<?php echo $bonus;?>" required="required">
                         <input type="hidden" name="total" id="textField" value="<?php echo $total;?>" required="required">
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="update">Assign Mark</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="update">Submit</button>
                         </div>
                         
                     </form>
