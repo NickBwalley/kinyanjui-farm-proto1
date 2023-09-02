@@ -43,7 +43,7 @@ if (isset($_POST['update'])) {
     mysqli_query($conn, "UPDATE rank SET points='$upPoint' WHERE eid=$eid");
     mysqli_query($conn, "UPDATE salary SET bonus='$upBonus', total='$upSalary' WHERE id=$eid");
 
-    header("Location: massignproject.php?id=$userID");
+    header("Location: eloginwel.php?id=$userID");
 }
 
 
