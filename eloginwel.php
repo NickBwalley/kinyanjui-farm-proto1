@@ -83,6 +83,7 @@ $result4 = mysqli_query($conn, $sql4);
 				<th align = "center">Emp. ID</th>
 				<th align = "center">Name</th>
 				<th align = "center">Total Harvested (Kgs)</th>
+				<th align = "center">Price to Pay (KSH)</th>
 				
 
 			</tr>
@@ -99,6 +100,10 @@ $result4 = mysqli_query($conn, $sql4);
 					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
 					
 					echo "<td>".$employee['points']."</td>";
+
+					// Multiply $employee['points'] by 8 and display the result
+					$pointsMultiplied = $employee['points'] * 8;
+					echo "<td>" . $pointsMultiplied . "</td>";
 					
 					$seq+=1;
 				}
