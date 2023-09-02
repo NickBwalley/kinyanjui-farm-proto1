@@ -70,10 +70,8 @@ if (!empty($id)) {
 				<th align = "center">Birthday</th>
 				<th align = "center">Gender</th>
 				<th align = "center">Contact</th>
-				<th align = "center">NID</th>
 				<th align = "center">Address</th>
 				<th align = "center">Department</th>
-				<th align = "center">Degree</th>
 				<th align = "center">Point</th>
 				
 				
@@ -91,10 +89,8 @@ if (!empty($id)) {
 					echo "<td>".$employee['birthday']."</td>";
 					echo "<td>".$employee['gender']."</td>";
 					echo "<td>".$employee['contact']."</td>";
-					echo "<td>".$employee['nid']."</td>";
 					echo "<td>".$employee['address']."</td>";
 					echo "<td>".$employee['dept']."</td>";
-					echo "<td>".$employee['degree']."</td>";
 					echo "<td>".$employee['points']."</td>";
 
 					echo "<td><a href=\"edit2.php?id=$employee[id]\">Edit</a> | <a href=\"delete2.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";

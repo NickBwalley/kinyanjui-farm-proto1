@@ -48,9 +48,7 @@ if(isset($_POST['update']))
 	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
-	$nid = mysqli_real_escape_string($conn, $_POST['nid']);
 	$dept = mysqli_real_escape_string($conn, $_POST['dept']);
-	$degree = mysqli_real_escape_string($conn, $_POST['degree']);
 	//$salary = mysqli_real_escape_string($conn, $_POST['salary']);
 
 
@@ -60,7 +58,7 @@ if(isset($_POST['update']))
 	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`nid`='$nid',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
+$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Updated')
     </SCRIPT>");
@@ -88,9 +86,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 	$address = $res['address'];
 	$gender = $res['gender'];
 	$birthday = $res['birthday'];
-	$nid = $res['nid'];
 	$dept = $res['dept'];
-	$degree = $res['degree'];
 	
 }
 }
@@ -175,11 +171,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                             <input class="input--style-1" type="number" name="contact" value="<?php echo $contact;?>">
                         </div>
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="number" name="nid" value="<?php echo $nid;?>">
-                        </div>
-
-                        
+                       
                          <div class="input-group">
                             <input class="input--style-1" type="text"  name="address" value="<?php echo $address;?>">
                         </div>
@@ -188,9 +180,6 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                             <input class="input--style-1" type="text" name="dept" value="<?php echo $dept;?>">
                         </div>
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" name="degree" value="<?php echo $degree;?>">
-                        </div>
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="update">Submit</button>

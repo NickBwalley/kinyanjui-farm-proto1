@@ -125,7 +125,6 @@ if (!empty($id)) {
                                             <option disabled="disabled" selected="selected">GENDER</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -138,11 +137,6 @@ if (!empty($id)) {
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="NID" name="nid" required="required">
-                        </div>
-
-                        
-                         <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Address" name="address" required="required">
                         </div>
 
@@ -150,9 +144,6 @@ if (!empty($id)) {
                             <input class="input--style-1" type="text" placeholder="Department" name="dept" required="required">
                         </div>
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Degree" name="degree" required="required">
-                        </div>
 
                         <div class="input-group">
                             <input class="input--style-1" type="number" placeholder="Salary" name="salary">
