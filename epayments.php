@@ -62,9 +62,9 @@ if (!empty($id)) {
 				<th align = "center">Name</th>
 				
 				
-				<th align = "center">Base Salary</th>
-				<th align = "center">Bonus</th>
-				<th align = "center">TotalSalary</th>
+				<th align = "center">Price per KG</th>
+				<th align = "center">KGS harvested</th>
+				<th align = "center">TotalPayment</th>
 				
 				
 			</tr>
