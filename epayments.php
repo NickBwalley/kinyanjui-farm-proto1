@@ -58,7 +58,7 @@ if (!empty($id)) {
 	
 	<table>
 			<tr>
-				<th align = "center">Emp ID</th>
+				<th align = "center">Emp. ID</th>
 				<th align = "center">Name</th>
 				
 				
