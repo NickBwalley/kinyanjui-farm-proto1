@@ -1,7 +1,7 @@
 <?php 
     session_start();
     require_once('process/dbh.php');
-    
+
     $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
     $sql1 = "SELECT * FROM `alogin` where id = '$id'";
@@ -50,7 +50,7 @@
         <nav>
             <h1>Kinyanjui Farm.</h1>
             <ul id="navli">
-                <li><a class="homered" href="aloginwel.php">HOME</a></li>
+                <li><a class="homered" href="aloginwel.php?id=<?php echo $id ?>">HOME</a></li>
                 <li><a class="homeblack" href="alogin.html">Log Out</a></li>
             </ul>
         </nav>
