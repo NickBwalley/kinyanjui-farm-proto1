@@ -2,6 +2,26 @@
 session_start();
 require_once ('dbh.php');
 
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+
+    $sql1 = "SELECT * FROM `alogin` where id = '$id'";
+
+    $result1 = mysqli_query($conn, $sql1);
+
+    if ($result1) {
+        // Fetch the row from the result
+        $row = mysqli_fetch_assoc($result1);
+
+        // Access the 'id' column from the fetched row
+        $admID = $row['id'];
+
+        // Now you can use $admID in your code
+        //echo "Admin ID: $admID";
+    } else {
+        // Handle the case where the query failed
+        echo "Admin ID not found...";
+    }
+
 $firstname = $_POST['firstName'];
 $lastName = $_POST['lastName'];
 $email = $_POST['email'];
@@ -41,7 +61,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Manager Succesfully Registered...')
-    window.location.href='..//viewman.php?id=$id';
+    window.location.href='..//viewman.php?id=$admID';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
@@ -71,7 +91,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//viewman.php';
+    window.location.href='..//viewman.php?id=$admID';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
