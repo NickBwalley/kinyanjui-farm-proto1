@@ -61,7 +61,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Manager Succesfully Registered...')
-    window.location.href='..//viewman.php?id=$admID';
+    window.location.href='..//viewman.php?id=$id';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
