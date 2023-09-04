@@ -10,7 +10,7 @@ if (isset($_SESSION['admID'])) {
     $admID = $_SESSION['admID'];
 
     // Now you can use $userID in your code
-    // echo "Admin ID: $admID";
+    echo "Admin ID: $admID";
 } else {
     // Handle the case where the session variable is not set
     echo "Admin ID not found in session.";
@@ -44,7 +44,7 @@ if(isset($_POST['update']))
 $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`nid`='$nid',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Updated')
-    window.location.href='viewemp.php';
+    window.location.href='viewman.php?id=$admID';
     </SCRIPT>");
 
 
