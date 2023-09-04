@@ -21,6 +21,7 @@ if ($result1) {
     // Handle the case where the query failed
     echo "user ID not found...";
 }
+$managerID = $_SESSION['manID'] = $id;
 
 /////////////////////////////////////////////////////////////////
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
