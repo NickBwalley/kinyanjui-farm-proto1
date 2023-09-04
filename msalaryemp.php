@@ -20,7 +20,7 @@ header("Pragma: no-cache");
 	 
 	 $result1 = mysqli_query($conn, $sql4);
 	 $employeen = mysqli_fetch_array($result1);
-	 $empName = ($employeen['firstName']);
+	//  $empName = ($employeen['firstName']);
 
 	$sql = "SELECT id, firstName, lastName,  points FROM employee, rank WHERE rank.eid = employee.id order by rank.points desc";
 	$sql1 = "SELECT `pname`, `duedate` FROM `project` WHERE eid = $id and status = 'Due'";
