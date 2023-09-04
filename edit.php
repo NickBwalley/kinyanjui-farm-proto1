@@ -46,8 +46,6 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
     window.alert('Succesfully Updated')
     window.location.href='viewman.php?id=$admID';
     </SCRIPT>");
-
-
 	
 }
 ?>
@@ -79,7 +77,7 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
 
 <html>
 <head>
-	<title>View Manager |  Admin Panel | XYZ Corporation</title>
+	<title>View Manager |  Admin Panel | Kinyanjui Farm</title>
 	<!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
