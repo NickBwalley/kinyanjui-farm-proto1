@@ -1,36 +1,60 @@
 <?php
+// Prevent caching
+header("Cache-Control: no-store, no-cache, must-revalidate, max-age=0");
+header("Cache-Control: post-check=0, pre-check=0", false);
+header("Pragma: no-cache");
+?>
 
-require_once ('process/dbh.php');
-$sql = "SELECT employee.id,employee.firstName,employee.lastName,salary.base,salary.bonus,salary.total from employee,`salary` where employee.id=salary.id";
+
+<?php 
+	session_start();
+	require_once ('process/dbh.php');
+	$id = (isset($_GET['id']) ? $_GET['id'] : '');
+	$managerID = $_SESSION['manID'] = $id;
+	// echo "$managerID";
+	 $sql4 = "SELECT * FROM `manager` where id = '$id'";
+	 
+	 $result1 = mysqli_query($conn, $sql4);
+	 $employeen = mysqli_fetch_array($result1);
+	 $empName = ($employeen['firstName']);
+
+	$sql = "SELECT id, firstName, lastName,  points FROM employee, rank WHERE rank.eid = employee.id order by rank.points desc";
+	$sql1 = "SELECT `pname`, `duedate` FROM `project` WHERE eid = $id and status = 'Due'";
+
+	$sql2 = "Select * From employee, employee_leave Where employee.id = $id and employee_leave.id = $id order by employee_leave.token";
+
+	$sql3 = "SELECT * FROM `salary` WHERE id = $id";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
+$result1 = mysqli_query($conn, $sql1);
+$result2 = mysqli_query($conn, $sql2);
+$result3 = mysqli_query($conn, $sql3);
+$result4 = mysqli_query($conn, $sql4);
+
+// Check if the query executed successfully
+// if ($result1) {
+//     // Fetch the row from the result
+//     $row = mysqli_fetch_assoc($result4);
+
+//     // Access the 'id' column from the fetched row
+//     $userID = $row['id'];
+
+//     // Now you can use $userID in your code
+//     echo "User ID: $userID";
+// } else {
+//     // Handle the case where the query failed
+//     echo "user ID not found...";
+// }
 
 ?>
-<?php 
-require_once('process/dbh.php');
-
-$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
-
-if (!empty($id)) {
-    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
-    $managerResult = mysqli_query($conn, $managerSql);
-
-    if (!$managerResult) {
-        die("Error fetching manager: " . mysqli_error($conn));
-    }
-
-    $manager = mysqli_fetch_array($managerResult);
-    $empName = $manager['firstName'];
-}
-?>
-
 
 
 <html>
 <head>
-	<title>Salary Table | Kinyanjui Farm</title>
-	<link rel="stylesheet" type="text/css" href="styleview.css">
+	<title>Employee Panel | Kinyanjui Farm.</title>
+	<link rel="stylesheet" type="text/css" href="styleemplogin.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat" rel="stylesheet">
 </head>
 <body>
 	
@@ -38,14 +62,9 @@ if (!empty($id)) {
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-	            <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
-                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
-                <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
-                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
-                <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-                <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+			    <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Employees</a></li>
+				<li><a class="homeblack" href="../chartjs-template-acers/index.php">Analytics</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
 		</nav>
@@ -53,40 +72,50 @@ if (!empty($id)) {
 	 
 	<div class="divider"></div>
 	<div id="divimg">
-		
-	</div>
-	
-	<table>
-			<tr>
+	<div>
+		<!-- <h2>Welcome <?php echo "$empName"; ?> </h2> -->
+
+		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Employees Salary </h2>
+    	<table>
+
+			<tr bgcolor="#000">
+				<th align = "center">Seq.</th>
 				<th align = "center">Emp. ID</th>
 				<th align = "center">Name</th>
-				<th align = "center">Price per KG</th>
-				<th align = "center">KGS Harvested</th>
+				<th align = "center">Total Harvested (Kgs)</th>
 				<th align = "center">Amt to Pay</th>
 				<th align = "center">Payments</th>
+
 				
-				
+
 			</tr>
+
 			
+
 			<?php
+				$seq = 1;
 				while ($employee = mysqli_fetch_assoc($result)) {
 					echo "<tr>";
+					echo "<td>".$seq."</td>";
 					echo "<td>".$employee['id']."</td>";
+					
 					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
 					
-					echo "<td>".$employee['base']."</td>";
-					echo "<td>".$employee['bonus']." </td>";
-					$amtToPay = $employee['base'] * $employee['bonus'];
-					echo "<td>".$amtToPay."</td>";
+					echo "<td>".$employee['points']."</td>";
+
+					// Multiply $employee['points'] by 8 and display the result
+					$pointsMultiplied = $employee['points'] * 8;
+					echo "<td>" . $pointsMultiplied . "</td>";
 					echo "<td><a href=\"epayments.php?id=$employee[id]\">Pay</a></td>";
 					
-					
-
+					$seq+=1;
 				}
 
 
 			?>
-			
-			</table>
+
+		</table>
+   
+	</div>
 </body>
 </html>
