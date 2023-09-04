@@ -1,3 +1,10 @@
+<?php
+$id = (isset($_GET['id']) ? $_GET['id'] : '');
+	$managerID = $_SESSION['manID'] = $id;
+	$_SESSION['manID'] = $id;
+	// echo "$managerID";
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,16 +19,8 @@
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homered" href="../aloginwel.php">HOME</a></li>
-				<!-- <li><a class="homeblack" href="addemp.php">Add Employee</a></li> -->
-				<li><a class="homeblack" href="../viewemp.php">Employees</a></li>
-				<li><a class="homeblack" href="../viewman.php">Managers</a></li>
-				<li><a class="homeblack" href="../chartjs-template-acers/indexm.php">Analytics</a></li>
-				<!-- <li><a class="homeblack" href="assign.php">Assign Project</a></li> -->
-				<!-- <li><a class="homeblack" href="assignproject.php">Project Status</a></li> -->
-				<!-- <li><a class="homeblack" href="salaryemp.php">Salary Table</a></li> -->
-				<!-- <li><a class="homeblack" href="empleave.php">Employee Leave</a></li> -->
-				<li><a class="homeblack" href="../alogin.html">Log Out</a></li>
+				<li><a class="homered" href="../eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+				<li><a class="homeblack" href="../elogin.html">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>
