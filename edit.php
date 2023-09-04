@@ -1,7 +1,20 @@
 <?php
-
+session_start();
 require_once ('process/dbh.php');
-$sql = "SELECT * FROM `employee` WHERE 1";
+$sql = "SELECT * FROM `manager` WHERE 1";
+
+$id = (isset($_GET['id']) ? $_GET['id'] : '');
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['admID'])) {
+    // Access the userID from the session
+    $admID = $_SESSION['admID'];
+
+    // Now you can use $userID in your code
+    echo "Admin ID: $admID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "Admin ID not found in session.";
+}
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
