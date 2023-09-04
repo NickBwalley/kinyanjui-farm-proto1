@@ -70,12 +70,12 @@ if(isset($_POST['update']))
 	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
-	echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Updated')
-    </SCRIPT>");
+// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
+// 	echo ("<SCRIPT LANGUAGE='JavaScript'>
+//     window.alert('Succesfully Updated')
+//     </SCRIPT>");
 
-    header("Location: mviewemployee.php?id=$userID");
+//     header("Location: mviewemployee.php?id=$userID");
 
 
 	
@@ -160,7 +160,10 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="update">Approve</button>
-							<button class="btn btn--radius btn--red" type="submit" name="update">Cancel</button>
+							<button class="btn btn--radius btn--red" type="submit" name="update">
+  								<a href="msalaryemp.php?=" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">Approve</a>
+							</button>
+
                         </div>
                         
                     </form>
