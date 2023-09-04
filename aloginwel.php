@@ -21,7 +21,7 @@ $result = mysqli_query($conn, $sql);
 				<!-- <li><a class="homeblack" href="addemp.php">Add Employee</a></li> -->
 				<li><a class="homeblack" href="viewemp.php">Employees</a></li>
 				<li><a class="homeblack" href="viewman.php">Managers</a></li>
-				<li><a class="homeblack" href="../chartjs-template-acers/index.php">Analytics</a></li>
+				<li><a class="homeblack" href="./chartjs-template-acers/index.php">Analytics</a></li>
 				<!-- <li><a class="homeblack" href="assign.php">Assign Project</a></li> -->
 				<!-- <li><a class="homeblack" href="assignproject.php">Project Status</a></li> -->
 				<!-- <li><a class="homeblack" href="salaryemp.php">Salary Table</a></li> -->
