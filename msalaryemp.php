@@ -76,7 +76,8 @@ if (!empty($id)) {
 					
 					echo "<td>".$employee['base']."</td>";
 					echo "<td>".$employee['bonus']." </td>";
-					echo "<td>".$employee['total']."</td>";
+					$amtToPay = $employee['base'] * $employee['bonus'];
+					echo "<td>".$amtToPay."</td>";
 					echo "<td><a href=\"epayments.php?id=$employee[id]\">Pay</a></td>";
 					
 					
