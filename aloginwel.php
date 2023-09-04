@@ -44,8 +44,8 @@ $result = mysqli_query($conn, $sql);
 			<ul id="navli">
 				<li><a class="homered" href="aloginwel.php">HOME</a></li>
 				<!-- <li><a class="homeblack" href="addemp.php">Add Employee</a></li> -->
-				<li><a class="homeblack" href="viewemp.php">Employees</a></li>
-				<li><a class="homeblack" href="viewman.php">Managers</a></li>
+				<li><a class="homeblack" href="viewemp.php?id=<?php echo $id ?>">Employees</a></li>
+				<li><a class="homeblack" href="viewman.php?id=<?php echo $id ?>">Managers</a></li>
 				<li><a class="homeblack" href="./chartjs-template-acers/index.php">Analytics</a></li>
 				<!-- <li><a class="homeblack" href="assign.php">Assign Project</a></li> -->
 				<!-- <li><a class="homeblack" href="assignproject.php">Project Status</a></li> -->
