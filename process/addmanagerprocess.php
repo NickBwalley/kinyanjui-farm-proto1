@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once ('dbh.php');
 
 $firstname = $_POST['firstName'];
@@ -40,8 +40,8 @@ $rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
 if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Registered')
-    window.location.href='..//viewman.php';
+    window.alert('Manager Succesfully Registered...')
+    window.location.href='..//viewman.php?id=$id';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
