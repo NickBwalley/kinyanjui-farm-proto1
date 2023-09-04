@@ -1,3 +1,27 @@
+<?php 
+    session_start();
+    require_once('process/dbh.php');
+    
+    $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+
+    $sql1 = "SELECT * FROM `alogin` where id = '$id'";
+
+    $result1 = mysqli_query($conn, $sql1);
+
+    if ($result1) {
+        // Fetch the row from the result
+        $row = mysqli_fetch_assoc($result1);
+
+        // Access the 'id' column from the fetched row
+        $admID = $row['id'];
+
+        // Now you can use $admID in your code
+        //echo "Admin ID: $admID";
+    } else {
+        // Handle the case where the query failed
+        echo "Admin ID not found...";
+    }
+?>
 <!DOCTYPE html>
 <html>
 
@@ -27,7 +51,6 @@
             <h1>Kinyanjui Farm.</h1>
             <ul id="navli">
                 <li><a class="homered" href="aloginwel.php">HOME</a></li>
-                <!-- <li><a class="homered" href="viewman.php">View Managers</a></li> -->
                 <li><a class="homeblack" href="alogin.html">Log Out</a></li>
             </ul>
         </nav>
