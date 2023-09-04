@@ -10,7 +10,7 @@ if (isset($_SESSION['admID'])) {
     $admID = $_SESSION['admID'];
 
     // Now you can use $userID in your code
-    echo "Admin ID: $admID";
+    // echo "Admin ID: $admID";
 } else {
     // Handle the case where the session variable is not set
     echo "Admin ID not found in session.";
@@ -96,7 +96,7 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
 <body>
 	<header>
 		<nav>
-			<h1>XYZ Corp.</h1>
+			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
 				<li><a class="homeblack" href="aloginwel.php?id=<?php echo $id ?>">HOME</a></li>
 				<li><a class="homeblack" href="addemp.php">Add Employee</a></li>
