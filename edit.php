@@ -10,7 +10,7 @@ if (isset($_SESSION['admID'])) {
     $admID = $_SESSION['admID'];
 
     // Now you can use $userID in your code
-    echo "Admin ID: $admID";
+    // echo "Admin ID: $admID";
 } else {
     // Handle the case where the session variable is not set
     echo "Admin ID not found in session.";
