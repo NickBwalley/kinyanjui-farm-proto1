@@ -154,7 +154,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="update">Approve</button>
-							<button class="btn btn--radius btn--green" type="submit" name="update">Cancel</button>
+							<button class="btn btn--radius btn--red" type="submit" name="update">Cancel</button>
                         </div>
                         
                     </form>
