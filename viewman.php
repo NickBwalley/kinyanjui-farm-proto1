@@ -44,9 +44,6 @@ $result = mysqli_query($conn, $sql);
 				<th align = "center">Address</th>
 				<th align = "center">Department</th>
 				<th align = "center">Degree</th>
-				<th align = "center">Point</th>
-				
-				
 				<th align = "center">Options</th>
 			</tr>
 
