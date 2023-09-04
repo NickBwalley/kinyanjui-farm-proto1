@@ -16,7 +16,7 @@ if ($result1) {
     $admID = $row['id'];
 
     // Now you can use $admID in your code
-    echo "Admin ID: $admID";
+    //echo "Admin ID: $admID";
 } else {
     // Handle the case where the query failed
     echo "Admin ID not found...";
