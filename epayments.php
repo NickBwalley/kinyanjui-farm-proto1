@@ -160,6 +160,16 @@ if(isset($_POST['update']))
 							<h2>Ksh <?php echo $amtToBePaid;?></h2>
                             <input class="input--style-1" type="hidden"  name="amt" value="<?php echo $amtToBePaid;?>">
                         </div>
+                        <?php
+                        // Set the timezone to Nairobi, Kenya
+                        date_default_timezone_set('Africa/Nairobi');
+
+                        // Get the current date and time
+                        $currentDateTime = date('Y-m-d H:i:s');
+
+                        // Display the current date and time
+                        echo "Current Date and Time in Nairobi, Kenya: " . $currentDateTime;
+                        ?>
 
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
