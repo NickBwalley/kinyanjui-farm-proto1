@@ -99,8 +99,8 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
 				<li><a class="homeblack" href="aloginwel.php?id=<?php echo $id ?>">HOME</a></li>
-				<li><a class="homeblack" href="addemp.php">Add Employee</a></li>
-				<li><a class="homered" href="viewemp.php">View Employee</a></li>
+				<li><a class="homeblack" href="addemp.php?id=<?php echo $id ?>">Add Employee</a></li>
+				<li><a class="homered" href="viewemp.php?id=<?php echo $id ?>">View Employee</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
 		</nav>
