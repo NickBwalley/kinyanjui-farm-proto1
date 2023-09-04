@@ -13,7 +13,7 @@ header("Pragma: no-cache");
 	$id = (isset($_GET['id']) ? $_GET['id'] : '');
 	$managerID = $_SESSION['manID'] = $id;
 	$_SESSION['manID'] = $id;
-	echo "$managerID";
+	// echo "$managerID";
 
 
 	 $sql4 = "SELECT * FROM `manager` where id = '$id'";
