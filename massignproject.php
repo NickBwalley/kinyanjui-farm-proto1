@@ -21,7 +21,7 @@ if (!empty($id)) {
     }
 
     $manager = mysqli_fetch_array($managerResult);
-    $empName = $manager['firstName'];
+    // $empName = $manager['firstName'];
 }
 ?>
 
