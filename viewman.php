@@ -18,9 +18,7 @@ if (isset($_SESSION['admID'])) {
     echo "Admin ID not found in session.";
 }
 
-
 ?>
-
 
 
 <html>

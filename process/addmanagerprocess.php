@@ -2,25 +2,18 @@
 session_start();
 require_once ('dbh.php');
 
-$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+$id = (isset($_GET['id']) ? $_GET['id'] : '');
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['admID'])) {
+    // Access the userID from the session
+    $admID = $_SESSION['admID'];
 
-    $sql1 = "SELECT * FROM `alogin` where id = '$id'";
-
-    $result1 = mysqli_query($conn, $sql1);
-
-    if ($result1) {
-        // Fetch the row from the result
-        $row = mysqli_fetch_assoc($result1);
-
-        // Access the 'id' column from the fetched row
-        $admID = $row['id'];
-
-        // Now you can use $admID in your code
-        //echo "Admin ID: $admID";
-    } else {
-        // Handle the case where the query failed
-        echo "Admin ID not found...";
-    }
+    // Now you can use $userID in your code
+    //echo "Admin ID: $admID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "Admin ID not found in session.";
+}
 
 $firstname = $_POST['firstName'];
 $lastName = $_POST['lastName'];
