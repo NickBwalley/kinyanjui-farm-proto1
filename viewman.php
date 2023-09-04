@@ -6,6 +6,19 @@ $sql = "SELECT * from `manager` WHERE manager.id = id";
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
 
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['manID'])) {
+    // Access the userID from the session
+    $userID = $_SESSION['manID'];
+
+    // Now you can use $userID in your code
+    //echo "User ID: $userID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "User ID not found in session.";
+}
+
+
 ?>
 
 

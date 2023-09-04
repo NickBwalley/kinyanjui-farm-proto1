@@ -13,15 +13,15 @@ if ($result1) {
     $row = mysqli_fetch_assoc($result1);
 
     // Access the 'id' column from the fetched row
-    $userID = $row['id'];
+    $admID = $row['id'];
 
-    // Now you can use $userID in your code
-    echo "User ID: $userID";
+    // Now you can use $admID in your code
+    echo "Admin ID: $admID";
 } else {
     // Handle the case where the query failed
-    echo "user ID not found...";
+    echo "Admin ID not found...";
 }
-$managerID = $_SESSION['manID'] = $id;
+$adminID = $_SESSION['admID'] = $id;
 
 /////////////////////////////////////////////////////////////////
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
