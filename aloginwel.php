@@ -4,29 +4,24 @@ require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
-if (!empty($id)) {
-    $adminSql = "SELECT * FROM `alogin` WHERE id = '$id'";
-    $adminResult = mysqli_query($conn, $adminSql);
+$sql1 = "SELECT * FROM `alogin` where id = '$id'";
 
-    if (!$adminResult) {
-        die("Error fetching admin: " . mysqli_error($conn));
-    }
+$result1 = mysqli_query($conn, $sql1);
 
-    $admin = mysqli_fetch_array($adminResult);
-    // $empName = $admin['firstName'];
-}
+if ($result1) {
+    // Fetch the row from the result
+    $row = mysqli_fetch_assoc($result1);
 
-// Check if the session variable 'userID' is set
-if (isset($_SESSION['admID'])) {
-    // Access the userID from the session
-    $admID = $_SESSION['admID'];
+    // Access the 'id' column from the fetched row
+    $userID = $row['id'];
 
     // Now you can use $userID in your code
-    echo "User ID: $admID";
+    echo "User ID: $userID";
 } else {
-    // Handle the case where the session variable is not set
-    echo "Adm ID not found in session.";
+    // Handle the case where the query failed
+    echo "user ID not found...";
 }
+
 /////////////////////////////////////////////////////////////////
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
 require_once ('process/dbh.php');
