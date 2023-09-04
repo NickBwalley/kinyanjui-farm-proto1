@@ -134,25 +134,9 @@ if ($result1) {
                         </div>
 
                        
-
-
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                  <p>Due Date</p>
-                                     <input class="input--style-1" type="text" name="duedate" value="<?php echo $duedate;?>" readonly>
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                  <p>Submission Date</p>
-                                    <input class="input--style-1" type="text"  name="subdate" value="<?php echo $subdate;?>" readonly>
-                                </div>
-                            </div>
-                        </div>
-
-
                         <div class="input-group">
+                          <input class="input--style-1" type="hidden" name="duedate" value="<?php echo $duedate;?>" readonly>
+                          <input class="input--style-1" type="hidden"  name="subdate" value="<?php echo $subdate;?>" readonly>
                           <p>Kgs Harvested</p>
                             <input class="input--style-1" type="text"  name="mark" value="<?php echo $mark;?>">
                         </div>
