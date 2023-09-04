@@ -64,7 +64,7 @@ $result4 = mysqli_query($conn, $sql4);
 			<ul id="navli">
 			    <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Employees</a></li>
-				<li><a class="homeblack" href="../chartjs-template-acers/index.php">Analytics</a></li>
+				<li><a class="homeblack" href="../chartjs-template-acers/indexm.php?id=<?php echo $id?>"">Analytics</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
 		</nav>
