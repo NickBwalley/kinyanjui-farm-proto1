@@ -62,7 +62,7 @@ $result4 = mysqli_query($conn, $sql4);
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-			    <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+			    <li><a class="homered" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Employees</a></li>
 				<li><a class="homeblack" href="../chartjs-template-acers/indexm.php?id=<?php echo $id?>"">Analytics</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>

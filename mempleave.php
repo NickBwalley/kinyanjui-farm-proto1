@@ -45,7 +45,7 @@ if (!empty($id)) {
                 <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
                 <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
                 <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homered" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
