@@ -2,6 +2,10 @@
 session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
+$id = (isset($_GET['id']) ? $_GET['id'] : '');
+	// $managerID = $_SESSION['manID'] = $id;
+	// echo "$managerID";
+
 // Fetch employees and their ranks using JOIN
 $sql = "SELECT * FROM `employee` e
         JOIN `rank` r ON e.id = r.eid";
@@ -29,10 +33,10 @@ if (isset($_SESSION['manID'])) {
     $userID = $_SESSION['manID'];
 
     // Now you can use $userID in your code
-    // echo "User ID: $userID";
+    echo "User ID: $userID";
 } else {
     // Handle the case where the session variable is not set
-    // echo "User ID not found in session.";
+    echo "User ID not found in session.";
 }
 
 $sql = "SELECT * FROM `employee` WHERE 1";
@@ -159,10 +163,9 @@ if(isset($_POST['update']))
 
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
+                            <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="update">Approve</button>
-							<button class="btn btn--radius btn--red" type="submit" name="update">
-  								<a href="msalaryemp.php?=" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">Approve</a>
-							</button>
+							<button class="btn btn--radius btn--red" type="submit" name="update">Cancel</button>
 
                         </div>
                         
