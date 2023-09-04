@@ -40,7 +40,15 @@ $sql1 = "SELECT * FROM `salary` WHERE id = $id";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
-$result1 = mysqli_query($conn, $sql);
+$result1 = mysqli_query($conn, $sql1);
+if($result1){
+	while($res1 = mysqli_fetch_assoc($result1)){
+	$base = $res1['base'];
+	$bonus = $res1['bonus'];
+	$amtToBePaid = $res1['base'] * $res1['bonus'];
+	
+}
+}
 if(isset($_POST['update']))
 {
 
@@ -137,56 +145,16 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                     <h2 class="title">Pay <?php echo $firstname .' '. $lastname?> </h2>
                     <form id = "registration" action="edit2.php?id=<?php echo $userID?>"" method="POST">
 
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                     <input class="input--style-1" type="text" name="firstName" value="<?php echo $firstname;?>" >
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="text" name="lastName" value="<?php echo $lastname;?>">
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="email"  name="email" value="<?php echo $email;?>">
-                        </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="text" name="birthday" value="<?php echo $birthday;?>">
-                                   
-                                </div>
-                            </div>
-                            <div class="col-2">
-                                <div class="input-group">
-									<input class="input--style-1" type="text" name="gender" value="<?php echo $gender;?>">
-                                </div>
-                            </div>
-                        </div>
                         
                         <div class="input-group">
-                            <input class="input--style-1" type="number" name="contact" value="<?php echo $contact;?>">
-                        </div>
-
-                       
-                         <div class="input-group">
-                            <input class="input--style-1" type="text"  name="address" value="<?php echo $address;?>">
-                        </div>
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" name="dept" value="<?php echo $dept;?>">
+							<h2>Ksh <?php echo $amtToBePaid;?></h2>
+                            <input class="input--style-1" type="hidden"  name="amt" value="<?php echo $amtToBePaid;?>">
                         </div>
 
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="update">Submit</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="update">Approve</button>
+							<button class="btn btn--radius btn--green" type="submit" name="update">Cancel</button>
                         </div>
                         
                     </form>
