@@ -33,7 +33,7 @@ if (!empty($id)) {
    
 
     <!-- Title Page-->
-    <title>Add Employee | Managers Panel</title>
+    <title>Add Employee | Admins Panel</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
