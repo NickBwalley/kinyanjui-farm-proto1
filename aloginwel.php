@@ -23,6 +23,7 @@ if ($result1) {
 }
 $adminID = $_SESSION['admID'] = $id;
 
+
 /////////////////////////////////////////////////////////////////
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
 require_once ('process/dbh.php');
