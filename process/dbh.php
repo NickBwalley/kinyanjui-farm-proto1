@@ -3,12 +3,12 @@
 $servername = "localhost";
 $dBUsername = "root";
 $dbPassword = "";
-$dBName = "erms";
+$dBName = "erms2";
 
 $conn = mysqli_connect($servername, $dBUsername, $dbPassword, $dBName);
 
 if(!$conn){
-	echo "Databese Connection Failed";
+	echo "Database Connection Failed";
 }
 
 ?>
