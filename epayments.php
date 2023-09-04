@@ -39,6 +39,32 @@ if (isset($_SESSION['manID'])) {
     echo "User ID not found in session.";
 }
 
+if (isset($_POST['approve'])) {
+    // Assuming you have a unique identifier for the person, let's call it 'id'
+    $id = $_POST['id']; // Replace with your actual form field name
+
+    // Start a transaction
+    mysqli_begin_transaction($conn);
+
+    // Update the 'salary' table
+    $sql1 = "UPDATE salary SET base = 8, bonus = 0, total = 0 WHERE id = $id";
+    
+    // Update the 'rank' table
+    $sql2 = "UPDATE rank SET points = 0 WHERE eid = $id";
+
+    if (mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)) {
+        // Both updates were successful
+        mysqli_commit($conn);
+        echo "Record updated successfully!";
+        header("Location: msalaryemp.php?id=$userID");
+    } else {
+        // At least one update failed, roll back the transaction
+        mysqli_rollback($conn);
+        echo "Error updating record: " . mysqli_error($conn);
+        header("Location: epayments.php?id=$userID");
+    }
+}
+
 $sql = "SELECT * FROM `employee` WHERE 1";
 $sql1 = "SELECT * FROM `salary` WHERE id = $id";
 
@@ -109,6 +135,7 @@ if(isset($_POST['update']))
 
 ?>
 
+
 <html>
 <head>
 	<title>View Employee |  Admin Panel </title>
@@ -153,7 +180,7 @@ if(isset($_POST['update']))
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Pay <?php echo $firstname .' '. $lastname?> </h2>
-                    <form id = "registration" action="msalaryemp.php?id=<?php echo $userID?>"" method="POST">
+                    <form id = "registration" action="epayments.php?id=<?php echo $userID?>"" method="POST">
 
                         
                         <div class="input-group">
@@ -174,8 +201,8 @@ if(isset($_POST['update']))
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="update">Approve</button>
-							<button class="btn btn--radius btn--red" type="submit" name="update">Cancel</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="approve">Approve</button>
+							<button class="btn btn--radius btn--red" type="submit" name="#">Cancel</button>
 
                         </div>
                         
