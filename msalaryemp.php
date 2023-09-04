@@ -60,11 +60,10 @@ if (!empty($id)) {
 			<tr>
 				<th align = "center">Emp. ID</th>
 				<th align = "center">Name</th>
-				
-				
-				<th align = "center">Base Salary</th>
-				<th align = "center">Bonus</th>
-				<th align = "center">TotalSalary</th>
+				<th align = "center">Price per KG</th>
+				<th align = "center">KGS Harvested</th>
+				<th align = "center">Amt to Pay</th>
+				<th align = "center">Payments</th>
 				
 				
 			</tr>
@@ -76,8 +75,9 @@ if (!empty($id)) {
 					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
 					
 					echo "<td>".$employee['base']."</td>";
-					echo "<td>".$employee['bonus']." %</td>";
+					echo "<td>".$employee['bonus']." </td>";
 					echo "<td>".$employee['total']."</td>";
+					echo "<td><a href=\"epayments.php?id=$employee[id]\">Pay</a></td>";
 					
 					
 
