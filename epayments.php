@@ -29,10 +29,10 @@ if (isset($_SESSION['manID'])) {
     $userID = $_SESSION['manID'];
 
     // Now you can use $userID in your code
-    echo "User ID: $userID";
+    // echo "User ID: $userID";
 } else {
     // Handle the case where the session variable is not set
-    echo "User ID not found in session.";
+    // echo "User ID not found in session.";
 }
 
 $sql = "SELECT * FROM `employee` WHERE 1";
@@ -70,12 +70,12 @@ if(isset($_POST['update']))
 	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
-	echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Succesfully Updated')
-    </SCRIPT>");
+// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
+// 	echo ("<SCRIPT LANGUAGE='JavaScript'>
+//     window.alert('Succesfully Updated')
+//     </SCRIPT>");
 
-    header("Location: mviewemployee.php?id=$userID");
+//     header("Location: mviewemployee.php?id=$userID");
 
 
 	
@@ -126,9 +126,15 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="eloginwel.php?id=<?php echo $userID?>"">HOME</a></li>
-				<li><a class="homered" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
-				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
+				<li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
+                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
+                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
+                <li><a class="homered" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+                <li><a class="homeblack" href="logout.php">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -154,7 +160,10 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="update">Approve</button>
-							<button class="btn btn--radius btn--red" type="submit" name="update">Cancel</button>
+							<button class="btn btn--radius btn--red" type="submit" name="update">
+  								<a href="msalaryemp.php?=" style="text-decoration: none; color: inherit; display: block; width: 100%; height: 100%;">Approve</a>
+							</button>
+
                         </div>
                         
                     </form>
