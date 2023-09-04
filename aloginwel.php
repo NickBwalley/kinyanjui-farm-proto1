@@ -43,14 +43,9 @@ $result = mysqli_query($conn, $sql);
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
 				<li><a class="homered" href="aloginwel.php">HOME</a></li>
-				<!-- <li><a class="homeblack" href="addemp.php">Add Employee</a></li> -->
 				<li><a class="homeblack" href="viewemp.php?id=<?php echo $id ?>">Employees</a></li>
 				<li><a class="homeblack" href="viewman.php?id=<?php echo $id ?>">Managers</a></li>
-				<li><a class="homeblack" href="./chartjs-template-acers/index.php">Analytics</a></li>
-				<!-- <li><a class="homeblack" href="assign.php">Assign Project</a></li> -->
-				<!-- <li><a class="homeblack" href="assignproject.php">Project Status</a></li> -->
-				<!-- <li><a class="homeblack" href="salaryemp.php">Salary Table</a></li> -->
-				<!-- <li><a class="homeblack" href="empleave.php">Employee Leave</a></li> -->
+				<li><a class="homeblack" href="./chartjs-template-acers/index.php?id=<?php echo $id ?>">Analytics</a></li>
 				<li><a class="homeblack" href="alogin.html">Log Out</a></li>
 			</ul>
 		</nav>

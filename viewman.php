@@ -5,7 +5,7 @@ $sql = "SELECT * from `manager` WHERE manager.id = id";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
-
+$id = (isset($_GET['id']) ? $_GET['id'] : '');
 // Check if the session variable 'userID' is set
 if (isset($_SESSION['admID'])) {
     // Access the userID from the session
@@ -33,9 +33,8 @@ if (isset($_SESSION['admID'])) {
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homered" href="aloginwel.php">HOME</a></li>
-				<li><a class="homeblack" href="addman.php">Add Manager</a></li>
-				<!-- <li><a class="homeblack" href="viewmans.php">View Managers</a></li> -->
+				<li><a class="homered" href="aloginwel.php?id=<?php echo $id ?>">HOME</a></li>
+				<li><a class="homeblack" href="addman.php?id=<?php echo $id ?>">Add Manager</a></li>
 				<li><a class="homeblack" href="alogin.html">Log Out</a></li>
 			</ul>
 		</nav>
