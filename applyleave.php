@@ -1,11 +1,20 @@
 <?php 
-	$id = (isset($_GET['id']) ? $_GET['id'] : '');
-	require_once ('process/dbh.php');
-	$sql = "SELECT * FROM `employee` where id = '$id'";
-	$result = mysqli_query($conn, $sql);
-	$employee = mysqli_fetch_array($result);
-	// $empName = ($employee['firstName']);
-	//echo "$id";
+require_once('process/dbh.php');
+
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+echo "$id";
+
+if (!empty($id)) {
+    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerResult = mysqli_query($conn, $managerSql);
+
+    if (!$managerResult) {
+        die("Error fetching manager: " . mysqli_error($conn));
+    }
+
+    // $manager = mysqli_fetch_array($managerResult);
+    // $empName = $manager['firstName'];
+}
 ?>
 
 <html>
@@ -25,9 +34,10 @@
                 <li><a class="homeblack" href="assign.php?id=<?php echo $id?>"">Assign Project</a></li>
                 <li><a class="homeblack" href="assignproject.php?id=<?php echo $id?>"">Project Status</a></li>
                 <li><a class="homeblack" href="salaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="empleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-                <li><a class="homered" href="applyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+                <li><a class="homered" href="empleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="applyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
 				<li><a class="homeblack" href="logout.php">Log Out</a></li>
+
 			</ul>
 		</nav>
 	</header>
@@ -41,6 +51,10 @@
                     <h2 class="title">Apply Leave Form</h2>
                     <form action="process/applyleaveprocess.php?id=<?php echo $id?>" method="POST">
 
+
+                        <div class="input-group">
+                            <input class="input--style-1" type="number" placeholder="EmpID" name="empid">
+                        </div>
 
                         <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Reason" name="reason">
