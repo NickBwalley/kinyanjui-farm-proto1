@@ -34,8 +34,8 @@ if (!empty($id)) {
                 <li><a class="homeblack" href="assign.php?id=<?php echo $id?>"">Assign Project</a></li>
                 <li><a class="homeblack" href="assignproject.php?id=<?php echo $id?>"">Project Status</a></li>
                 <li><a class="homeblack" href="salaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homered" href="empleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-                <li><a class="homeblack" href="applyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+                <li><a class="homeblack" href="empleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homered" href="applyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
 				<li><a class="homeblack" href="logout.php">Log Out</a></li>
 
 			</ul>

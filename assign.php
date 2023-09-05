@@ -43,7 +43,7 @@ $result = mysqli_query($conn, $sql);
                 <li><a class="homeblack" href="addemp.php?id=<?php echo $id?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="viewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
                 <li><a class="homered" href="assign.php?id=<?php echo $id?>"">Assign Project</a></li>
-                <li><a class="homeblack" href=assignproject.php?id=<?php echo $id?>"">Project Status</a></li>
+                <li><a class="homeblack" href="assignproject.php?id=<?php echo $id?>"">Project Status</a></li>
                 <li><a class="homeblack" href="salaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="empleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="applyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
