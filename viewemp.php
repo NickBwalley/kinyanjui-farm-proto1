@@ -1,29 +1,43 @@
+
 <?php
-
-require_once ('process/dbh.php');
+session_start();
+require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
-$sql = "SELECT * from `employee` , `rank` WHERE employee.id = rank.eid";
+$adminID = $_SESSION['admID'] = $id;
+//echo "$adminID";
 
-//echo "$sql";
+// Fetch employees and their ranks using JOIN
+$sql = "SELECT * FROM `employee` e
+        JOIN `rank` r ON e.id = r.eid";
 $result = mysqli_query($conn, $sql);
+?>
+
+
+
+<?php 
+require_once('process/dbh.php');
+
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
 if (!empty($id)) {
-    $adminSql = "SELECT * FROM `alogin` WHERE id = '$id'";
-    $adminResult = mysqli_query($conn, $adminSql);
+    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerResult = mysqli_query($conn, $managerSql);
 
-    if (!$adminResult) {
-        die("Error fetching admin: " . mysqli_error($conn));
+    if (!$managerResult) {
+        die("Error fetching employee: " . mysqli_error($conn));
     }
 
-    $admin = mysqli_fetch_array($adminResult);
-    $admName = $admin['firstName'];
+    $manager = mysqli_fetch_array($managerResult);
+    // $empName = $manager['firstName'];
 }
-
 ?>
+
+
+
 
 <html>
 <head>
-	<title>View Employee |  Admin Panel </title>
+	<title>View Employee |  Admins Panel </title>
 	<link rel="stylesheet" type="text/css" href="styleview.css">
 </head>
 <body>
@@ -31,14 +45,15 @@ if (!empty($id)) {
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="aloginwel.php">HOME</a></li>
-				<li><a class="homeblack" href="addemp.php?id=<?php echo $id?>"">Add Employee</a></li>
-				<li><a class="homered" href="viewemp.php?id=<?php echo $id?>"">View Employee</a></li>
-				<li><a class="homeblack" href="assign.php?id=<?php echo $id?>"">Assign Project</a></li>
-				<li><a class="homeblack" href="assignprojectphp?id=<?php echo $id?>"">Project Status</a></li>
-				<li><a class="homeblack" href="salaryemp.php?id=<?php echo $id?>"">Salary Table</a></li>
-				<li><a class="homeblack" href="empleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-				<li><a class="homeblack" href="alogin.html">Log Out</a></li>
+				<li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
+                <li><a class="homered" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
+                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
+                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
+                <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+				<li><a class="homeblack" href="logout.php">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -55,11 +70,9 @@ if (!empty($id)) {
 				<th align = "center">Birthday</th>
 				<th align = "center">Gender</th>
 				<th align = "center">Contact</th>
-				
 				<th align = "center">Address</th>
 				<th align = "center">Department</th>
-				
-				<th align = "center">Point</th>
+				<th align = "center">Harvested (KSH)</th>
 				
 				
 				<th align = "center">Options</th>
@@ -76,13 +89,11 @@ if (!empty($id)) {
 					echo "<td>".$employee['birthday']."</td>";
 					echo "<td>".$employee['gender']."</td>";
 					echo "<td>".$employee['contact']."</td>";
-					
 					echo "<td>".$employee['address']."</td>";
 					echo "<td>".$employee['dept']."</td>";
-					
 					echo "<td>".$employee['points']."</td>";
 
-					echo "<td><a href=\"edit.php?id=$employee[id]\">Edit</a> | <a href=\"delete.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+					echo "<td><a href=\"edit2.php?id=$employee[id]\">Edit</a> | <a href=\"delete2.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 
 				}
 
@@ -94,3 +105,4 @@ if (!empty($id)) {
 	
 </body>
 </html>
+
