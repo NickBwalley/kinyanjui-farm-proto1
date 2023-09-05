@@ -107,7 +107,7 @@ $result4 = mysqli_query($conn, $sql4);
 					// Multiply $employee['points'] by 8 and display the result
 					$pointsMultiplied = $employee['points'] * 8;
 					echo "<td>" . $pointsMultiplied . "</td>";
-					echo "<td><a href=\"epayments.php?id=$employee[id]\">Pay</a></td>";
+					echo "<td><a href=\"admepayments.php?id=$employee[id]\">Pay</a></td>";
 					
 					$seq+=1;
 				}
