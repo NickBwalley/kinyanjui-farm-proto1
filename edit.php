@@ -1,9 +1,26 @@
 <?php
 session_start();
-require_once ('process/dbh.php');
-$sql = "SELECT * FROM `employee` WHERE 1";
+require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
-$id = (isset($_GET['id']) ? $_GET['id'] : '');
+// Fetch employees and their ranks using JOIN
+$sql = "SELECT * FROM `employee` e
+        JOIN `rank` r ON e.id = r.eid";
+$result = mysqli_query($conn, $sql);
+
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+
+if (!empty($id)) {
+    $employeeSql = "SELECT * FROM `employee` WHERE id = '$id'";
+    $employeeResult = mysqli_query($conn, $employeeSql);
+
+    if (!$employeeResult) {
+        die("Error fetching employee: " . mysqli_error($conn));
+    }
+
+    $manager = mysqli_fetch_array($employeeResult);
+    // $empName = $manager['firstName'];
+}
+
 // Check if the session variable 'userID' is set
 if (isset($_SESSION['admID'])) {
     // Access the userID from the session
@@ -15,6 +32,8 @@ if (isset($_SESSION['admID'])) {
     // Handle the case where the session variable is not set
     echo "Admin ID not found in session.";
 }
+
+$sql = "SELECT * FROM `employee` WHERE 1";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
@@ -29,9 +48,7 @@ if(isset($_POST['update']))
 	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
-	$nid = mysqli_real_escape_string($conn, $_POST['nid']);
 	$dept = mysqli_real_escape_string($conn, $_POST['dept']);
-	$degree = mysqli_real_escape_string($conn, $_POST['degree']);
 	//$salary = mysqli_real_escape_string($conn, $_POST['salary']);
 
 
@@ -41,11 +58,14 @@ if(isset($_POST['update']))
 	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`nid`='$nid',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
+$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Updated')
-    window.location.href='viewman.php?id=$admID';
     </SCRIPT>");
+
+    header("Location: viewemployee.php?id=$admID");
+
+
 	
 }
 ?>
@@ -66,9 +86,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 	$address = $res['address'];
 	$gender = $res['gender'];
 	$birthday = $res['birthday'];
-	// $nid = $res['nid'];
 	$dept = $res['dept'];
-	// $degree = $res['degree'];
 	
 }
 }
@@ -77,7 +95,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 
 <html>
 <head>
-	<title>View Manager |  Admin Panel | Kinyanjui Farm</title>
+	<title>View Employee |  Admin Panel </title>
 	<!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -96,9 +114,8 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="aloginwel.php?id=<?php echo $id ?>">HOME</a></li>
-				<li><a class="homeblack" href="addemp.php?id=<?php echo $id ?>">Add Employee</a></li>
-				<li><a class="homered" href="viewemp.php?id=<?php echo $id ?>">View Employee</a></li>
+				<li><a class="homeblack" href="aloginwel.php?id=<?php echo $userID?>"">HOME</a></li>
+				<li><a class="homered" href="viewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
 				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
 			</ul>
 		</nav>
@@ -114,7 +131,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Update Employee Info</h2>
-                    <form id = "registration" action="edit.php" method="POST">
+                    <form id = "registration" action="edit.php?id=<?php echo $userID?>"" method="POST">
 
                         <div class="row row-space">
                             <div class="col-2">
@@ -154,6 +171,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                             <input class="input--style-1" type="number" name="contact" value="<?php echo $contact;?>">
                         </div>
 
+                       
                          <div class="input-group">
                             <input class="input--style-1" type="text"  name="address" value="<?php echo $address;?>">
                         </div>
@@ -162,7 +180,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                             <input class="input--style-1" type="text" name="dept" value="<?php echo $dept;?>">
                         </div>
 
-                       <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
+                        <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="update">Submit</button>
                         </div>
