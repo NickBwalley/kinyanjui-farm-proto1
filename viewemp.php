@@ -93,7 +93,7 @@ if (!empty($id)) {
 					echo "<td>".$employee['dept']."</td>";
 					echo "<td>".$employee['points']."</td>";
 
-					echo "<td><a href=\"edit2.php?id=$employee[id]\">Edit</a> | <a href=\"delete2.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+					echo "<td><a href=\"edit.php?id=$employee[id]\">Edit</a> | <a href=\"delete.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 
 				}
 
