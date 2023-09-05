@@ -63,7 +63,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
     window.alert('Succesfully Updated')
     </SCRIPT>");
 
-    header("Location: viewemployee.php?id=$admID");
+    header("Location: viewemp.php?id=$admID");
 
 
 	
@@ -131,7 +131,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Update Employee Info</h2>
-                    <form id = "registration" action="edit.php?id=<?php echo $userID?>"" method="POST">
+                    <form id = "registration" action="edit.php" method="POST">
 
                         <div class="row row-space">
                             <div class="col-2">
