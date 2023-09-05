@@ -7,11 +7,11 @@ $adminID = $_SESSION['admID'] = $id;
 // echo "$adminID";
 
 if (!empty($id)) {
-    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerSql = "SELECT * FROM `alogin` WHERE id = '$id'";
     $managerResult = mysqli_query($conn, $managerSql);
 
     if (!$managerResult) {
-        die("Error fetching manager: " . mysqli_error($conn));
+        die("Error fetching admin: " . mysqli_error($conn));
     }
 
     $manager = mysqli_fetch_array($managerResult);

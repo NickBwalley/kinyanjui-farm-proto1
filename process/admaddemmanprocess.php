@@ -1,7 +1,13 @@
 <?php 
+session_start();
 require_once('dbh.php');
 
+
+
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+
+$adminID = $_SESSION['admID'] = $id;
+//echo "$adminID";
 
 if (!empty($id)) {
     $adminSql = "SELECT * FROM `alogin` WHERE id = '$id'";
@@ -89,7 +95,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//aloginwel.php?id=" . $id . "';
+    window.location.href='..//aloginwel.php?id=" . $adminID . "';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
