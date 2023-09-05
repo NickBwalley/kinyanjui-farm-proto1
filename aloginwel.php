@@ -10,9 +10,9 @@ header("Pragma: no-cache");
 	session_start();
 	require_once ('process/dbh.php');
 	$id = (isset($_GET['id']) ? $_GET['id'] : '');
-	$managerID = $_SESSION['manID'] = $id;
+	$managerID = $_SESSION['admID'] = $id;
 	// echo "$managerID";
-	 $sql4 = "SELECT * FROM `manager` where id = '$id'";
+	 $sql4 = "SELECT * FROM `alogin` where id = '$id'";
 	 
 	 $result1 = mysqli_query($conn, $sql4);
 	 $employeen = mysqli_fetch_array($result1);
@@ -62,10 +62,11 @@ $result4 = mysqli_query($conn, $sql4);
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-			    <li><a class="homered" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
-                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Employees</a></li>
-				<li><a class="homeblack" href="./chartjs-template-acers/indexm.php?id=<?php echo $id?>"">Analytics</a></li>
-				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
+			    <li><a class="homered" href="aloginwel.php?id=<?php echo $id ?>">HOME</a></li>
+				<li><a class="homeblack" href="viewemp.php?id=<?php echo $id ?>">Employees</a></li>
+				<li><a class="homeblack" href="viewman.php?id=<?php echo $id ?>">Managers</a></li>
+				<li><a class="homeblack" href="./chartjs-template-acers/index.php?id=<?php echo $id ?>">Analytics</a></li>
+				<li><a class="homeblack" href="alogin.html">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>
