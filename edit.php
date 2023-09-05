@@ -1,7 +1,7 @@
 <?php
 session_start();
 require_once ('process/dbh.php');
-$sql = "SELECT * FROM `manager` WHERE 1";
+$sql = "SELECT * FROM `employee` WHERE 1";
 
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
 // Check if the session variable 'userID' is set
@@ -10,7 +10,7 @@ if (isset($_SESSION['admID'])) {
     $admID = $_SESSION['admID'];
 
     // Now you can use $userID in your code
-    // echo "Admin ID: $admID";
+    echo "Admin ID: $admID";
 } else {
     // Handle the case where the session variable is not set
     echo "Admin ID not found in session.";
@@ -41,7 +41,7 @@ if(isset($_POST['update']))
 	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-$result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`nid`='$nid',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
+$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`nid`='$nid',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Updated')
     window.location.href='viewman.php?id=$admID';
@@ -55,7 +55,7 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
 
 <?php
 	$id = (isset($_GET['id']) ? $_GET['id'] : '');
-	$sql = "SELECT * from `manager` WHERE id=$id";
+	$sql = "SELECT * from `employee` WHERE id=$id";
 	$result = mysqli_query($conn, $sql);
 	if($result){
 	while($res = mysqli_fetch_assoc($result)){
@@ -66,9 +66,9 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
 	$address = $res['address'];
 	$gender = $res['gender'];
 	$birthday = $res['birthday'];
-	$nid = $res['nid'];
+	// $nid = $res['nid'];
 	$dept = $res['dept'];
-	$degree = $res['degree'];
+	// $degree = $res['degree'];
 	
 }
 }
@@ -154,11 +154,6 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
                             <input class="input--style-1" type="number" name="contact" value="<?php echo $contact;?>">
                         </div>
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="number" name="nid" value="<?php echo $nid;?>">
-                        </div>
-
-                        
                          <div class="input-group">
                             <input class="input--style-1" type="text"  name="address" value="<?php echo $address;?>">
                         </div>
@@ -167,10 +162,7 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
                             <input class="input--style-1" type="text" name="dept" value="<?php echo $dept;?>">
                         </div>
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" name="degree" value="<?php echo $degree;?>">
-                        </div>
-                        <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
+                       <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="update">Submit</button>
                         </div>
