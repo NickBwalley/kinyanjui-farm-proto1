@@ -1,3 +1,31 @@
+<?php 
+session_start();
+require_once('process/dbh.php');
+
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+$adminID = $_SESSION['admID'] = $id;
+// echo "$adminID";
+
+if (!empty($id)) {
+    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerResult = mysqli_query($conn, $managerSql);
+
+    if (!$managerResult) {
+        die("Error fetching manager: " . mysqli_error($conn));
+    }
+
+    $manager = mysqli_fetch_array($managerResult);
+    // $empName = $manager['firstName'];
+}
+
+// Debug: Check if session is set
+// if (isset($_SESSION['userID'])) {
+//     echo "User ID set in session: " . $_SESSION['userID'];
+// } else {
+//     echo "User ID not found.";
+// }
+?>
+
 <!DOCTYPE html>
 <html>
 
@@ -5,7 +33,7 @@
    
 
     <!-- Title Page-->
-    <title>Add Employee | Admin Panel</title>
+    <title>Add Employee | Admins Panel</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -26,14 +54,22 @@
         <nav>
             <h1>Kinyanjui Farm.</h1>
             <ul id="navli">
-                <li><a class="homeblack" href="aloginwel.php">HOME</a></li>
-                <li><a class="homered" href="addemp.php">Add Employee</a></li>
-                <li><a class="homeblack" href="viewemp.php">View Employee</a></li>
-                <li><a class="homeblack" href="assign.php">Assign Project</a></li>
-                <li><a class="homeblack" href="assignproject.php">Project Status</a></li>
-                <li><a class="homeblack" href="salaryemp.php">Salary Table</a></li> 
-                <li><a class="homeblack" href="empleave.php">Employee Leave</a></li>
-                <li><a class="homeblack" href="alogin.html">Log Out</a></li>
+                <li><a class="homeblack" href="aloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+                <li><a class="homered" href="addemp.php?id=<?php echo $id?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
+                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
+                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
+                <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+                <li><a class="homeblack" href="logout.php">Log Out</a></li>
+                
+                
+                
+				<!-- <li><a class="homeblack" href="myprofile.php?id=<?php echo $id?>"">My Profile</a></li> -->
+				
+				
+				
             </ul>
         </nav>
     </header>
@@ -49,7 +85,7 @@
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Registration Info</h2>
-                    <form action="process/addempprocess.php" method="POST" enctype="multipart/form-data">
+                    <form action="process/admaddemmanprocess.php" method="POST" enctype="multipart/form-data">
 
 
                         
@@ -89,7 +125,6 @@
                                             <option disabled="disabled" selected="selected">GENDER</option>
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
-                                            <option value="Other">Other</option>
                                         </select>
                                         <div class="select-dropdown"></div>
                                     </div>
@@ -102,11 +137,6 @@
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="NID" name="nid" required="required">
-                        </div>
-
-                        
-                         <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Address" name="address" required="required">
                         </div>
 
@@ -114,12 +144,9 @@
                             <input class="input--style-1" type="text" placeholder="Department" name="dept" required="required">
                         </div>
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Degree" name="degree" required="required">
-                        </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Salary" name="salary">
+                            <input class="input--style-1" type="number" placeholder="Salary (price Ksh8 per kg)" readonly name="salary">
                         </div>
 
                         <div class="input-group">
