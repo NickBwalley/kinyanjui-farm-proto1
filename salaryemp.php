@@ -31,7 +31,7 @@ $result = mysqli_query($conn, $sql);
 			<ul id="navli">
 				<li><a class="homeblack" href="aloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="addemp.php?id=<?php echo $id?>"">Add Employee</a></li>
-                <li><a class="homeblack" href="viewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
+                <li><a class="homeblack" href="viewemp.php?id=<?php echo $id?>"">View Employee</a></li>
                 <li><a class="homeblack" href="assign.php?id=<?php echo $id?>"">Assign Project</a></li>
                 <li><a class="homeblack" href="assignproject.php?id=<?php echo $id?>"">Project Status</a></li>
                 <li><a class="homered" href="salaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
