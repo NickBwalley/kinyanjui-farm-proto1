@@ -65,7 +65,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//aloginwel.php?id=" . $id . "';
+    window.location.href='./aloginwel.php?id=" . $id . "';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }
@@ -95,7 +95,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//aloginwel.php?id=" . $adminID . "';
+    window.location.href='../aloginwel.php?id=" . $id . "';
     </SCRIPT>");
     //header("Location: ..//aloginwel.php");
 }

@@ -4,23 +4,26 @@ require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
+$adminID = $_SESSION['admID'] = $id;
+echo "$adminID";
+
 $sql1 = "SELECT * FROM `alogin` where id = '$id'";
 
 $result1 = mysqli_query($conn, $sql1);
 
-if ($result1) {
-    // Fetch the row from the result
-    $row = mysqli_fetch_assoc($result1);
+// if ($result1) {
+//     // Fetch the row from the result
+//     $row = mysqli_fetch_assoc($result1);
 
-    // Access the 'id' column from the fetched row
-    $admID = $row['id'];
+//     // Access the 'id' column from the fetched row
+//     $admID = $row['id'];
 
-    // Now you can use $admID in your code
-    //echo "Admin ID: $admID";
-} else {
-    // Handle the case where the query failed
-    echo "Admin ID not found...";
-}
+//     // Now you can use $admID in your code
+//     //echo "Admin ID: $admID";
+// } else {
+//     // Handle the case where the query failed
+//     echo "Admin ID not found...";
+// }
 $adminID = $_SESSION['admID'] = $id;
 
 
