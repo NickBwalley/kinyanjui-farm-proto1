@@ -180,7 +180,7 @@ if(isset($_POST['update']))
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Pay <?php echo $firstname .' '. $lastname?> </h2>
-                    <form id = "registration" action="admepayments.php?id=<?php echo $admID?>"" method="POST">
+                    <form id = "registration" action="admpayments.php?id=<?php echo $admID?>"" method="POST">
 
                         
                         <div class="input-group">
