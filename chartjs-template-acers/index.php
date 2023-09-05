@@ -1,3 +1,31 @@
+<?php 
+session_start();
+require_once('../process/dbh.php');
+
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+$adminID = $_SESSION['admID'] = $id;
+// echo "$adminID";
+
+if (!empty($id)) {
+    $managerSql = "SELECT * FROM `alogin` WHERE id = '$id'";
+    $managerResult = mysqli_query($conn, $managerSql);
+
+    if (!$managerResult) {
+        die("Error fetching admin: " . mysqli_error($conn));
+    }
+
+    $manager = mysqli_fetch_array($managerResult);
+    // $empName = $manager['firstName'];
+}
+
+// Debug: Check if session is set
+// if (isset($_SESSION['userID'])) {
+//     echo "User ID set in session: " . $_SESSION['userID'];
+// } else {
+//     echo "User ID not found.";
+// }
+?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -12,7 +40,7 @@
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homered" href="../aloginwel.php">HOME</a></li>
+				<li><a class="homered" href="../aloginwel.php?id=<?php echo $id?>"">HOME</a></li>
 				<!-- <li><a class="homeblack" href="addemp.php">Add Employee</a></li> -->
 				<!-- <li><a class="homeblack" href="../viewemp.php">Employees</a></li>
 				<li><a class="homeblack" href="../viewman.php">Managers</a></li>
