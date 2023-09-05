@@ -6,10 +6,6 @@ $sql = "SELECT * from `project` order by subdate desc";
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
 
-?>
-<?php 
-require_once('process/dbh.php');
-
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
 if (!empty($id)) {
