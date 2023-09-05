@@ -4,7 +4,7 @@ require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 $adminID = $_SESSION['admID'] = $id;
-echo "$adminID";
+// echo "$adminID";
 
 if (!empty($id)) {
     $managerSql = "SELECT * FROM `alogin` WHERE id = '$id'";
