@@ -65,6 +65,15 @@ if (isset($_POST['approve'])) {
     }
 }
 
+if (isset($_POST['decline'])) {
+    // Assuming you have a unique identifier for the person, let's call it 'id'
+    $id = $_POST['id']; // Replace with your actual form field name
+
+    
+        // echo "Record updated successfully!";
+        header("Location: salaryemp.php?id=$admID");
+}
+
 $sql = "SELECT * FROM `employee` WHERE 1";
 $sql1 = "SELECT * FROM `salary` WHERE id = $id";
 
@@ -92,22 +101,6 @@ if(isset($_POST['update']))
 	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
 	$dept = mysqli_real_escape_string($conn, $_POST['dept']);
 	//$salary = mysqli_real_escape_string($conn, $_POST['salary']);
-
-
-
-
-
-	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
-
-
-// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
-// 	echo ("<SCRIPT LANGUAGE='JavaScript'>
-//     window.alert('Succesfully Updated')
-//     </SCRIPT>");
-
-//     header("Location: mviewemployee.php?id=$admID");
-
-
 	
 }
 ?>
@@ -202,7 +195,7 @@ if(isset($_POST['update']))
                         <div class="p-t-20">
                             <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="approve">Approve</button>
-							<button class="btn btn--radius btn--red" type="submit" name="#">Cancel</button>
+							<button class="btn btn--radius btn--red" type="submit" name="decline">Cancel</button>
 
                         </div>
                         
