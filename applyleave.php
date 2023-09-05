@@ -2,7 +2,7 @@
 require_once('process/dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
-echo "$id";
+// echo "$id";
 
 if (!empty($id)) {
     $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
