@@ -4,15 +4,15 @@ require_once('dbh.php');
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
 if (!empty($id)) {
-    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
-    $managerResult = mysqli_query($conn, $managerSql);
+    $adminSql = "SELECT * FROM `alogin` WHERE id = '$id'";
+    $adminResult = mysqli_query($conn, $adminSql);
 
-    if (!$managerResult) {
-        die("Error fetching manager: " . mysqli_error($conn));
+    if (!$adminResult) {
+        die("Error fetching admin: " . mysqli_error($conn));
     }
 
-    $manager = mysqli_fetch_array($managerResult);
-    $empName = $manager['firstName'];
+    $admin = mysqli_fetch_array($adminResult);
+    // $empName = $admin['firstName'];
 }
 ?>
 <?php
@@ -75,7 +75,7 @@ else{
 
 else{
 
-      $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`,  `address`, `dept`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$address','$dept','images/no.jpg')";
+    $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`,  `address`, `dept`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$address','$dept','images/no.jpg')";
 
 $result = mysqli_query($conn, $sql);
 
@@ -90,15 +90,16 @@ if(($result) == 1){
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
     window.location.href='..//aloginwel.php?id=" . $id . "';
-    </SCRIPT>")
+    </SCRIPT>");
+    //header("Location: ..//aloginwel.php");
 }
 
-else{
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Failed to Register')
-    window.location.href='javascript:history.go(-1)';
-    </SCRIPT>");
-}
+// else{
+//     echo ("<SCRIPT LANGUAGE='JavaScript'>
+//     window.alert('Failed to Registere')
+//     window.location.href='javascript:history.go(-1)';
+//     </SCRIPT>");
+// }
 }
 
 

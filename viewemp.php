@@ -46,7 +46,7 @@ if (!empty($id)) {
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
 				<li><a class="homeblack" href="aloginwel.php?id=<?php echo $id?>"">HOME</a></li>
-                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="addemp.php?id=<?php echo $id?>"">Add Employee</a></li>
                 <li><a class="homered" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
                 <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
                 <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
