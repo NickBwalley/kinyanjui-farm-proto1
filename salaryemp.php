@@ -1,6 +1,14 @@
 <?php
 session_start();
 require_once ('process/dbh.php');
+$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+$adminID = $_SESSION['admID'] = $id;
+//echo "$adminID";
+
+// Fetch employees and their ranks using JOIN
+$sql = "SELECT * FROM `employee` e
+        JOIN `rank` r ON e.id = r.eid";
+$result = mysqli_query($conn, $sql);
 $sql = "SELECT employee.id,employee.firstName,employee.lastName,salary.base,salary.bonus,salary.total from employee,`salary` where employee.id=salary.id";
 
 //echo "$sql";
