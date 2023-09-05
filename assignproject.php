@@ -33,7 +33,7 @@ if (!empty($id)) {
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-			<li><a class="homeblack" href="aloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+				<li><a class="homeblack" href="aloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="addemp.php?id=<?php echo $id?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="viewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
                 <li><a class="homeblack" href="assign.php?id=<?php echo $id?>"">Assign Project</a></li>
