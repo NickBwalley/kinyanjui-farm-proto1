@@ -56,12 +56,12 @@ if (isset($_POST['approve'])) {
         // Both updates were successful
         mysqli_commit($conn);
         echo "Record updated successfully!";
-        header("Location: msalaryemp.php?id=$admID");
+        header("Location: salaryemp.php?id=$admID");
     } else {
         // At least one update failed, roll back the transaction
         mysqli_rollback($conn);
         echo "Error updating record: " . mysqli_error($conn);
-        header("Location: epayments.php?id=$admID");
+        header("Location: admpayments.php?id=$admID");
     }
 }
 
