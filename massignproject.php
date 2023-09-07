@@ -1,11 +1,11 @@
 <?php
-
+session_start();
 require_once ('process/dbh.php');
 $sql = "SELECT * from `project` order by subdate desc";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
-
+$managerID = $_SESSION['manID'] = $id;
 ?>
 <?php 
 require_once('process/dbh.php');
