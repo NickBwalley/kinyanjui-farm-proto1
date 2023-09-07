@@ -36,7 +36,7 @@ if (isset($_SESSION['manID'])) {
    
 
     <!-- Title Page-->
-    <title>Assign Project | Managers Panel</title>
+    <title>Assign Farm Section | Managers Panel</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -60,8 +60,8 @@ if (isset($_SESSION['manID'])) {
                 <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homered" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
-                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
+                <li><a class="homered" href="massign.php?id=<?php echo $id?>"">Farm Section</a></li>
+                <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Task Status</a></li>
                 <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
@@ -80,7 +80,7 @@ if (isset($_SESSION['manID'])) {
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Assign Project</h2>
+                    <h2 class="title">Farm Section </h2>
                     <form action="process/assignp.php" method="POST" enctype="multipart/form-data">
 
 
@@ -95,7 +95,7 @@ if (isset($_SESSION['manID'])) {
 
 
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Project Name" name="pname" required="required">
+                            <input class="input--style-1" type="text" placeholder="Task To Assign" name="pname" required="required">
                         </div>
                         <div class="row row-space">
                             <div class="col-2">

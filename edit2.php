@@ -27,7 +27,7 @@ if (isset($_SESSION['manID'])) {
     $userID = $_SESSION['manID'];
 
     // Now you can use $userID in your code
-    echo "User ID: $userID";
+    //echo "User ID: $userID";
 } else {
     // Handle the case where the session variable is not set
     echo "User ID not found in session.";
