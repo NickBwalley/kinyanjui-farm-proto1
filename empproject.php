@@ -6,6 +6,7 @@
 	
 ?>
 
+<!-- SESSION DESTROY AND CLEAR CACHE... -->
 
 
 <html>
