@@ -1,4 +1,4 @@
-<!-- Nick'sBranch -->
+
 <?php
 session_start();
 require_once ('process/dbh.php');
