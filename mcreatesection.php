@@ -36,7 +36,7 @@ if (isset($_SESSION['manID'])) {
    
 
     <!-- Title Page-->
-    <title>Assign Farm Section | Managers Panel</title>
+    <title>Create Farm Section | Managers Panel</title>
 
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
@@ -92,7 +92,7 @@ if (isset($_SESSION['manID'])) {
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Maximum number of employees" name="empnum" required="required">
+                            <input class="input--style-1" type="number" placeholder="Maximum number of employees" name="maxnum" required="required">
                         </div>
                     <h2 class="title"> Create Farm Section </h2>
                     <form action="process/assignp.php" method="POST" enctype="multipart/form-data">
