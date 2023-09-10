@@ -60,8 +60,8 @@ if (isset($_SESSION['manID'])) {
                 <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homeblack" href="mcreatesection.php?id=<?php echo $id?>"">Create Section</a></li>
-                <li><a class="homered" href="massign.php?id=<?php echo $id?>"">Assign Section</a></li>
+                <li><a class="homered" href="mcreatesection.php?id=<?php echo $id?>"">Create Section</a></li>
+                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Section</a></li>
                 <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Task Status</a></li>
                 <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
@@ -82,38 +82,23 @@ if (isset($_SESSION['manID'])) {
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Farm Section </h2>
-                    <form action="process/assignp.php" method="POST" enctype="multipart/form-data">
+                    <form action="process/createfarmsection.php" method="POST" enctype="multipart/form-data">
 
 
                         
 
                          <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Employee ID" name="eid" required="required">
+                            <input class="input--style-1" type="text" placeholder="Create Section Name" name="secname" required="required">
                         </div>
-
-
-
-
 
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Task To Assign" name="pname" required="required">
+                            <input class="input--style-1" type="number" placeholder="Maximum number of employees" name="empnum" required="required">
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="date" placeholder="date" name="duedate" required="required">
-                                   
-                                </div>
-                            </div>
-                            
-                        </div>
-                        
-                        
 
 
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Assign</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="#">Create Section</button>
                         </div>
                     </form>
                 </div>
