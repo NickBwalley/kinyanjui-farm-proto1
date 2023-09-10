@@ -81,29 +81,17 @@ if (isset($_SESSION['manID'])) {
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Farm Section </h2>
+                    
                     <form action="process/createfarmsection.php" method="POST" enctype="multipart/form-data">
-
-
                         
+                        <h2 class="title"> Create Farm Section </h2>
 
-                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Create Section Name" name="secname" required="required">
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" placeholder="What is the section name" name="secname" required="required">
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Maximum number of employees" name="maxnum" required="required">
-                        </div>
-                    <h2 class="title"> Create Farm Section </h2>
-                    <form action="process/assignp.php" method="POST" enctype="multipart/form-data">
-
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="What is the section name" name="pname" required="required">
-                        </div>
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Maximum number of people to work on this section" name="pnumber" required="required">
+                            <input class="input--style-1" type="number" placeholder="Maximum number of people to work on this section" name="maxnum" required="required">
                         </div>
                         
                         
@@ -113,7 +101,6 @@ if (isset($_SESSION['manID'])) {
 
                         <div class="p-t-20">
                             <button class="btn btn--radius btn--green" type="submit" name="create" onclick="createFarm()">Create Section</button>
-                            <button class="btn btn--radius btn--green" type="submit">Assign</button>
                         </div>
                     </form>
                 </div>
