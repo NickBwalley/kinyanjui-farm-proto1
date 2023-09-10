@@ -81,32 +81,18 @@ if (isset($_SESSION['manID'])) {
             <div class="card card-1">
                 <div class="card-heading"></div>
                 <div class="card-body">
-                    <h2 class="title">Farm Section </h2>
+                    <h2 class="title"> Create Farm Section </h2>
                     <form action="process/assignp.php" method="POST" enctype="multipart/form-data">
 
 
-                        
-
-                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Employee ID" name="eid" required="required">
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" placeholder="What is the section name" name="pname" required="required">
                         </div>
-
-
-
-
 
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Task To Assign" name="pname" required="required">
+                            <input class="input--style-1" type="number" placeholder="Maximum number of people to work on this section" name="pnumber" required="required">
                         </div>
-                        <div class="row row-space">
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="date" placeholder="date" name="duedate" required="required">
-                                   
-                                </div>
-                            </div>
-                            
-                        </div>
+                        
                         
                         
 
