@@ -201,8 +201,8 @@ if(isset($_POST['update']))
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="approve">Approve</button>
-							<button class="btn btn--radius btn--red" type="submit" name="#">Cancel</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="approve" onclick="confirmAction()">Approve</button>
+							<button class="btn btn--radius btn--red" type="submit" name="decline" onclick="declineAction()">Cancel</button>
 
                         </div>
                         
@@ -213,8 +213,36 @@ if(isset($_POST['update']))
     </div>
 
 
+    <script>
+function confirmAction() {
+    // Display a confirmation dialog
+    var confirmation = confirm("Are you sure you want to approve this transaction?");
+    
+    // Check the result of the confirmation dialog
+    if (confirmation) {
+        // If the user clicked "OK," perform the action here
+        // For example, you can submit a form or execute any other desired action
+        // Replace the following line with your specific action
+        alert("Successfully approved!");
+    } else {
+        // If the user clicked "Cancel," you can handle this case if needed
+        // For example, you can choose not to perform any action
+        alert("Payment canceled.");
+    }
+}
+
+function declineAction() {
+    // Display a confirmation dialog
+    var confirmation = confirm("Are you sure you want to decline this transaction?");
+    
+    header("Location: eloginwel.php?id=$userID");
+}
+
+
+</script>
      <!-- Jquery JS-->
     <!-- <script src="vendor/jquery/jquery.min.js"></script>
+    
    
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/datepicker/moment.min.js"></script>
