@@ -24,7 +24,7 @@ if (!empty($id)) {
     }
 
     $manager = mysqli_fetch_array($employeeResult);
-    $empName = $manager['firstName'];
+    // $empName = $manager['firstName'];
 }
 
 // Check if the session variable 'userID' is set
@@ -235,10 +235,17 @@ function declineAction() {
     // Display a confirmation dialog
     var confirmation = confirm("Are you sure you want to decline this transaction?");
     
-    header("Location: eloginwel.php?id=$userID");
+    // Check the result of the confirmation dialog
+    if (confirmation) {
+        // If the user clicked "OK," redirect to another page
+        // using JavaScript's window.location.href
+        var userID = <?php echo json_encode($userID); ?>; // Assuming $userID is a PHP variable
+        window.location.href = "eloginwel.php?id=" + userID;
+    } else {
+        // If the user clicked "Cancel," you can handle this case if needed
+        alert("Transaction declined.");
+    }
 }
-
-
 </script>
      <!-- Jquery JS-->
     <!-- <script src="vendor/jquery/jquery.min.js"></script>
