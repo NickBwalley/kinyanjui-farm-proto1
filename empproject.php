@@ -11,7 +11,7 @@
 <html>
 <head>
 	<title>Employee Panel | Kinyanjui Farm</title>
-	<link rel="stylesheet" type="text/css" href="styleview.css">
+	<link rel="stylesheet" type="text/css" href="../stylescss/employee_view_style.css">
 </head>
 <body>
 	
@@ -19,11 +19,11 @@
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+				<li><a class="homeblack" href="managerHome.php?id=<?php echo $id?>"">HOME</a></li>
 				<li><a class="homeblack" href="myprofile.php?id=<?php echo $id?>"">My Profile</a></li>
 				<li><a class="homered" href="empproject.php?id=<?php echo $id?>"">My Projects</a></li>
-				<li><a class="homeblack" href="applyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
-				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
+				<li><a class="homeblack" href="adminApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+				<li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -35,8 +35,8 @@
 		<table>
 			<tr>
 
-				<th align = "center">Project ID</th>
-				<th align = "center">Project Name</th>
+				<th align = "center">Task ID</th>
+				<th align = "center">Task Details</th>
 				<th align = "center">Due Date</th>
 				<th align = "center">Sub Date</th>
 				<th align = "center">Mark</th>
