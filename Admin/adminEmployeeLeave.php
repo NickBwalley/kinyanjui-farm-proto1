@@ -21,7 +21,7 @@ $sql = "Select employee.id, employee.firstName, employee.lastName, employee_leav
 $result = mysqli_query($conn, $sql);
 
 ?>
-
+<!-- SESSION DESTROY AND CLEAR CACHE... -->
 
 
 <html>

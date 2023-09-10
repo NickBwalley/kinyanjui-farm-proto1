@@ -112,6 +112,7 @@ if (!empty($mid)) {
     <nav>
       <h1>Kinyanjui Farm.</h1>
       <ul id="navli">
+<<<<<<< HEAD:manager/harvestEmployee.php
       <li><a class="homeblack" href="managerHome.php?id=<?php echo $mid?>"">HOME</a></li>
                 <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $mid?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $mid?>"">View Employee</a></li>
@@ -121,6 +122,17 @@ if (!empty($mid)) {
                 <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $mid?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $mid?>"">Apply Leave</a></li>
 				<li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
+=======
+        <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
+                <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
+                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Project</a></li>
+                <li><a class="homered" href="massignproject.php?id=<?php echo $id?>"">Project Status</a></li>
+                <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="mapplyleave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+				<li><a class="homeblack" href="elogin.html">Log Out</a></li>
+>>>>>>> 0f90779d6a636a8dbe9206718632ab5ef39fdc19:mark.php
       </ul>
     </nav>
   </header>
