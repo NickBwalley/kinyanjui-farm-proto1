@@ -65,6 +65,11 @@ if (isset($_POST['approve'])) {
     }
 }
 
+if (isset($_POST['decline'])) {
+    // Assuming you have a unique identifier for the person, let's call it 'id'
+            header("Location: eloginwel.php?id=$userID");
+}
+
 $sql = "SELECT * FROM `employee` WHERE 1";
 $sql1 = "SELECT * FROM `salary` WHERE id = $id";
 
