@@ -24,7 +24,7 @@ if (!empty($id)) {
     }
 
     $manager = mysqli_fetch_array($employeeResult);
-    $empName = $manager['firstName'];
+    // $empName = $manager['firstName'];
 }
 
 // Check if the session variable 'userID' is set
@@ -63,6 +63,11 @@ if (isset($_POST['approve'])) {
         echo "Error updating record: " . mysqli_error($conn);
         header("Location: epayments.php?id=$userID");
     }
+}
+
+if (isset($_POST['decline'])) {
+    // Assuming you have a unique identifier for the person, let's call it 'id'
+            header("Location: eloginwel.php?id=$userID");
 }
 
 $sql = "SELECT * FROM `employee` WHERE 1";
@@ -201,8 +206,8 @@ if(isset($_POST['update']))
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="approve">Approve</button>
-							<button class="btn btn--radius btn--red" type="submit" name="#">Cancel</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="approve" onclick="confirmAction()">Approve</button>
+							<button class="btn btn--radius btn--red" type="submit" name="decline" onclick="declineAction()">Cancel</button>
 
                         </div>
                         
@@ -213,8 +218,43 @@ if(isset($_POST['update']))
     </div>
 
 
+    <script>
+function confirmAction() {
+    // Display a confirmation dialog
+    var confirmation = confirm("Are you sure you want to approve this transaction?");
+    
+    // Check the result of the confirmation dialog
+    if (confirmation) {
+        // If the user clicked "OK," perform the action here
+        // For example, you can submit a form or execute any other desired action
+        // Replace the following line with your specific action
+        alert("Successfully approved!");
+    } else {
+        // If the user clicked "Cancel," you can handle this case if needed
+        // For example, you can choose not to perform any action
+        alert("Payment canceled.");
+    }
+}
+
+function declineAction() {
+    // Display a confirmation dialog
+    var confirmation = confirm("Are you sure you want to decline this transaction?");
+    
+    // Check the result of the confirmation dialog
+    if (confirmation) {
+        // If the user clicked "OK," redirect to another page
+        // using JavaScript's window.location.href
+        var userID = <?php echo json_encode($userID); ?>; // Assuming $userID is a PHP variable
+        window.location.href = "eloginwel.php?id=" + userID;
+    } else {
+        // If the user clicked "Cancel," you can handle this case if needed
+        alert("Transaction declined.");
+    }
+}
+</script>
      <!-- Jquery JS-->
     <!-- <script src="vendor/jquery/jquery.min.js"></script>
+    
    
     <script src="vendor/select2/select2.min.js"></script>
     <script src="vendor/datepicker/moment.min.js"></script>
