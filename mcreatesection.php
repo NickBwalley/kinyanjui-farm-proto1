@@ -60,8 +60,8 @@ if (isset($_SESSION['manID'])) {
                 <li><a class="homeblack" href="eloginwel.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="maddemp.php?id=<?php echo $id?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="mviewemployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homeblack" href="mcreatesection.php?id=<?php echo $id?>"">Create Section</a></li>
-                <li><a class="homered" href="massign.php?id=<?php echo $id?>"">Assign Section</a></li>
+                <li><a class="homered" href="mcreatesection.php?id=<?php echo $id?>"">Create Section</a></li>
+                <li><a class="homeblack" href="massign.php?id=<?php echo $id?>"">Assign Section</a></li>
                 <li><a class="homeblack" href="massignproject.php?id=<?php echo $id?>"">Task Status</a></li>
                 <li><a class="homeblack" href="msalaryemp.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="mempleave.php?id=<?php echo $id?>"">Employee Leave</a></li>
