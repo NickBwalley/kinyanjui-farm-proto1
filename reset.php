@@ -6,5 +6,5 @@ $sql2 = "UPDATE `salary` SET `total` = `base` ,`bonus` = 0";
 mysqli_query($conn , $sql1);
 mysqli_query($conn , $sql2);
 
-header("Location:aloginwel.php");
+header("Location:adminHome.php");
  ?>
