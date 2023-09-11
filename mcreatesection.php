@@ -38,6 +38,9 @@ if (isset($_SESSION['manID'])) {
     <!-- Title Page-->
     <title>Create Farm Section | Managers Panel</title>
 
+    <link rel="stylesheet" type="text/css" href="styleemplogin.css">
+	<link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat" rel="stylesheet">   
+
     <!-- Icons font CSS-->
     <link href="vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
     <link href="vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
@@ -107,6 +110,48 @@ if (isset($_SESSION['manID'])) {
             </div>
         </div>
     </div>
+
+    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Leave Status</h2>
+    	
+
+    	<table>
+
+			<tr>
+				
+				<th align = "center">Start Date</th>
+				<th align = "center">End Date</th>
+				<th align = "center">Total Days</th>
+				<th align = "center">Reason</th>
+				<th align = "center">Status</th>
+			</tr>
+
+			
+
+			<?php
+				// while ($employee = mysqli_fetch_assoc($result2)) {
+				// 	$date1 = new DateTime($employee['start']);
+				// 	$date2 = new DateTime($employee['end']);
+				// 	$interval = $date1->diff($date2);
+				// 	$interval = $date1->diff($date2);
+
+				// 	echo "<tr>";
+					
+					
+				// 	echo "<td>".$employee['start']."</td>";
+				// 	echo "<td>".$employee['end']."</td>";
+				// 	echo "<td>".$interval->days."</td>";
+				// 	echo "<td>".$employee['reason']."</td>";
+				// 	echo "<td>".$employee['status']."</td>";
+					
+				// }
+
+
+				
+
+
+			?>
+
+		</table>
 
     <script>
     function createFarm() {
