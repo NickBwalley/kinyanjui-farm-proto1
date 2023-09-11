@@ -116,7 +116,7 @@ if (!empty($mid)) {
       <li><a class="homeblack" href="managerHome.php?id=<?php echo $mid?>"">HOME</a></li>
                 <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $mid?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $mid?>"">View Employee</a></li>
-                <li><a class="homeblack" href="mangerFarmSection.php?id=<?php echo $mid?>"">Farm Section</a></li>
+                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $mid?>"">Farm Section</a></li>
                 <li><a class="homered" href="managerTaskStatus.php?id=<?php echo $mid?>"">Task Status</a></li>
                 <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $mid?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $mid?>"">Employee Leave</a></li>
