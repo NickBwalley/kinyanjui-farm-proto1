@@ -8,6 +8,6 @@ session_unset();
 session_destroy();
 
 // Redirect to a login or home page
-header("Location: elogin.html"); // Replace with the appropriate URL
+header("Location: managerlogin.html"); // Replace with the appropriate URL
 exit();
 ?>
