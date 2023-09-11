@@ -46,7 +46,7 @@ $managerID = $_SESSION['manID'] = $id;
 			<li><a class="homeblack" href="managerHome.php?id=<?php echo $id?>"">HOME</a></li>
                 <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $id?>"">Add Employee</a></li>
                 <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homeblack" href="mangerFarmSection.php?id=<?php echo $id?>"">Farm Section</a></li>
+                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $id?>"">Farm Section</a></li>
                 <li><a class="homered" href="managerTaskStatus.php?id=<?php echo $id?>"">Task Status</a></li>
                 <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $id?>"">Employee Leave</a></li>
