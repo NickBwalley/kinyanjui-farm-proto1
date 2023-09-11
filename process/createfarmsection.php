@@ -1,4 +1,5 @@
 <?php 
+session_start();
 require_once('dbh.php');
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
@@ -13,6 +14,18 @@ if (!empty($id)) {
 
     $manager = mysqli_fetch_array($managerResult);
     // $empName = $manager['firstName'];
+}
+
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['manID'])) {
+    // Access the userID from the session
+    $userID = $_SESSION['manID'];
+
+    // Now you can use $userID in your code
+    echo "User ID: $userID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "User ID not found in session.";
 }
 ?>
 
@@ -30,17 +43,18 @@ if (isset($_POST['create'])) {
     }else{
     $sql = "INSERT INTO `farm_section`(`id`, `section_name`, `max_people`) VALUES ('','$sectionname','$peoplenumber')";
         $result = mysqli_query($conn, $sql);
-    }
-
-    if ($conn->query($sql) === TRUE) {
-        // Redirect to a different page upon successful insertion
+    // Redirect to a different page upon successful insertion
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Farm section successfully created...')
-        window.location.href='..//massign.php?id=" . $id . "';
+        window.location.href='..//massign.php?id=" . $userID . "';
         </SCRIPT>");
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
     }
+
+    // if ($conn->query($sql) === TRUE) {
+        
+    // } else {
+    //     echo "Error: " . $sql . "<br>" . $conn->error;
+    // }
 
     // Close the database connection
     $conn->close();
