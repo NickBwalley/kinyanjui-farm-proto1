@@ -245,7 +245,7 @@ function declineAction() {
         // If the user clicked "OK," redirect to another page
         // using JavaScript's window.location.href
         var userID = <?php echo json_encode($userID); ?>; // Assuming $userID is a PHP variable
-        window.location.href = "eloginwel.php?id=" + userID;
+        window.location.href = "managerHome.php?id=" + userID;
     } else {
         // If the user clicked "Cancel," you can handle this case if needed
         alert("Transaction declined.");

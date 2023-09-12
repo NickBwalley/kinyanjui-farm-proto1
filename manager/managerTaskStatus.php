@@ -1,11 +1,7 @@
 
-<<<<<<< HEAD:manager/managerTaskStatus.php
-require_once ('../process/dbh.php');
-=======
 <?php
 session_start();
 require_once ('process/dbh.php');
->>>>>>> 0f90779d6a636a8dbe9206718632ab5ef39fdc19:massignproject.php
 $sql = "SELECT * from `project` order by subdate desc";
 
 
