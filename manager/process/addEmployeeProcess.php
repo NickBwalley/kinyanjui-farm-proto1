@@ -79,7 +79,7 @@ if(($result) == 1){
 
 // else{
 //     echo ("<SCRIPT LANGUAGE='JavaScript'>
-//     window.alert('Failed to Registere')
+//     window.alert('Failed to Registered')
 //     window.location.href='javascript:history.go(-1)';
 //     </SCRIPT>");
 // }
