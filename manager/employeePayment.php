@@ -3,7 +3,7 @@ session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
-	// $managerID = $_SESSION['manID'] = $id;
+	$managerID = $_SESSION['manID'];
 	// echo "$managerID";
 
 // Fetch employees and their ranks using JOIN
@@ -33,7 +33,7 @@ if (isset($_SESSION['manID'])) {
     $userID = $_SESSION['manID'];
 
     // Now you can use $userID in your code
-    // echo "User ID: $userID";
+    echo "User ID: $userID";
 } else {
     // Handle the case where the session variable is not set
     echo "User ID not found in session.";
@@ -67,7 +67,7 @@ if (isset($_POST['approve'])) {
 
 if (isset($_POST['decline'])) {
     // Assuming you have a unique identifier for the person, let's call it 'id'
-            header("Location: eloginwel.php?id=$userID");
+            header("Location: managerHome.php?id=$userID");
 }
 
 $sql = "SELECT * FROM `employee` WHERE 1";
@@ -162,15 +162,15 @@ if(isset($_POST['update']))
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="managerHome.php?id=<?php echo $id?>"">HOME</a></li>
-                <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $id?>"">Add Employee</a></li>
-                <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $id?>"">Farm Section</a></li>
-                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $id?>"">Task Status</a></li>
-                <li><a class="homered" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-                <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li>
-                <li><a class="homeblack" href="logout.php">Log Out</a></li>
+				<li><a class="homeblack" href="managerHome.php?id=<?php echo $userID?>"">HOME</a></li>
+                <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $userID?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $userID?>"">View Employee</a></li>
+                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $userID?>"">Farm Section</a></li>
+                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $userID?>"">Task Status</a></li>
+                <li><a class="homered" href="managerSalaryTable.php?id=<?php echo $userID?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $userID?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $userID?>"">Apply Leave</a></li>
+                <li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>
