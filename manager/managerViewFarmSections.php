@@ -105,7 +105,7 @@ $result = mysqli_query($conn, $sql);
 					echo "<td>".$section['section_name']."</td>";
 					
 					echo "<td>".$section['max_people']."</td>";
-                    echo "<td><a href=\"managerEditViewSections.php?id=$section[id]\">Edit</a> | <a href=\"managerDeleteViewSections.php?id=$section[id]\" onClick=\"return confirm('Are you sure you want to delete this section?')\">Delete</a></td>";
+                    echo "<td><a href=\"editViewSections.php?id=$section[id]\">Edit</a> | <a href=\"deleteViewSections.php?id=$section[id]\" onClick=\"return confirm('Are you sure you want to delete this section?')\">Delete</a></td>";
 					// // Multiply $section['points'] by 8 and display the result
 					// $pointsMultiplied = $section['points'] * 8;
 					// echo "<td>" . $pointsMultiplied . "</td>";
