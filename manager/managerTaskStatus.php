@@ -64,8 +64,8 @@ if (isset($_SESSION['manID'])) {
                 <!-- <li><a class="homeblack" href="managersection.php?id=<?php echo $id?>"">Add section</a></li>
                 <li><a class="homeblack" href="managerViewsection.php?id=<?php echo $id?>"">View section</a></li> -->
                 <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $id?>"">Create Section</a></li>
-                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
-                <li><a class="homered" href="managerViewFarmSections.php?id=<?php echo $id?>"">View Sections</a></li> 
+                <li><a class="homered" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
+                <li><a class="homeblack" href="managerViewFarmSections.php?id=<?php echo $id?>"">View Sections</a></li> 
                 <!-- <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="managersectionLeave.php?id=<?php echo $id?>"">section Leave</a></li>
                 <li><a class="homeblack" href="managersectionApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
