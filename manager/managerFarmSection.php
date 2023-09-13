@@ -65,6 +65,8 @@ if (isset($_SESSION['manID'])) {
                 <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li> -->
                 <li><a class="homered" href="managerFarmSection.php?id=<?php echo $id?>"">Create Section</a></li>
                 <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
+                <li><a class="homeblack" href="managerViewFarmSections.php?id=<?php echo $id?>"">View Sections</a></li> 
+                
                 <!-- <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $id?>"">Employee Leave</a></li>
                 <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
@@ -109,48 +111,6 @@ if (isset($_SESSION['manID'])) {
             </div>
         </div>
     </div>
-
-    <h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Leave Status</h2>
-    	
-
-    	<table>
-
-			<tr>
-				
-				<th align = "center">Start Date</th>
-				<th align = "center">End Date</th>
-				<th align = "center">Total Days</th>
-				<th align = "center">Reason</th>
-				<th align = "center">Status</th>
-			</tr>
-
-			
-
-			<?php
-				// while ($employee = mysqli_fetch_assoc($result2)) {
-				// 	$date1 = new DateTime($employee['start']);
-				// 	$date2 = new DateTime($employee['end']);
-				// 	$interval = $date1->diff($date2);
-				// 	$interval = $date1->diff($date2);
-
-				// 	echo "<tr>";
-					
-					
-				// 	echo "<td>".$employee['start']."</td>";
-				// 	echo "<td>".$employee['end']."</td>";
-				// 	echo "<td>".$interval->days."</td>";
-				// 	echo "<td>".$employee['reason']."</td>";
-				// 	echo "<td>".$employee['status']."</td>";
-					
-				// }
-
-
-				
-
-
-			?>
-
-		</table>
 
     <script>
     function createFarm() {
