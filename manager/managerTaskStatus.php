@@ -65,7 +65,8 @@ if (isset($_SESSION['manID'])) {
                 <li><a class="homeblack" href="managerViewsection.php?id=<?php echo $id?>"">View section</a></li> -->
                 <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $id?>"">Create Section</a></li>
                 <li><a class="homered" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
-                <li><a class="homeblack" href="managerViewFarmSections.php?id=<?php echo $id?>"">View Sections</a></li> 
+                <li><a class="homeblack" href="managerViewSectionAssigned.php?id=<?php echo $id?>"">Section Assigned</a></li>
+                <li><a class="homeblack" href="managerViewFarmSections.php?id=<?php echo $id?>"">Sections Created</a></li> 
                 <!-- <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="managersectionLeave.php?id=<?php echo $id?>"">section Leave</a></li>
                 <li><a class="homeblack" href="managersectionApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
@@ -85,16 +86,49 @@ if (isset($_SESSION['manID'])) {
                 <div class="card-heading"></div>
                 <div class="card-body">
                     
-                    <form action="process/managerFarmSections.php" method="POST" enctype="multipart/form-data">
+                    <form action="process/managerAssignSection.php" method="POST" enctype="multipart/form-data">
                         
                         <h2 class="title"> Assign Employees to Farm Sections </h2>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="What is the section name" name="secname" required="required">
+                            <!-- <input class="input--style-1" type="text" placeholder="What is the section name" name="secname" required="required"> -->
+                            <select name="sectionname">
+                                <option value="">---Select Farm Section to assign---</option>
+                                <?php
+                                require_once('process/dbh.php');
+                                $sql = "SELECT section_name FROM farm_section";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) { 
+                                        echo "<option value='" . $row['section_name'] . "'>" . $row['section_name'] . "</option>";
+                                    }
+                                }
+                                ?>
+                            </select>
+
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Maximum number of people to work on this section" name="maxnum" required="required">
+                            <!-- <input class="input--style-1" type="number" placeholder="Maximum number of people to work on this section" name="maxnum" required="required"> 
+                        -->
+                        <select name="empname">
+                            <option value="">---Select Employee to Work on a Section---</option>
+                            <?php
+                            require_once('process/dbh.php');
+                            $sql = "SELECT firstName, lastName FROM employee";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                // output data of each row
+                                while ($row = $result->fetch_assoc()) { 
+                                    echo "<option value='" . $row['firstName'] . " " . $row['lastName'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+
                         </div>
                         
                         
@@ -103,7 +137,7 @@ if (isset($_SESSION['manID'])) {
 
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="create" onclick="createFarm()">Create Section</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="create" onclick="createFarm()">Assign Section</button>
                         </div>
                     </form>
                 </div>
@@ -156,7 +190,7 @@ if (isset($_SESSION['manID'])) {
     <script>
     function createFarm() {
         // Display a confirmation dialog
-        var confirmation = confirm("Are you sure you want to create this Farm Section?");
+        var confirmation = confirm("Are you sure you want to assign this section?");
         
         // Check the result of the confirmation dialog
         if (confirmation) {
@@ -166,7 +200,8 @@ if (isset($_SESSION['manID'])) {
             window.location.href = "eloginwel.php?id=" + userID;
         } else {
             // If the user clicked "Cancel," you can handle this case if needed
-            alert("Section not created!.");
+            // alert("Section not created!.");
+            window.location.href = "eloginwel.php?id=" + userID;
         }
     }
     </script>
