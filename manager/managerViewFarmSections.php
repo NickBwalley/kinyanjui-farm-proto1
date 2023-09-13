@@ -99,17 +99,17 @@ $result = mysqli_query($conn, $sql);
 				$seq = 1;
 				while ($section = mysqli_fetch_assoc($result)) {
 					echo "<tr>";
-					echo "<td>".$id."</td>";
+					// echo "<td>".$id."</td>";
 					echo "<td>".$section['id']."</td>";
 					
 					echo "<td>".$section['section_name']."</td>";
 					
 					echo "<td>".$section['max_people']."</td>";
 
-					// Multiply $section['points'] by 8 and display the result
-					$pointsMultiplied = $section['points'] * 8;
-					echo "<td>" . $pointsMultiplied . "</td>";
-					echo "<td><a href=\"sectionPayment.php?id=$section[id]\">Pay</a></td>";
+					// // Multiply $section['points'] by 8 and display the result
+					// $pointsMultiplied = $section['points'] * 8;
+					// echo "<td>" . $pointsMultiplied . "</td>";
+					// echo "<td><a href=\"sectionPayment.php?id=$section[id]\">Pay</a></td>";
 					
 					$seq+=1;
 				}
