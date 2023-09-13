@@ -162,14 +162,14 @@ if(isset($_POST['update']))
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="managerHome.php?id=<?php echo $id?>"">HOME</a></li>
-                <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $id?>"">Add Employee</a></li>
-                <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li>
-                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $id?>"">Farm Section</a></li>
-                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $id?>"">Task Status</a></li>
-                <li><a class="homered" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-                <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li>
+				<li><a class="homeblack" href="managerHome.php?id=<?php echo $userID?>"">HOME</a></li>
+                <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $userID?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $userID?>"">View Employee</a></li>
+                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $userID?>"">Farm Section</a></li>
+                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $userID?>"">Task Status</a></li>
+                <li><a class="homered" href="managerSalaryTable.php?id=<?php echo $userID?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $userID?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $userID?>"">Apply Leave</a></li>
                 <li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
 			</ul>
 		</nav>
