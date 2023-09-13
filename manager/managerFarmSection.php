@@ -60,14 +60,14 @@ if (isset($_SESSION['manID'])) {
         <nav>
             <h1>Kinyanjui Farm.</h1>
             <ul id="navli">
-                <li><a class="homeblack" href="managerHome.php?id=<?php echo $mid?>"">HOME</a></li>
-                <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $mid?>"">Add Employee</a></li>
-                <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $mid?>"">View Employee</a></li>
-                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $mid?>"">Farm Section</a></li>
-                <li><a class="homered" href="managerTaskStatus.php?id=<?php echo $mid?>"">Task Status</a></li>
-                <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $mid?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $mid?>"">Employee Leave</a></li>
-                <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $mid?>"">Apply Leave</a></li>
+                <li><a class="homeblack" href="managerHome.php?id=<?php echo $id?>"">HOME</a></li>
+                <!-- <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $id?>"">Add Employee</a></li>
+                <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li> -->
+                <li><a class="homered" href="managerFarmSection.php?id=<?php echo $id?>"">Create Section</a></li>
+                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
+                <!-- <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $id?>"">Employee Leave</a></li>
+                <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
 				<li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
             </ul>
         </nav>
@@ -162,7 +162,7 @@ if (isset($_SESSION['manID'])) {
             // If the user clicked "OK," redirect to another page
             // using JavaScript's window.location.href
             var userID = <?php echo json_encode($userID); ?>; // Assuming $userID is a PHP variable
-            window.location.href = "eloginwel.php?id=" + userID;
+            window.location.href = "managerTaskStatus.php?id=" + userID;
         } else {
             // If the user clicked "Cancel," you can handle this case if needed
             alert("Section not created!.");

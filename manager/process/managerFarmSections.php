@@ -46,7 +46,7 @@ if (isset($_POST['create'])) {
     // Redirect to a different page upon successful insertion
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Farm section successfully created...')
-        window.location.href='..//managerFarmSection.php?id=" . $userID . "';
+        window.location.href='../managerFarmSection.php?id=" . $userID . "';
         </SCRIPT>");
     }
 
