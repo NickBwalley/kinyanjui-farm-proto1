@@ -15,9 +15,9 @@ header("Pragma: no-cache");
 	// echo "$managerID";
 	 $sql4 = "SELECT * FROM `manager` where id = '$id'";
 	 
-	 $result1 = mysqli_query($conn, $sql4);
-	 $sectionn = mysqli_fetch_array($result1);
-	//  $empName = ($sectionn['firstName']);
+	//  $result1 = mysqli_query($conn, $sql4);
+	//  $section = mysqli_fetch_array($result1);
+	//  $empName = ($section['firstName']);
 
 	$sql = "SELECT * FROM farm_section";
 	// $sql1 = "SELECT `pname`, `duedate` FROM `project` WHERE eid = $id and status = 'Due'";
@@ -87,7 +87,7 @@ $result = mysqli_query($conn, $sql);
 			<tr bgcolor="#000">
 				<th align = "center">Seq.</th>
 				<th align = "center">Section Name</th>
-				<th align = "center">Maximum sections to Work</th>
+				<th align = "center">Maximum Number of People Per Section</th>
 				<th align = "center">Options</th>
 				
 
@@ -105,7 +105,7 @@ $result = mysqli_query($conn, $sql);
 					echo "<td>".$section['section_name']."</td>";
 					
 					echo "<td>".$section['max_people']."</td>";
-
+                    echo "<td><a href=\"managerEditViewSections.php?id=$section[id]\">Edit</a> | <a href=\"managerDeleteViewSections.php?id=$section[id]\" onClick=\"return confirm('Are you sure you want to delete this section?')\">Delete</a></td>";
 					// // Multiply $section['points'] by 8 and display the result
 					// $pointsMultiplied = $section['points'] * 8;
 					// echo "<td>" . $pointsMultiplied . "</td>";

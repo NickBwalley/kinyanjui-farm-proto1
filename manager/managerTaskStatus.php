@@ -61,13 +61,14 @@ if (isset($_SESSION['manID'])) {
             <h1>Kinyanjui Farm.</h1>
             <ul id="navli">
                 <li><a class="homeblack" href="managerHome.php?id=<?php echo $id?>"">HOME</a></li>
-                <!-- <li><a class="homeblack" href="managerEmployee.php?id=<?php echo $id?>"">Add Employee</a></li>
-                <li><a class="homeblack" href="managerViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li> -->
+                <!-- <li><a class="homeblack" href="managersection.php?id=<?php echo $id?>"">Add section</a></li>
+                <li><a class="homeblack" href="managerViewsection.php?id=<?php echo $id?>"">View section</a></li> -->
                 <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $id?>"">Create Section</a></li>
-                <li><a class="homered" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
+                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
+                <li><a class="homered" href="managerViewFarmSections.php?id=<?php echo $id?>"">View Sections</a></li> 
                 <!-- <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
-                <li><a class="homeblack" href="managerEmployeeLeave.php?id=<?php echo $id?>"">Employee Leave</a></li>
-                <li><a class="homeblack" href="managerEmployeeApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
+                <li><a class="homeblack" href="managersectionLeave.php?id=<?php echo $id?>"">section Leave</a></li>
+                <li><a class="homeblack" href="managersectionApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
 				<li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
             </ul>
         </nav>
