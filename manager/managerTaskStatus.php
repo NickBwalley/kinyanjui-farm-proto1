@@ -86,14 +86,14 @@ if (isset($_SESSION['manID'])) {
                 <div class="card-heading"></div>
                 <div class="card-body">
                     
-                    <form action="process/managerFarmSections.php" method="POST" enctype="multipart/form-data">
+                    <form action="process/managerAssignSection.php" method="POST" enctype="multipart/form-data">
                         
                         <h2 class="title"> Assign Employees to Farm Sections </h2>
 
                         <div class="input-group">
                             <!-- <input class="input--style-1" type="text" placeholder="What is the section name" name="secname" required="required"> -->
-                            <select name="farmsection">
-                                <option value="">---Select Farm Section---</option>
+                            <select name="sectionname">
+                                <option value="">---Select Farm Section to assign---</option>
                                 <?php
                                 require_once('process/dbh.php');
                                 $sql = "SELECT section_name FROM farm_section";
@@ -137,7 +137,7 @@ if (isset($_SESSION['manID'])) {
 
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="create" onclick="createFarm()">Create Section</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="create" onclick="createFarm()">Assign Section</button>
                         </div>
                     </form>
                 </div>
@@ -190,7 +190,7 @@ if (isset($_SESSION['manID'])) {
     <script>
     function createFarm() {
         // Display a confirmation dialog
-        var confirmation = confirm("Are you sure you want to create this Farm Section?");
+        var confirmation = confirm("Are you sure you want to assign this section?");
         
         // Check the result of the confirmation dialog
         if (confirmation) {
@@ -200,7 +200,8 @@ if (isset($_SESSION['manID'])) {
             window.location.href = "eloginwel.php?id=" + userID;
         } else {
             // If the user clicked "Cancel," you can handle this case if needed
-            alert("Section not created!.");
+            // alert("Section not created!.");
+            window.location.href = "eloginwel.php?id=" + userID;
         }
     }
     </script>
