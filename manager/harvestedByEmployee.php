@@ -93,7 +93,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
     }
 
     // $id = (isset($_GET['id']) ? $_GET['id'] : '');
-	$sql1 = "SELECT * from `farm_section_assigned`";
+	$sql1 = "SELECT * from `farm_section_assigned` WHERE id=$id";
 	$result1 = mysqli_query($conn, $sql1);
 	if($result1){
 	while($res1 = mysqli_fetch_assoc($result1)){
@@ -127,7 +127,14 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
 				<li><a class="homeblack" href="managerHome.php?id=<?php echo $userID?>"">HOME</a></li>
-				<li><a class="homered" href="managerViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li>
+                <!-- <li><a class="homeblack" href="managersection.php?id=<?php echo $userID?>"">Add section</a></li>
+                <li><a class="homeblack" href="managerViewsection.php?id=<?php echo $userID?>"">View section</a></li> -->
+                <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $userID?>"">Create Section</a></li>
+                <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $userID?>"">Assign Section</a></li>
+                <li><a class="homered" href="managerViewFarmSections.php?id=<?php echo $userID?>"">View Sections</a></li> 
+                <!-- <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $userID?>"">Salary Table</a></li> 
+                <li><a class="homeblack" href="managersectionLeave.php?id=<?php echo $userID?>"">section Leave</a></li>
+                <li><a class="homeblack" href="managersectionApplyLeave.php?id=<?php echo $userID?>"">Apply Leave</a></li> -->
 				<li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
 			</ul>
 		</nav>
@@ -155,7 +162,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 
                        
                        <div class="input-group">
-                            <input class="input--style-1" type="text" name="amtHarvested" value="" placeholder="Enter total amount Harvested by [<?php echo $empName; ?>] (KGS)">
+                            <input class="input--style-1" type="number" name="amtHarvested" value="" placeholder="Enter total amount Harvested by [<?php echo $empName; ?>] (KGS)">
                         </div>
 
 
