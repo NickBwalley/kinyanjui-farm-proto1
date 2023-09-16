@@ -146,17 +146,18 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                     <form id = "registration" action="editEmployee.php?id=<?php echo $userID?>"" method="POST">
 
                         <div class="input-group">
-                            <input class="input--style-1" type="text"  name="section_assigned" value="<?php echo $section_assigned;?>">
+                            <input class="input--style-1" type="text"  name="section_assigned" value="<?php echo $section_assigned;?>" readonly>
                         </div>
                         
                         <div class="input-group">
-                            <input class="input--style-1" type="text" name="empName" value="<?php echo $empName;?> readonly">
+                            <input class="input--style-1" type="text" name="empName" value="<?php echo $empName;?>" readonly>
                         </div>
 
                        
-                         <div class="input-group">
-                            <input class="input--style-1" type="text"  name="address" value="<?php echo $address;?>">
+                       <div class="input-group">
+                            <input class="input--style-1" type="text" name="amtHarvested" value="" placeholder="Enter total amount Harvested by [<?php echo $empName; ?>] (KGS)">
                         </div>
+
 
                     
                         <button class="btn btn--radius btn--green" type="submit" name="update">Submit</button>
