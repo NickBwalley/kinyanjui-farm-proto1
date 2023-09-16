@@ -150,7 +150,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Harvested Amount (KGS)</h2>
-                    <form id = "registration" action="editEmployee.php?id=<?php echo $userID?>"" method="POST">
+                    <form id = "registration" action="pHarvestedByEmployee.php?id=<?php echo $userID?>"" method="POST">
 
                         <div class="input-group">
                             <input class="input--style-1" type="text"  name="section_assigned" value="<?php echo $section_assigned;?>" readonly>
