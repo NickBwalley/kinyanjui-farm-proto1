@@ -1,13 +1,13 @@
 <?php
 session_start();
 require_once ('dbh.php');
-$eid = (isset($_GET['id']) ? $_GET['id'] : '');
+$id = (isset($_GET['id']) ? $_GET['id'] : '');
 // $pname = $_POST['pname'];
 // $subdate = $_POST['duedate'];
 if(isset($_POST['update'])){
     $id = $_POST['uid'];
     $amtHarvested = $_POST['amtHarvested'];
-    $sql = "INSERT INTO `rank`(`eid`, `points`) VALUES ('$id' , '$amtHarvested')";
+    $sql = "UPDATE `rank` SET points='$amtHarvested' WHERE eid=$id";
     if ($conn->query($sql) === TRUE) {
         echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Employee ID does not exist')
