@@ -29,14 +29,15 @@ if (isset($_SESSION['manID'])) {
     echo "User ID not found in session.";
 }
 
-$sql = "INSERT INTO `project`(`eid`, `pname`, `duedate` , `status`) VALUES ('$eid' , '$pname' , '$subdate' , 'Due')";
+$sql = "INSERT INTO `rank`(`eid`, `points`) VALUES ('$id' , '$amtHarvested')";
+// $sql1 = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$id' , '$amtHarvested')";
 
 $result = mysqli_query($conn, $sql);
 
 
 if(($result) == 1){
     
-    header("Location: ../managerTaskStatus.php?id=$userID");
+    header("Location: ../managerHome.php?id=$userID");
 }
 
 else{
