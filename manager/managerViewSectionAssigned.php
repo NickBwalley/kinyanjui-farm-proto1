@@ -67,7 +67,8 @@ $result = mysqli_query($conn, $sql);
                 <li><a class="homeblack" href="managerViewsection.php?id=<?php echo $id?>"">View section</a></li> -->
                 <li><a class="homeblack" href="managerFarmSection.php?id=<?php echo $id?>"">Create Section</a></li>
                 <li><a class="homeblack" href="managerTaskStatus.php?id=<?php echo $id?>"">Assign Section</a></li>
-                <li><a class="homered" href="managerViewFarmSections.php?id=<?php echo $id?>"">View Sections</a></li> 
+                <li><a class="homered" href="managerViewSectionAssigned.php?id=<?php echo $id?>"">Section Assigned</a></li>
+                <li><a class="homeblack" href="managerViewFarmSections.php?id=<?php echo $id?>"">Sections Created</a></li> 
                 <!-- <li><a class="homeblack" href="managerSalaryTable.php?id=<?php echo $id?>"">Salary Table</a></li> 
                 <li><a class="homeblack" href="managersectionLeave.php?id=<?php echo $id?>"">section Leave</a></li>
                 <li><a class="homeblack" href="managersectionApplyLeave.php?id=<?php echo $id?>"">Apply Leave</a></li> -->
@@ -86,8 +87,8 @@ $result = mysqli_query($conn, $sql);
 
 			<tr bgcolor="#000">
 				<th align = "center">uniqueID.</th>
-				<th align = "center">Section Name</th>
 				<th align = "center">Employee Name</th>
+				<th align = "center">Section Name</th>
 				<th align = "center">Options</th>
 				
 
@@ -102,9 +103,9 @@ $result = mysqli_query($conn, $sql);
 					// echo "<td>".$id."</td>";
 					echo "<td>".$section['id']."</td>";
 					
-					echo "<td>".$section['section_assigned']."</td>";
-					
 					echo "<td>".$section['empName']."</td>";
+					
+					echo "<td>".$section['section_assigned']."</td>";
                     echo "<td><a href=\"harvestedByEmployee.php?id=$section[id]\">Harvested</a> | <a href=\"deleteSectionAssigned.php?id=$section[id]\" onClick=\"return confirm('Are you sure you want to delete this section?')\">Delete</a></td>";
 					// // Multiply $section['points'] by 8 and display the result
 					// $pointsMultiplied = $section['points'] * 8;

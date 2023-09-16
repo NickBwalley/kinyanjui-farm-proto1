@@ -1,7 +1,20 @@
 <!-- NO sessions -->
 <?php
-
+session_start();
 require_once ('dbh.php');
+
+// Check if the session variable 'userID' is set
+if (isset($_SESSION['manID'])) {
+    // Access the userID from the session
+    $userID = $_SESSION['manID'];
+
+    // Now you can use $userID in your code
+    echo "User ID: $userID";
+} else {
+    // Handle the case where the session variable is not set
+    echo "User ID not found in session.";
+}
+
 
 $firstname = $_POST['firstName'];
 $lastName = $_POST['lastName'];
@@ -72,7 +85,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered Employee')
-    window.location.href='../managerViewEmployee.php?id=$id';
+    window.location.href='../managerViewEmployee.php?id=$userID';
     </SCRIPT>");
     //header("Location: ..//adminHome.php");
 }

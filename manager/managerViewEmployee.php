@@ -7,20 +7,13 @@ $managerID = $_SESSION['manID'] = $id;
 //echo "$managerID";
 
 // Fetch employees and their ranks using JOIN
-$sql = "SELECT * FROM `employee` e
-        JOIN `rank` r ON e.id = r.eid";
+// $sql = "SELECT * FROM `employee` e
+//         JOIN `rank` r ON e.id = r.eid";
+$sql = "SELECT * FROM `employee`";
 $result = mysqli_query($conn, $sql);
-?>
-
-
-
-<?php 
-require_once('../process/dbh.php');
-
-$id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
 if (!empty($id)) {
-    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerSql = "SELECT * FROM `employee` WHERE id = '$id'";
     $managerResult = mysqli_query($conn, $managerSql);
 
     if (!$managerResult) {
@@ -72,7 +65,7 @@ if (!empty($id)) {
 				<th align = "center">Contact</th>
 				<th align = "center">Address</th>
 				<th align = "center">Department</th>
-				<th align = "center">Harvested (KSH)</th>
+				<!-- <th align = "center">Harvested (KSH)</th> -->
 				
 				
 				<th align = "center">Options</th>
@@ -91,7 +84,7 @@ if (!empty($id)) {
 					echo "<td>".$employee['contact']."</td>";
 					echo "<td>".$employee['address']."</td>";
 					echo "<td>".$employee['dept']."</td>";
-					echo "<td>".$employee['points']."</td>";
+					// echo "<td>".$employee['points']."</td>";
 
 					echo "<td><a href=\"editEmployee.php?id=$employee[id]\">Edit</a> | <a href=\"deleteEmployee.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 

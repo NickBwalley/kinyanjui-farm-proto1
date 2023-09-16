@@ -80,6 +80,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 	$result = mysqli_query($conn, $sql);
 	if($result){
 	while($res = mysqli_fetch_assoc($result)){
+    $mainEmpId = $res['id'];
 	$firstname = $res['firstName'];
 	$lastname = $res['lastName'];
 	$email = $res['email'];
@@ -150,7 +151,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                 <div class="card-heading"></div>
                 <div class="card-body">
                     <h2 class="title">Harvested Amount (KGS)</h2>
-                    <form id = "registration" action="pHarvestedByEmployee.php?id=<?php echo $userID?>"" method="POST">
+                    <form id = "registration" action="process/pHarvestedByEmployee.php?id=<?php echo $userID?>"" method="POST">
 
                         <div class="input-group">
                             <input class="input--style-1" type="text"  name="section_assigned" value="<?php echo $section_assigned;?>" readonly>
@@ -158,11 +159,12 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                         
                         <div class="input-group">
                             <input class="input--style-1" type="text" name="empName" value="<?php echo $empName;?>" readonly>
+                            <input class="input--style-1" type="text" name="uid" value="<?php echo $id;?>" readonly>
                         </div>
 
                        
                        <div class="input-group">
-                            <input class="input--style-1" type="number" name="amtHarvested" value="" placeholder="Enter total amount Harvested by [<?php echo $empName; ?>] (KGS)">
+                            <input class="input--style-1" type="number" name="amtHarvested" value="" placeholder="KGS Harvested by [<?php echo $empName; ?>]">
                         </div>
 
 
