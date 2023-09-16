@@ -162,7 +162,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 
                        
                        <div class="input-group">
-                            <input class="input--style-1" type="number" name="amtHarvested" value="" placeholder="Enter total amount Harvested by [<?php echo $empName; ?>] (KGS)">
+                            <input class="input--style-1" type="number" name="amtHarvested" value="" placeholder="KGS Harvested by [<?php echo $empName; ?>]">
                         </div>
 
 
