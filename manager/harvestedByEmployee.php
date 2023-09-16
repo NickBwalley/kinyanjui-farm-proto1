@@ -80,6 +80,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 	$result = mysqli_query($conn, $sql);
 	if($result){
 	while($res = mysqli_fetch_assoc($result)){
+    $mainEmpId = $res['id'];
 	$firstname = $res['firstName'];
 	$lastname = $res['lastName'];
 	$email = $res['email'];
@@ -158,7 +159,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                         
                         <div class="input-group">
                             <input class="input--style-1" type="text" name="empName" value="<?php echo $empName;?>" readonly>
-                            <input class="input--style-1" type="hidden" name="uid" value="<?php echo $id;?>" readonly>
+                            <input class="input--style-1" type="text" name="uid" value="<?php echo $id;?>" readonly>
                         </div>
 
                        

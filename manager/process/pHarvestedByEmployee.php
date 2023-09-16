@@ -4,19 +4,7 @@ require_once ('dbh.php');
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
 // $pname = $_POST['pname'];
 // $subdate = $_POST['duedate'];
-if(isset($_POST['update'])){
-    $id = $_POST['uid'];
-    $amtHarvested = $_POST['amtHarvested'];
-    $sql = "UPDATE `rank` SET points='$amtHarvested' WHERE eid=$id";
-    if ($conn->query($sql) === TRUE) {
-        echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Employee ID does not exist')
-    window.location.href='javascript:history.go(-1)';
-    </SCRIPT>");
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
+
 // Check if the eid exists in the employee table
 // $sql1 = "SELECT * FROM employee WHERE id = $id";
 // $result1 = mysqli_query($conn, $sql1);
@@ -37,22 +25,46 @@ if (isset($_SESSION['manID'])) {
     echo "User ID not found in session.";
 }
 
+if(isset($_POST['update'])){
+    // Retrieve values from the form
+    $id = $_POST['uid'];
+    $amtHarvested = $_POST['amtHarvested'];
+    
+    // Check if the employee ID exists in the database
+    $check_sql = "SELECT * FROM `rank` WHERE eid = $id";
+    $result = $conn->query($check_sql);
+    
+    if ($result->num_rows > 0) {
+        // Update the record if the employee ID exists
+        $update_sql = "UPDATE `rank` SET points = '$amtHarvested' WHERE eid = $id";
+        
+        if ($conn->query($update_sql) === TRUE) {
+            echo "Record updated successfully.";
+            header("Location: ../managerHome.php?id=$userID");
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
+    } else {
+        echo "Employee ID does not exist.";
+    }
+}
+
 // $sql1 = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$id' , '$amtHarvested')";
 
-$result = mysqli_query($conn, $sql);
+// $result = mysqli_query($conn, $sql);
 
 
-if(($result) == 1){
+// if(($result) == 1){
     
-    header("Location: ../managerHome.php?id=$userID");
-}
+//     header("Location: ../managerHome.php?id=$userID");
+// }
 
-else{
-    echo ("<SCRIPT LANGUAGE='JavaScript'>
-    window.alert('Failed to Assign')
-    window.location.href='javascript:history.go(-1)';
-    </SCRIPT>");
-}
+// else{
+//     echo ("<SCRIPT LANGUAGE='JavaScript'>
+//     window.alert('Failed to Assign')
+//     window.location.href='javascript:history.go(-1)';
+//     </SCRIPT>");
+// }
 
 
 
