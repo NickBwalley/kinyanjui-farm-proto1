@@ -20,7 +20,7 @@ require_once('../process/dbh.php');
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
 
 if (!empty($id)) {
-    $managerSql = "SELECT * FROM `manager` WHERE id = '$id'";
+    $managerSql = "SELECT * FROM `employee` WHERE id = '$id'";
     $managerResult = mysqli_query($conn, $managerSql);
 
     if (!$managerResult) {
