@@ -128,6 +128,7 @@ if (isset($_SESSION['manID'])) {
                             }
                             ?>
                         </select>
+                        
 
                         </div>
                         
