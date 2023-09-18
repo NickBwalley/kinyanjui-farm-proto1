@@ -15,16 +15,18 @@ if (isset($_SESSION['manID'])) {
     echo "User ID not found in session.";
 }
 
+//AutoIncrement values of the data from url
+
 //getting id of the data from url
-$id = $_POST['empid'];
+$empName = $_POST['empname'];
 //echo $id;
 $reason = $_POST['reason'];
 
-$start = $_POST['start'];
+$startDate = $_POST['start'];
 //echo "$reason";
-$end = $_POST['end'];
+$endDate = $_POST['end'];
 
-$sql = "INSERT INTO `employee_leave`(`id`,`token`, `start`, `end`, `reason`, `status`) VALUES ('$id','','$start','$end','$reason','Pending')";
+$sql = "INSERT INTO `employee_leaves`(`id`,`employee_name`, `start_date`, `end_date`, `reason`, `status`) VALUES ('','$empName','$startDate', '$endDate', '$reason','Pending')";
 
 $result = mysqli_query($conn, $sql);
 
