@@ -3,7 +3,7 @@
 require_once ('../process/dbh.php');
 
 //$sql = "SELECT * from `employee_leave`";
-$sql = "Select employees.id, employees.firstName, employees.lastName, employee_leaves.start_date, employee_leaves.end_date, employee_leaves.reason, employee_leaves.status, From employee, employee_leaves Where employee.id = employee_leaves.id order by employee_leaves.status";
+$sql = "Select employee.id, employee.firstName, employee.lastName, employee_leave.start, employee_leave.end, employee_leave.reason, employee_leave.status, employee_leave.token From employee, employee_leave Where employee.id = employee_leave.id order by employee_leave.token";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
@@ -86,7 +86,7 @@ if (!empty($id)) {
 					echo "<td>".$interval->days."</td>";
 					echo "<td>".$employee['reason']."</td>";
 					echo "<td>".$employee['status']."</td>";
-					echo "<td><a href=\"approve.php?id=$employee[id]&token=$employee[token]\"  onClick=\"return confirm('Are you sure you want to Approve the request?')\">Approve</a> | <a href=\"cancel.php?id=$employee[id]&token=$employee[token]\" onClick=\"return confirm('Are you sure you want to Canel the request?')\">Cancel</a></td>";
+					echo "<td><a href=\"approve.php?id=$employee[id]&token=$employee[token]\"  onClick=\"return confirm('Are you sure you want to Approve the request?')\">Approve</a> | <a href=\"cancel.php?id=$employee[id]&token=$employee[token]\" onClick=\"return confirm('Are you sure you want to Cancel the request?')\">Cancel</a></td>";
 
 				}
 

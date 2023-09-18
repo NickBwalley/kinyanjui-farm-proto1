@@ -99,7 +99,7 @@ if (!empty($id)) {
 
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit">Submit</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="apply">Apply</button>
                         </div>
                     </form>
                 </div>
