@@ -35,8 +35,6 @@ if (isset($_POST['create'])) {
     $sectionname = $_POST['sectionname'];
     $empName = $_POST['empname'];
 
-
-
     // Check the connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);

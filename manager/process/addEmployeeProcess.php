@@ -50,7 +50,7 @@ $last_id = $conn->insert_id;
 $sqlS = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$last_id','$salary',0,'$salary')";
 $salaryQ = mysqli_query($conn, $sqlS);
 $rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
-$farm_section_assigned = mysqli_query($conn, "INSERT INTO `farm_section_assigned`(`id`) VALUES ('$last_id')");
+$farm_section_assigned = mysqli_query($conn, "INSERT INTO `farm_section_assigned`(`id`, `section_assigned`, `empName`) VALUES ('$last_id', 0, 0)");
 $farmQ = mysqli_query($conn, $farm_section_assigned);
 
 
