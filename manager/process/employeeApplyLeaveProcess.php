@@ -15,8 +15,11 @@ if (isset($_SESSION['manID'])) {
     echo "User ID not found in session.";
 }
 
+//AutoIncrement values of the data from url
+$id = $_POST['empname'];
+
 //getting id of the data from url
-$id = $_POST['empid'];
+$id = $_POST['empname'];
 //echo $id;
 $reason = $_POST['reason'];
 
@@ -24,7 +27,7 @@ $start = $_POST['start'];
 //echo "$reason";
 $end = $_POST['end'];
 
-$sql = "INSERT INTO `employee_leave`(`id`,`token`, `start`, `end`, `reason`, `status`) VALUES ('$id','','$start','$end','$reason','Pending')";
+$sql = "INSERT INTO `employee_leave`(`id`,`token`, `start`, `end`, `reason`, `status`) VALUES ('','','$start','$end','$reason','Pending')";
 
 $result = mysqli_query($conn, $sql);
 
