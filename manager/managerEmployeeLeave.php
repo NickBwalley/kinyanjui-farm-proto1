@@ -3,7 +3,7 @@
 require_once ('../process/dbh.php');
 
 //$sql = "SELECT * from `employee_leave`";
-$sql = "Select employee.id, employee.firstName, employee.lastName, employee_leave.start, employee_leave.end, employee_leave.reason, employee_leave.status, employee_leave.token From employee, employee_leave Where employee.id = employee_leave.id order by employee_leave.token";
+$sql = "Select employees.id, employees.firstName, employees.lastName, employee_leaves.start_date, employee_leaves.end_date, employee_leaves.reason, employee_leaves.status, From employee, employee_leaves Where employee.id = employee_leaves.id order by employee_leaves.status";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
