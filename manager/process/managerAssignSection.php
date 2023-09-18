@@ -31,18 +31,20 @@ if (isset($_SESSION['manID'])) {
 
 <?php
 if (isset($_POST['create'])) {
-
+    
     $sectionname = $_POST['sectionname'];
     $empName = $_POST['empname'];
-
-
 
     // Check the connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }else{
-    $sql = "INSERT INTO `farm_section_assigned`(`id`, `section_assigned`, `empName`) VALUES ('','$sectionname','$empName')";
-        $result = mysqli_query($conn, $sql);
+    $sql = "UPDATE `farm_section_assigned` 
+        SET `section_assigned` = '$sectionname', `empName` = '$empName'
+        WHERE `id` = $id";
+
+$result = mysqli_query($conn, $sql);
+
     // Redirect to a different page upon successful insertion
         echo ("<SCRIPT LANGUAGE='JavaScript'>
         window.alert('Farm section successfully created...')
