@@ -6,6 +6,39 @@ $id = (isset($_GET['id']) ? $_GET['id'] : '');
 	$managerID = $_SESSION['manID'];
 	// echo "$managerID";
 
+//////////////////////////////
+	$sqlQ = "SELECT * from `employee` WHERE id=$id";
+	$resultQ = mysqli_query($conn, $sqlQ);
+	if($resultQ){
+	while($res = mysqli_fetch_assoc($resultQ)){
+	$firstname = $res['firstName'];
+	$lastname = $res['lastName'];
+	$email = $res['email'];
+	$contact = $res['contact'];
+	$address = $res['address'];
+	$gender = $res['gender'];
+	$birthday = $res['birthday'];
+	$dept = $res['dept'];
+
+
+    // Concatenate first name and last name into $empName
+    $empName = $firstname . ' ' . $lastname;
+	
+        }
+    }  
+    $date = date("Y-m-d"); // Get the current date in 'YYYY-MM-DD' format 
+///////////////////////////////////////
+//////////////////////////////
+	$sqlQ1 = "SELECT * from `rank` WHERE eid=$id";
+	$resultQ1 = mysqli_query($conn, $sqlQ1);
+	if($resultQ1){
+	while($res = mysqli_fetch_assoc($resultQ1)){
+	$total_kgs_harvested = $res['points'];
+	$amt_paid = $total_kgs_harvested * 8;
+	
+        }
+    }   
+///////////////////////////////////////
 // Fetch employees and their ranks using JOIN
 $sql = "SELECT * FROM `employee` e
         JOIN `rank` r ON e.id = r.eid";
@@ -44,12 +77,13 @@ if (isset($_POST['approve'])) {
     $id = $_POST['id']; // Replace with your actual form field name
 
     // Update the 'salary' table
+    $sql0 = "INSERT INTO `employee_paid`(`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`) VALUES('', '$empName', '$total_kgs_harvested', '$amt_paid', '$date' )";
     $sql1 = "UPDATE salary SET base = 8, bonus = 0, total = 0 WHERE id = $id";
     
     // Update the 'rank' table
     $sql2 = "UPDATE rank SET points = 0 WHERE eid = $id";
 
-    if (mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)) {
+    if (mysqli_query($conn, $sql0) && mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)) {
         // Both updates were successful
         mysqli_commit($conn);
         echo "Record updated successfully!";
@@ -115,28 +149,6 @@ if($result1){
 // }
 ?>
 
-
-
-
-<?php
-	$id = (isset($_GET['id']) ? $_GET['id'] : '');
-	$sql = "SELECT * from `employee` WHERE id=$id";
-	$result = mysqli_query($conn, $sql);
-	if($result){
-	while($res = mysqli_fetch_assoc($result)){
-	$firstname = $res['firstName'];
-	$lastname = $res['lastName'];
-	$email = $res['email'];
-	$contact = $res['contact'];
-	$address = $res['address'];
-	$gender = $res['gender'];
-	$birthday = $res['birthday'];
-	$dept = $res['dept'];
-	
-}
-}
-
-?>
 
 
 <html>
