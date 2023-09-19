@@ -13,7 +13,7 @@ $id = (isset($_GET['id']) ? $_GET['id'] : '');
 	while($res = mysqli_fetch_assoc($resultQ)){
 	$firstname = $res['firstName'];
 	$lastname = $res['lastName'];
-	$email = $res['email'];
+	$national_id = $res['national_id'];
 	$contact = $res['contact'];
 	$address = $res['address'];
 	$gender = $res['gender'];
@@ -29,19 +29,19 @@ $id = (isset($_GET['id']) ? $_GET['id'] : '');
     $date = date("Y-m-d"); // Get the current date in 'YYYY-MM-DD' format 
 ///////////////////////////////////////
 //////////////////////////////
-	$sqlQ1 = "SELECT * from `rank` WHERE eid=$id";
+	$sqlQ1 = "SELECT * from `employee_salary` WHERE eid=$id";
 	$resultQ1 = mysqli_query($conn, $sqlQ1);
 	if($resultQ1){
 	while($res = mysqli_fetch_assoc($resultQ1)){
-	$total_kgs_harvested = $res['points'];
+	$total_kgs_harvested = $res['total_kgs_harvested'];
 	$amt_paid = $total_kgs_harvested * 8;
 	
         }
     }   
 ///////////////////////////////////////
-// Fetch employees and their ranks using JOIN
+// Fetch employees and their employee_salarys using JOIN
 $sql = "SELECT * FROM `employee` e
-        JOIN `rank` r ON e.id = r.eid";
+        JOIN `employee_salary` r ON e.id = r.eid";
 
 $result = mysqli_query($conn, $sql);
 
@@ -80,8 +80,8 @@ if (isset($_POST['approve'])) {
     $sql0 = "INSERT INTO `employee_paid`(`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`) VALUES('', '$empName', '$total_kgs_harvested', '$amt_paid', '$date' )";
     $sql1 = "UPDATE salary SET base = 8, bonus = 0, total = 0 WHERE id = $id";
     
-    // Update the 'rank' table
-    $sql2 = "UPDATE rank SET points = 0 WHERE eid = $id";
+    // Update the 'employee_salary' table
+    $sql2 = "UPDATE employee_salary SET total_kgs_harvested = 0 WHERE eid = $id";
 
     if (mysqli_query($conn, $sql0) && mysqli_query($conn, $sql1) && mysqli_query($conn, $sql2)) {
         // Both updates were successful
@@ -103,7 +103,7 @@ if (isset($_POST['decline'])) {
 
 $sql = "SELECT * FROM `employee` WHERE 1";
 $sql1 = "SELECT * FROM `salary` WHERE id = $id";
-$sql2 = "SELECT * FROM `rank` WHERE eid = $id";
+$sql2 = "SELECT * FROM `employee_salary` WHERE eid = $id";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
@@ -112,7 +112,7 @@ if($result1){
 	while($res1 = mysqli_fetch_assoc($result1)){
 	// $base = $res1['base'];
 	// $bonus = $res1['bonus'];
-	$amtToBePaid = $res1['points'] * 8;
+	$amtToBePaid = $res1['total_kgs_harvested'] * 8;
 	
 }
 }
@@ -122,7 +122,7 @@ if($result1){
 // 	$id = mysqli_real_escape_string($conn, $_POST['id']);
 // 	$firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
 // 	$lastname = mysqli_real_escape_string($conn, $_POST['lastName']);
-// 	$email = mysqli_real_escape_string($conn, $_POST['email']);
+// 	$national_id = mysqli_real_escape_string($conn, $_POST['national_id']);
 // 	$birthday = mysqli_real_escape_string($conn, $_POST['birthday']);
 // 	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
 // 	$address = mysqli_real_escape_string($conn, $_POST['address']);
@@ -134,10 +134,10 @@ if($result1){
 
 
 
-	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
+	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`national_id`='$national_id',`password`='$national_id',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
+// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`national_id`='$national_id',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
 // 	echo ("<SCRIPT LANGUAGE='JavaScript'>
 //     window.alert('Succesfully Updated')
 //     </SCRIPT>");
