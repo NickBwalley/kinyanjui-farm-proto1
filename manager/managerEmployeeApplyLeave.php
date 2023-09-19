@@ -71,6 +71,8 @@ if (!empty($id)) {
 
                         </div>
 
+                    
+
                         <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Reason" name="reason">
                         </div>
@@ -95,7 +97,11 @@ if (!empty($id)) {
 
 
                         <div class="p-t-20">
+<<<<<<< HEAD
                             <button class="btn btn--radius btn--green" type="submit" name="apply">Submit</button>
+=======
+                            <button class="btn btn--radius btn--green" type="submit" name="apply">Apply</button>
+>>>>>>> 2bf190e7d93a55911507d454a928a9f3bd14af89
                         </div>
                     </form>
                 </div>

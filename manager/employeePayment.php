@@ -72,15 +72,16 @@ if (isset($_POST['decline'])) {
 
 $sql = "SELECT * FROM `employee` WHERE 1";
 $sql1 = "SELECT * FROM `salary` WHERE id = $id";
+$sql2 = "SELECT * FROM `rank` WHERE eid = $id";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
-$result1 = mysqli_query($conn, $sql1);
+$result1 = mysqli_query($conn, $sql2);
 if($result1){
 	while($res1 = mysqli_fetch_assoc($result1)){
-	$base = $res1['base'];
-	$bonus = $res1['bonus'];
-	$amtToBePaid = $res1['base'] * $res1['bonus'];
+	// $base = $res1['base'];
+	// $bonus = $res1['bonus'];
+	$amtToBePaid = $res1['points'] * 8;
 	
 }
 }
