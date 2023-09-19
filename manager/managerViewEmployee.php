@@ -65,6 +65,7 @@ if (!empty($id)) {
 				<th align = "center">Contact</th>
 				<th align = "center">Address</th>
 				<th align = "center">Department</th>
+				<th align = "center">Status</th>
 				<!-- <th align = "center">Harvested (KSH)</th> -->
 				
 				
@@ -84,9 +85,12 @@ if (!empty($id)) {
 					echo "<td>".$employee['contact']."</td>";
 					echo "<td>".$employee['address']."</td>";
 					echo "<td>".$employee['dept']."</td>";
+					echo "<td>".$employee['status']."</td>";
 					// echo "<td>".$employee['points']."</td>";
 
-					echo "<td><a href=\"editEmployee.php?id=$employee[id]\">Edit</a> | <a href=\"deleteEmployee.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+					// echo "<td><a href=\"editEmployee.php?id=$employee[id]\">Edit</a> | <a href=\"deleteEmployee.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+
+					echo "<td><a href=\"editEmployee.php?id=$employee[id]\">EDIT</a></td>";
 
 				}
 
