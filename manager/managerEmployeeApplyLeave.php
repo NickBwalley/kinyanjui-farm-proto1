@@ -52,24 +52,22 @@ if (!empty($id)) {
 
 
                         <div class="input-group">
-                            <!-- <input class="input--style-1" type="number" placeholder="Maximum number of people to work on this section" name="maxnum" required="required"> 
-                        -->
-                        <select name="empname">
-                            <option value="">---Select Employee For Leave Request---</option>
-                            <?php
-                            require_once('process/dbh.php');
-                            $sql = "SELECT firstName, lastName FROM employee";
-                            $result = $conn->query($sql);
+                            
+                            <select name="empname">
+                                <option value="">---Select Employee Name for Leave Request---</option>
+                                <?php
+                                require_once('process/dbh.php');
+                                $sql = "SELECT firstName, lastName FROM employee";
+                                $result = $conn->query($sql);
 
-                            if ($result->num_rows > 0) {
-                                // output data of each row
-                                while ($row = $result->fetch_assoc()) { 
-                                    echo "<option value='" . $row['firstName'] . " " . $row['lastName'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option>";
+                                if ($result->num_rows > 0) {
+                                    // output data of each row
+                                    while ($row = $result->fetch_assoc()) { 
+                                        echo "<option value='" . $row['firstName'] . " " . $row['lastName'] . "'>" . $row['firstName'] . " " . $row['lastName'] . "</option>";
+                                    }
                                 }
-                            }
-                            ?>
-                        </select>
-                        
+                                ?>
+                            </select>
 
                         </div>
 
@@ -99,7 +97,7 @@ if (!empty($id)) {
 
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="apply">Apply</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="apply">Submit</button>
                         </div>
                     </form>
                 </div>

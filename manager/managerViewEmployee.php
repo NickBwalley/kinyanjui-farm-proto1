@@ -75,7 +75,7 @@ if (!empty($id)) {
 				while ($employee = mysqli_fetch_assoc($result)) {
 					echo "<tr>";
 					echo "<td>".$employee['id']."</td>";
-					echo "<td><img src='process/".$employee['pic']."' height = 60px width = 60px></td>";
+					echo "<td><img src='../process/".$employee['pic']."' height = 60px width = 60px></td>";
 					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
 					
 					echo "<td>".$employee['email']."</td>";

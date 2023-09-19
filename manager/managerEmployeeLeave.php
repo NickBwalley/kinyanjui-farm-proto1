@@ -3,7 +3,7 @@
 require_once ('../process/dbh.php');
 
 //$sql = "SELECT * from `employee_leave`";
-$sql = "Select employee.id, employee.firstName, employee.lastName, employee_leave.start, employee_leave.end, employee_leave.reason, employee_leave.status, employee_leave.token From employee, employee_leave Where employee.id = employee_leave.id order by employee_leave.token";
+$sql = "Select employee.id, employee.firstName, employee.lastName, employee_leave.start, employee_leave.end, employee_leave.reason, employee_leave.status, employee_leave.id From employee, employee_leave Where employee.id = employee_leave.id order by employee_leave.id";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
@@ -57,7 +57,7 @@ if (!empty($id)) {
 		<table>
 			<tr>
 				<th>Emp. ID</th>
-				<th>Token</th>
+				<!-- <th>id</th> -->
 				<th>Name</th>
 				<th>Start Date</th>
 				<th>End Date</th>
@@ -78,7 +78,7 @@ if (!empty($id)) {
 
 					echo "<tr>";
 					echo "<td>".$employee['id']."</td>";
-					echo "<td>".$employee['token']."</td>";
+					// echo "<td>".$employee['id']."</td>";
 					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
 					
 					echo "<td>".$employee['start']."</td>";
@@ -86,7 +86,7 @@ if (!empty($id)) {
 					echo "<td>".$interval->days."</td>";
 					echo "<td>".$employee['reason']."</td>";
 					echo "<td>".$employee['status']."</td>";
-					echo "<td><a href=\"approve.php?id=$employee[id]&token=$employee[token]\"  onClick=\"return confirm('Are you sure you want to Approve the request?')\">Approve</a> | <a href=\"cancel.php?id=$employee[id]&token=$employee[token]\" onClick=\"return confirm('Are you sure you want to Cancel the request?')\">Cancel</a></td>";
+					echo "<td><a href=\"approve.php?id=$employee[id]&id=$employee[id]\"  onClick=\"return confirm('Are you sure you want to Approve the request?')\">Approve</a> | <a href=\"cancel.php?id=$employee[id]&id=$employee[id]\" onClick=\"return confirm('Are you sure you want to Cancel the request?')\">Cancel</a></td>";
 
 				}
 
