@@ -19,7 +19,7 @@ if (isset($_SESSION['manID'])) {
 $id = $_GET['id'];
 // $token = $_GET['token'];
 //deleting the row from table
-$result = mysqli_query($conn, "UPDATE `employee_leave` SET `status`='Cancelled' WHERE `id`=$id ");
+$result = mysqli_query($conn, "UPDATE `employee_leave` SET `status`='Not Approved' WHERE `id`=$id ");
 
 //redirecting to the display page (index.php in our case)
 header("Location: managerEmployeeLeave.php?id=$userID");

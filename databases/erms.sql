@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 04, 2023 at 01:46 PM
+-- Generation Time: Sep 19, 2023 at 08:48 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,131 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `erms`
 --
-
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `complaintreceivedandresolved` ()   BEGIN
-    SELECT
-        `complaints`.`complaint_id`,
-        `complaints`.`complaint_received`,
-        `complaints`.`complaint_resolved`,
-        `complaints`.`complaint_severity`,
-        COUNT(*) AS `complaint_count`
-    FROM
-        `complaints`
-    GROUP BY
-        `complaints`.`complaint_id`,
-        `complaints`.`complaint_received`,
-        `complaints`.`complaint_resolved`,
-        `complaints`.`complaint_severity`;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `CUSTOMERSASTIFICATIONINDEX` ()   BEGIN
-    SELECT
-        YEAR(`date_column`) AS `year`,
-        MONTH(`date_column`) AS `month`,
-        AVG(`customer_satisfaction_index`) AS `satisfaction_index`
-    FROM
-        `customer_satisfaction`
-    GROUP BY
-        `year`,
-        `month`
-    ORDER BY
-        `year`,
-        `month`;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `EmployeesTraining` ()   BEGIN
-    SELECT
-        training_topic AS topic,
-        training_hours AS hours
-    FROM
-        employeetraining;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `FarmProductivity` ()   BEGIN
-    SELECT
-        year,
-        productivity_index
-    FROM
-        farm_productivity;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GetProfitTrends` ()   BEGIN
-    SELECT
-        `year_2022_profit` AS `Year 2022`,
-        `year_2023_profit` AS `Year 2023`
-    FROM
-        `profit_trends`;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `PROCESSINGMANUFACTURE` ()   BEGIN
-    SELECT
-        category_column AS category,
-        AVG(time_column) AS average_processing_time
-    FROM
-        processing
-    GROUP BY
-        category_column;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `QualityProcess` ()   BEGIN
-    SELECT
-        category_column AS category,
-        AVG(quality_column) AS average_quality
-    FROM
-        qualityprocessed
-    GROUP BY
-        category_column;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `Top5SellingProductsofTheYear` (IN `currentYear` INT)   BEGIN
-SELECT 
-    ROW_NUMBER() OVER (
-          -- PARTITION BY `products`.`productLine`
-          ORDER BY SUM(`priceEach`) DESC) row_num,
-    `orderdetails`.`productCode`,
-    `products`.`productName`,
-    `products`.`productLine`,
-    `products`.`productVendor`,
-    `products`.`MSRP`,
-    `orders`.`orderDate`,
-    COUNT(`orderdetails`.`productCode`) AS countProductCode,
-    SUM(`quantityOrdered`) AS sumQuantityOrdered,
-    CONCAT(
-            `orderdetails`.`productCode`, ": ", `products`.`productName`) AS fullProductDetails,
-    SUM(`priceEach`) AS sumPriceEach
-FROM
-    `orderdetails`
-        INNER JOIN
-    `orders` ON `orderdetails`.`orderNumber` = `orders`.`orderNumber`
-        INNER JOIN
-    `products` ON `products`.`productCode` = `orderdetails`.`productCode`
-WHERE
-    YEAR(`orders`.`orderDate`) = currentYear
-        AND (`orders`.`status` = 'Shipped'
-        OR `orders`.`status` = 'In Process')
-GROUP BY `orderdetails`.`productCode`
-ORDER BY SUM(`priceEach`) DESC
-LIMIT 0 , 5;
-END$$
-
-CREATE DEFINER=`root`@`localhost` PROCEDURE `YOYSalesRevenuePerMonth` (IN `currentYear` INT)   BEGIN
-SELECT 
-    YEAR(`payments`.`paymentDate`) AS 'paymentYear',
-    MONTHNAME(`payments`.`paymentDate`) AS 'paymentMonth',
-    SUM(`payments`.`amount`) AS 'salesRevenue'
-FROM
-    `payments`
-WHERE
-    YEAR(`payments`.`paymentDate`) IN (currentYear , currentYear - 1)
-GROUP BY MONTHNAME(`payments`.`paymentDate`) , YEAR(`payments`.`paymentDate`)
-ORDER BY YEAR(`payments`.`paymentDate`) , MONTH(`payments`.`paymentDate`);
-END$$
-
-DELIMITER ;
 
 -- --------------------------------------------------------
 
@@ -163,7 +38,7 @@ CREATE TABLE `alogin` (
 --
 
 INSERT INTO `alogin` (`id`, `email`, `password`) VALUES
-(1, 'admin', 'admin');
+(1, 'admin', '1234');
 
 -- --------------------------------------------------------
 
@@ -416,8 +291,11 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `address`, `dept`, `pic`) VALUES
-(133, 'Ashaaa', 'Ashani', 'asha@gmail.com', '1234', '2023-09-27', 'Female', '23456', 'Kitale', 'SCES', 'images/no.jpg'),
-(134, 'Sarahhh', 'chebet ', 'sarah@gmail.com', '1234', '2023-08-31', 'Female', '071223333', 'Nairobi', 'Picking ', 'images/no.jpg');
+(165, 'Sarah', 'sashy', 'sarah@gmail.com', '1234', '2023-09-27', 'Female', '0733939393', 'Nairobi', 'SCES', 'images/no.jpg'),
+(166, 'Asher', 'Mwirigi', 'asher@gmail.com', '1234', '2023-09-27', 'Female', '0744949494', 'Kiambu', 'Picking ', 'images/no.jpg'),
+(167, 'Alice ', 'Lee', 'alice@gmail.com', '1234', '2000-09-12', 'Female', '0722838383', 'Nairobi', 'SCES', 'images/no.jpg'),
+(168, 'James ', 'Bond ', 'jamesbond@gmail.com', '1234', '2000-03-02', 'Male', '0738383838', 'Nairobi', 'Supervision', 'images/no.jpg'),
+(169, 'Ashley', 'Young', 'ashleyyoung@gmail.com', '1234', '2000-03-02', 'Male', '0733838383', 'Nairobi', 'Picking ', 'images/no.jpg');
 
 -- --------------------------------------------------------
 
@@ -516,20 +394,64 @@ INSERT INTO `employeetraining` (`training_id`, `training_topic`, `training_hours
 --
 
 CREATE TABLE `employee_leave` (
-  `id` int(11) DEFAULT NULL,
-  `token` int(11) NOT NULL,
-  `start` date DEFAULT NULL,
-  `end` date DEFAULT NULL,
-  `reason` char(100) DEFAULT NULL,
-  `status` char(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+  `id` int(11) NOT NULL,
+  `empName` varchar(255) NOT NULL,
+  `start` date NOT NULL,
+  `end` date NOT NULL,
+  `reason` varchar(255) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `employee_leave`
 --
 
-INSERT INTO `employee_leave` (`id`, `token`, `start`, `end`, `reason`, `status`) VALUES
-(133, 314, '2023-09-05', '2023-11-30', 'Go back to school', 'Pending');
+INSERT INTO `employee_leave` (`id`, `empName`, `start`, `end`, `reason`, `status`) VALUES
+(165, 'Sarah sashy', '2023-09-20', '2023-10-07', 'Go back to school', 'Approved'),
+(169, 'Ashley Young', '2023-09-19', '2023-10-10', 'Injury break ', 'Not Approved');
+
+--
+-- Triggers `employee_leave`
+--
+DELIMITER $$
+CREATE TRIGGER `generate_employee_leave_id` BEFORE INSERT ON `employee_leave` FOR EACH ROW BEGIN
+    DECLARE employee_id INT;
+    
+    -- Get the employee ID from the employee table based on the employee's full name.
+    SELECT id INTO employee_id
+    FROM employee
+    WHERE CONCAT(firstName, ' ', lastName) = NEW.empName;
+    
+    -- Set the ID for the new entry in the secondary_table.
+    SET NEW.id = employee_id;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee_leaves`
+--
+
+CREATE TABLE `employee_leaves` (
+  `id` int(11) NOT NULL,
+  `employee_name` varchar(255) NOT NULL,
+  `start_date` datetime(6) NOT NULL,
+  `end_date` datetime(6) NOT NULL,
+  `reason` varchar(1024) NOT NULL,
+  `status` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employee_leaves`
+--
+
+INSERT INTO `employee_leaves` (`id`, `employee_name`, `start_date`, `end_date`, `reason`, `status`) VALUES
+(1, 'Asher Mwirigi', '2023-09-19 00:00:00.000000', '2023-09-30 00:00:00.000000', 'Go back to school', 'Pending'),
+(2, 'Sarah sashy', '2023-09-20 00:00:00.000000', '2023-09-20 00:00:00.000000', 'Go back to school', 'Pending'),
+(3, 'Sarah sashy', '2023-09-19 00:00:00.000000', '2023-09-25 00:00:00.000000', 'Go back to school', 'Pending'),
+(4, 'Asher Mwirigi', '2023-09-18 00:00:00.000000', '2023-09-30 00:00:00.000000', 'Go back to school', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -597,6 +519,69 @@ INSERT INTO `farm_productivity1` (`year`, `productivity_index`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `farm_section`
+--
+
+CREATE TABLE `farm_section` (
+  `id` int(10) NOT NULL,
+  `section_name` varchar(225) NOT NULL,
+  `max_people` varchar(225) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `farm_section`
+--
+
+INSERT INTO `farm_section` (`id`, `section_name`, `max_people`) VALUES
+(26, 'Section A', '10'),
+(27, 'Section B', '34'),
+(28, 'Section C', '10'),
+(29, 'Section D ', '10');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `farm_section_assigned`
+--
+
+CREATE TABLE `farm_section_assigned` (
+  `id` int(11) NOT NULL,
+  `section_assigned` varchar(255) NOT NULL,
+  `empName` varchar(255) NOT NULL,
+  `employee_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `farm_section_assigned`
+--
+
+INSERT INTO `farm_section_assigned` (`id`, `section_assigned`, `empName`, `employee_id`) VALUES
+(165, 'Section A', 'Sarah sashy', 0),
+(166, 'Section B', 'Asher Mwirigi', 0),
+(167, 'Section C', 'Alice  Lee', 0),
+(169, 'Section D ', 'Ashley Young', 0);
+
+--
+-- Triggers `farm_section_assigned`
+--
+DELIMITER $$
+CREATE TRIGGER `generate_farm_section_assigned_id` BEFORE INSERT ON `farm_section_assigned` FOR EACH ROW BEGIN
+    DECLARE employee_id INT;
+    
+    -- Get the employee ID from the employee table based on the employee's full name.
+    SELECT id INTO employee_id
+    FROM employee
+    WHERE CONCAT(firstName, ' ', lastName) = NEW.empName;
+    
+    -- Set the ID for the new entry in the secondary_table.
+    SET NEW.id = employee_id;
+END
+$$
+DELIMITER ;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `manager`
 --
 
@@ -621,7 +606,10 @@ CREATE TABLE `manager` (
 --
 
 INSERT INTO `manager` (`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`, `address`, `dept`, `degree`, `pic`) VALUES
-(116, 'Lesley', 'Tulienge ', 'les.hack@gmail.com', '1234', '2023-08-30', 'Male', '714888999', 255, 'Kitale', 'SCES', 'BBIT', 'images/no.jpg');
+(116, 'Lesley', 'Tulienge ', 'les.hack@gmail.com', '1234', '2023-08-30', 'Male', '714888999', 255, 'Kitale', 'SCES', 'BBIT', 'images/no.jpg'),
+(117, 'Nick', 'Bwalley', 'nickbwalley@gmail.com', '1234', '2023-08-30', 'Male', '711333999', 35998393, 'Nairobi', 'CEO', 'BBIT', 'images/no.jpg'),
+(119, 'Tom', 'Kahigu', 'tomkahigu@gmail.com', '1234', '2023-09-12', 'Male', '5333222333', 35223355, 'Kiambu', 'Manager', 'LLB', 'images/no.jpg'),
+(120, 'Ian', 'Job', 'ianjob@gmail.com', '1234', '2023-09-12', 'Male', '722333555', 23445522, 'Nairobi', 'SCES', 'BBIT', 'images/no.jpg');
 
 -- --------------------------------------------------------
 
@@ -4557,14 +4545,6 @@ CREATE TABLE `project` (
   `status` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
---
--- Dumping data for table `project`
---
-
-INSERT INTO `project` (`pid`, `eid`, `pname`, `duedate`, `subdate`, `mark`, `status`) VALUES
-(237, 133, 'Farm section A of the farm', '2023-09-21', '0000-00-00', 4, 'Due'),
-(238, 134, 'Farm section B of the farm', '2023-09-02', '0000-00-00', 1, 'Due');
-
 -- --------------------------------------------------------
 
 --
@@ -4619,8 +4599,11 @@ CREATE TABLE `rank` (
 --
 
 INSERT INTO `rank` (`eid`, `points`) VALUES
-(133, 11),
-(134, 22);
+(165, 10),
+(166, 0),
+(167, 2),
+(168, 0),
+(169, 0);
 
 -- --------------------------------------------------------
 
@@ -4640,8 +4623,11 @@ CREATE TABLE `salary` (
 --
 
 INSERT INTO `salary` (`id`, `base`, `bonus`, `total`) VALUES
-(133, 8, 11, 9),
-(134, 8, 22, 10);
+(165, 0, 0, 0),
+(166, 8, 0, 0),
+(167, 0, 0, 0),
+(168, 0, 0, 0),
+(169, 8, 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -4697,13 +4683,30 @@ ALTER TABLE `employeetraining`
 -- Indexes for table `employee_leave`
 --
 ALTER TABLE `employee_leave`
-  ADD PRIMARY KEY (`token`),
-  ADD KEY `employee_leave_ibfk_1` (`id`);
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `employee_leaves`
+--
+ALTER TABLE `employee_leaves`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `farm_productivity`
 --
 ALTER TABLE `farm_productivity`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `farm_section`
+--
+ALTER TABLE `farm_section`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `farm_section_assigned`
+--
+ALTER TABLE `farm_section_assigned`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -4803,13 +4806,19 @@ ALTER TABLE `alogin`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=135;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
 
 --
 -- AUTO_INCREMENT for table `employee_leave`
 --
 ALTER TABLE `employee_leave`
-  MODIFY `token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=315;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+
+--
+-- AUTO_INCREMENT for table `employee_leaves`
+--
+ALTER TABLE `employee_leaves`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `farm_productivity`
@@ -4818,10 +4827,22 @@ ALTER TABLE `farm_productivity`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
+-- AUTO_INCREMENT for table `farm_section`
+--
+ALTER TABLE `farm_section`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT for table `farm_section_assigned`
+--
+ALTER TABLE `farm_section_assigned`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=170;
+
+--
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=117;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
 
 --
 -- AUTO_INCREMENT for table `profit_trends`
@@ -4833,7 +4854,7 @@ ALTER TABLE `profit_trends`
 -- AUTO_INCREMENT for table `project`
 --
 ALTER TABLE `project`
-  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=239;
+  MODIFY `pid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=248;
 
 --
 -- Constraints for dumped tables
@@ -4851,12 +4872,6 @@ ALTER TABLE `customers`
 ALTER TABLE `employees`
   ADD CONSTRAINT `employees_ibfk_1` FOREIGN KEY (`reportsTo`) REFERENCES `employees` (`employeeNumber`),
   ADD CONSTRAINT `employees_ibfk_2` FOREIGN KEY (`officeCode`) REFERENCES `offices` (`officeCode`);
-
---
--- Constraints for table `employee_leave`
---
-ALTER TABLE `employee_leave`
-  ADD CONSTRAINT `employee_leave_ibfk_1` FOREIGN KEY (`id`) REFERENCES `employee` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `orderdetails`
