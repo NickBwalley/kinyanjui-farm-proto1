@@ -78,7 +78,7 @@ if (isset($_POST['approve'])) {
 
     // Update the 'salary' table
     $sql0 = "INSERT INTO `employee_paid`(`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`) VALUES('', '$empName', '$total_kgs_harvested', '$amt_paid', '$date' )";
-    $sql1 = "UPDATE salary SET base = 8, bonus = 0, total = 0 WHERE id = $id";
+    $sql1 = "UPDATE employee_salary_base SET base = 8 WHERE id = $id";
     
     // Update the 'employee_salary' table
     $sql2 = "UPDATE employee_salary SET total_kgs_harvested = 0 WHERE eid = $id";
