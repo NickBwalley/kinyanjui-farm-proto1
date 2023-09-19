@@ -61,17 +61,17 @@ nav ul ul {
 }
 
 .homered {
-  background-color: green;
+  background-color: rgb(70, 92, 14);
   padding: 30px 10px 22px 10px;
 }
 
 .divider {
-  background-color: green;
+  background-color: rgb(70, 92, 14);
   height: 5px;
 }
 
 .homeblack:hover {
-  background-color: blue;
+  background-color: rgba(7, 7, 7, 0.13);
   padding: 30px 10px 21px 10px;
 }
 
@@ -139,7 +139,7 @@ input[type="password"] {
   border: none;
   outline: none;
   height: 40px;
-  background: green;
+  background: rgb(70, 92, 14);
   color: #fff;
   font-size: 18px;
   border-radius: 20px;

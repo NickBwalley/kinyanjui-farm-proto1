@@ -3,6 +3,58 @@
   <head>
     <title>Log In | Manager</title>
     <link rel="stylesheet" type="text/css" href="../stylescss/stylelogin.css" />
+    <style>
+      body {
+        background-image: url('../banner.jpg'); /* Specify the path to your banner image */
+        background-size: cover; /* Cover the entire viewport */
+        background-repeat: no-repeat; /* Prevent background image from repeating */
+        background-attachment: fixed; /* Fixed background image */
+        margin: 0; /* Remove default body margin */
+        padding: 0; /* Remove default body padding */
+        font-family: 'Arial', sans-serif; /* Set default font family */
+      }
+
+      header {
+        background-color: rgba(7, 7, 7, 0.13); /* Add a semi-transparent white background to the header */
+        padding: 20px; /* Add padding to the header */
+      }
+
+      h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-top: 30px;
+        color: #fffdfd;
+      }
+
+      .loginbox {
+        background-color:  rgba(7, 7, 7, 0.73);
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+        border-radius: 10px;
+        width: 300px;
+        margin: 0 auto;
+      }
+      .loginbox input[type="text"],
+      input[type="password"] {
+        border: none;
+        border-bottom: 1px solid #fff;
+        background: transparent;
+        outline: none;
+        height: 40px;
+        color: #fff;
+        font-size: 16px;
+      }
+      .homered {
+        background-color: rgb(142, 179, 0);
+        padding: 30px 10px 22px 10px;
+      }
+      .homeblack:hover {
+        background-color: rgb(102, 109, 109);
+        padding: 30px 10px 21px 10px;
+      }
+      /* Add your other CSS styles here */
+    </style>
   </head>
   <body>
     <header>
@@ -19,7 +71,7 @@
 
     <div class="loginbox">
       <img src="../assets/avatar.png" class="avatar" />
-      <h1>Login Here</h1>
+      <h1>Manager Login</h1>
       <form action="managerprocess.php" method="POST">
         <p>Email</p>
         <input
