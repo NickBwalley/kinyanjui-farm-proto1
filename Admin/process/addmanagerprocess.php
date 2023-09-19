@@ -54,7 +54,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Manager Succesfully Registered...')
-    window.location.href='..//viewManager.php?id=$id';
+    window.location.href='../viewManager.php?id=$id';
     </SCRIPT>");
     //header("Location: ..//adminHome.php");
 }
