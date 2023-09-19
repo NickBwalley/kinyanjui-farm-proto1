@@ -2,9 +2,9 @@
 session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
-// Fetch employees and their ranks using JOIN
+// Fetch employees and their farm_salarys using JOIN
 $sql = "SELECT * FROM `employee` e
-        JOIN `rank` r ON e.id = r.eid";
+        JOIN `employee_salary` r ON e.id = r.eid";
 $result = mysqli_query($conn, $sql);
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
@@ -18,7 +18,7 @@ if (!empty($id)) {
     }
 
     $manager = mysqli_fetch_array($employeeResult);
-    $empName = $manager['firstName'];
+    // $empName = $manager['firstName'];
 }
 
 // Check if the session variable 'userID' is set
@@ -43,22 +43,23 @@ if(isset($_POST['update']))
 	$id = mysqli_real_escape_string($conn, $_POST['id']);
 	$firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
 	$lastname = mysqli_real_escape_string($conn, $_POST['lastName']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$national_id = mysqli_real_escape_string($conn, $_POST['national_id']);
 	$birthday = mysqli_real_escape_string($conn, $_POST['birthday']);
 	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
 	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
 	$dept = mysqli_real_escape_string($conn, $_POST['dept']);
+    $status = mysqli_real_escape_string($conn, $_POST['status']);
 	//$salary = mysqli_real_escape_string($conn, $_POST['salary']);
 
 
 
 
 
-	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
+	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`national_id`='$national_id',`password`='$national_id',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
+$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`national_id`='$national_id',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' `status`='$status' WHERE id=$id");
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Updated Employee')
     </SCRIPT>");
@@ -81,12 +82,13 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 	while($res = mysqli_fetch_assoc($result)){
 	$firstname = $res['firstName'];
 	$lastname = $res['lastName'];
-	$email = $res['email'];
+	$national_id = $res['national_id'];
 	$contact = $res['contact'];
 	$address = $res['address'];
 	$gender = $res['gender'];
 	$birthday = $res['birthday'];
 	$dept = $res['dept'];
+    $status = $res['status'];
 	
 }
 }
@@ -151,18 +153,19 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 
 
                         <div class="input-group">
-                            <input class="input--style-1" type="email"  name="email" value="<?php echo $email;?>">
+                            <input class="input--style-1" type="national_id"  name="national_id" value="<?php echo $national_id;?>">
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <input class="input--style-1" type="text" name="birthday" value="<?php echo $birthday;?>">
+                                    <input class="input--style-1" type="date" name="birthday" value="<?php echo $birthday;?>">
                                    
                                 </div>
                             </div>
+                            
                             <div class="col-2">
                                 <div class="input-group">
-									<input class="input--style-1" type="text" name="gender" value="<?php echo $gender;?>">
+									<input class="input--style-1" type="text" name="gender" value="<?php echo $gender;?>" readonly>
                                 </div>
                             </div>
                         </div>
@@ -174,11 +177,20 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                        
                          <div class="input-group">
                             <input class="input--style-1" type="text"  name="address" value="<?php echo $address;?>">
+                            <input class="input--style-1" type="hidden" name="dept" value="<?php echo $dept;?>">
                         </div>
 
+                        <!-- <div class="input-group">
+                            <input class="input--style-1" type="text" name="dept" value="<?php echo $status;?>">
+                        </div> -->
+
                         <div class="input-group">
-                            <input class="input--style-1" type="text" name="dept" value="<?php echo $dept;?>">
+                            <select name="status" class="input--style-1">
+                                <option value="active" <?php if ($status == "active") echo "selected"; ?>>Active</option>
+                                <option value="not_active" <?php if ($status == "not_active") echo "selected"; ?>>Not Active</option>
+                            </select>
                         </div>
+
 
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
