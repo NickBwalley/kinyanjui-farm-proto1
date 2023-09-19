@@ -14,8 +14,6 @@ if (isset($_SESSION['manID'])) {
     // Handle the case where the session variable is not set
     echo "User ID not found in session.";
 }
-if (isset($_POST['apply'])) {
-    //AutoIncrement values of the data from url
 
 if (isset($_POST['apply'])) {
 
