@@ -1,25 +1,61 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Log In | Admin</title>
+    <title>Log In | Manager</title>
     <link rel="stylesheet" type="text/css" href="../stylescss/stylelogin.css" />
+    <style>
+      body {
+        background-image: url('../banner.jpg'); /* Specify the path to your banner image */
+        background-size: cover; /* Cover the entire viewport */
+        background-repeat: no-repeat; /* Prevent background image from repeating */
+        background-attachment: fixed; /* Fixed background image */
+        margin: 0; /* Remove default body margin */
+        padding: 0; /* Remove default body padding */
+        font-family: 'Arial', sans-serif; /* Set default font family */
+      }
+
+      header {
+        background-color: rgba(7, 7, 7, 0.13); /* Add a semi-transparent white background to the header */
+        padding: 20px; /* Add padding to the header */
+      }
+
+      h1 {
+        font-size: 24px;
+        text-align: center;
+        margin-top: 30px;
+        color: #fffdfd;
+      }
+
+      .loginbox {
+        background-color:  rgba(7, 7, 7, 0.73);
+        padding: 20px;
+        margin: 20px;
+        text-align: center;
+        border-radius: 10px;
+        width: 300px;
+        margin: 0 auto;
+      }
+
+      /* Add your other CSS styles here */
+    </style>
   </head>
-  <body>
-    <header>
-      <nav>
-        <h1>Kinyanjui Farm.</h1>
-        <ul id="navli">
-          <li><a class="homeblack" href="../index.html">HOME</a></li>
-          <li><a class="homeblack" href="../manager/managerlogin.html">Managers Login</a></li>
-          <li><a class="homered" href="admin.html">Admin Login</a></li>
-        </ul>
-      </nav>
     </header>
+    <body>
+      <header>
+        <nav>
+          <h1>Kinyanjui Farm.</h1>
+          <ul id="navli">
+            <li><a class="homeblack" href="../index.html">HOME</a></li>
+            <li><a class="homeblack" href="../manager/managerlogin.html">Managers Login</a></li>
+            <li><a class="homered" href="admin.html">Admin Login</a></li>
+          </ul>
+        </nav>
+      </header>
     <div class="divider"></div>
 
     <div class="loginbox">
       <img src="../assets/admin.png" class="avatar" />
-      <h1>Login Here</h1>
+      <h1>Admin Login</h1>
       <form action="process/adminProcess.php" method="POST">
         <p>Email</p>
         <input

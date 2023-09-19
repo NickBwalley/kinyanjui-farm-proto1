@@ -9,8 +9,56 @@
       integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
       crossorigin="anonymous"
     />
-    <link href="https://fonts.googleapis.com/css?family=Lobster|Montserrat"
-    rel="stylesheet"
+    <link
+      href="https://fonts.googleapis.com/css?family=Lobster|Montserrat"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-image: url('banner.jpg'); /* Specify the path to your banner image */
+        background-size: cover; /* Cover the entire viewport */
+        background-repeat: no-repeat; /* Prevent background image from repeating */
+        background-attachment: fixed; /* Fixed background image */
+        margin: 0; /* Remove default body margin */
+        padding: 0; /* Remove default body padding */
+        font-family: 'Montserrat', sans-serif; /* Set default font family */
+      }
+
+      header {
+        background-color: rgba(7, 7, 7, 0.13); /* Add a semi-transparent white background to the header */
+        padding: 20px; /* Add padding to the header */
+      }
+
+      h1 {
+        font-family: 'Lobster', cursive;
+        font-weight: 200;
+        font-size: 50px;
+        text-align: center;
+        margin-top: 100px;
+        color: #333;
+      }
+
+      p {
+        font-size: 25px;
+        text-align: center;
+        color: #fffbfb;
+      }
+
+      .mapouter {
+        position: relative;
+        text-align: right;
+        height: 450px;
+        width: 1080px;
+        margin: 0 auto; /* Center the map */
+      }
+
+      .gmap_canvas {
+        overflow: hidden;
+        background: none !important;
+        height: 450px;
+        width: 100%; /* Adjust to your desired width */
+      }
+    </style>
   </head>
   <body>
     <header>
@@ -24,47 +72,28 @@
         </ul>
       </nav>
     </header>
+
     <div class="divider"></div>
 
     <div class="mapouter">
       <div class="gmap_canvas">
         <iframe
-          width="1080"
-          height="250"
+          width="100%"
+          height="450"
           id="gmap_canvas"
           src="https://maps.google.com/maps?q=-1.28966%2C%2036.81763&t=&z=17&ie=UTF8&iwloc=&output=embed"
           frameborder="0"
           scrolling="no"
           marginheight="0"
           marginwidth="0"
-        ></iframe
-        >Google Maps Generator by
+        ></iframe>
+        Google Maps Generator by
         <a href="https://www.embedgooglemap.net">embedgooglemap.net</a>
       </div>
-      <style>
-        .mapouter {
-          position: relative;
-          text-align: right;
-          height: 250px;
-          width: 2080px;
-        }
-        .gmap_canvas {
-          overflow: hidden;
-          background: none !important;
-          height: 250px;
-          width: 1080px;
-        }
-      </style>
     </div>
 
-    <p style="font-family: Montserrat; text-align: center; font-size: 25px">
-      <i class="fas fa-map-marked"></i> Kinyanjui Farm.
-    </p>
-    <p style="font-family: Montserrat; text-align: center; font-size: 25px">
-      <i class="fas fa-address-book"></i> +254700111222
-    </p>
-    <p style="font-family: Montserrat; text-align: center; font-size: 25px">
-      <i class="fas fa-envelope"></i> kinyanjuifarms@gmail.com
-    </p>
+    <p><i class="fas fa-map-marked"></i> Kinyanjui Farm.</p>
+    <p><i class="fas fa-address-book"></i> +254700111222</p>
+    <p><i class="fas fa-envelope"></i> kinyanjuifarms@gmail.com</p>
   </body>
 </html>
