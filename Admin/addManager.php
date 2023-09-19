@@ -116,11 +116,11 @@
                         </div>
                         
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Contact Number" name="contact" required="required" >
+                            <input class="input--style-1" type="tel" placeholder="Phone Number" name="contact" required="required" >
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="NID" name="nid" required="required">
+                            <input class="input--style-1" type="number" placeholder="National ID No." name="nid" required="required">
                         </div>
 
                         

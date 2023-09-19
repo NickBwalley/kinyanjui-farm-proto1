@@ -76,10 +76,40 @@ if (isset($_POST['approve'])) {
     // Assuming you have a unique identifier for the person, let's call it 'id'
     $id = $_POST['id']; // Replace with your actual form field name
 
-    // Update the 'salary' table
+    // Fetch employee name (empName)
+    $sqlQ = "SELECT * FROM `employee` WHERE id = $id";
+    $resultQ = mysqli_query($conn, $sqlQ);
+
+    if ($resultQ && mysqli_num_rows($resultQ) > 0) {
+        $row = mysqli_fetch_assoc($resultQ);
+        $empName = $row['firstName'] . ' ' . $row['lastName'];
+    } else {
+        // Handle the case where the employee with the given ID was not found
+        // You can choose to redirect or display an error message
+        echo "Employee not found";
+        exit; // Terminate the script
+    }
+
+    // Calculate the amount to be paid based on the total_kgs_harvested and rate
+    $sqlQ1 = "SELECT * FROM `employee_salary` WHERE eid = $id";
+    $resultQ1 = mysqli_query($conn, $sqlQ1);
+
+    if ($resultQ1 && mysqli_num_rows($resultQ1) > 0) {
+        $row1 = mysqli_fetch_assoc($resultQ1);
+        $total_kgs_harvested = $row1['total_kgs_harvested'];
+        $rate = 8; // Rate per kg, change it to the actual rate if needed
+        $amt_paid = $total_kgs_harvested * $rate;
+    } else {
+        // Handle the case where the salary record for the employee was not found
+        // You can choose to redirect or display an error message
+        echo "Salary record not found";
+        exit; // Terminate the script
+    }
+
+    // Insert the payment details into the 'employee_paid' table
     $sql0 = "INSERT INTO `employee_paid`(`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`) VALUES('', '$empName', '$total_kgs_harvested', '$amt_paid', '$date' )";
     $sql1 = "UPDATE employee_salary_base SET base = 8 WHERE id = $id";
-    
+
     // Update the 'employee_salary' table
     $sql2 = "UPDATE employee_salary SET total_kgs_harvested = 0 WHERE eid = $id";
 
@@ -95,6 +125,8 @@ if (isset($_POST['approve'])) {
         header("Location: employeePayment.php?id=$userID");
     }
 }
+
+
 
 if (isset($_POST['decline'])) {
     // Assuming you have a unique identifier for the person, let's call it 'id'

@@ -61,7 +61,7 @@ if (isset($_SESSION['admID'])) {
 				while ($manager = mysqli_fetch_assoc($result)) {
 					echo "<tr>";
 					echo "<td>".$manager['id']."</td>";
-					echo "<td><img src='process/".$manager['pic']."' height = 60px width = 60px></td>";
+					echo "<td><img src='../process/".$manager['pic']."' height = 60px width = 60px></td>";
 					echo "<td>".$manager['firstName']." ".$manager['lastName']."</td>";
 					
 					echo "<td>".$manager['email']."</td>";
