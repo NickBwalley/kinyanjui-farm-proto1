@@ -2,9 +2,9 @@
 session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
-// Fetch employees and their ranks using JOIN
+// Fetch employees and their employee_salarys using JOIN
 $sql = "SELECT * FROM `employee` e
-        JOIN `rank` r ON e.id = r.eid";
+        JOIN `employee_salary` r ON e.id = r.eid";
 $result = mysqli_query($conn, $sql);
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
@@ -44,7 +44,7 @@ if(isset($_POST['update']))
 	$id = mysqli_real_escape_string($conn, $_POST['id']);
 	$firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
 	$lastname = mysqli_real_escape_string($conn, $_POST['lastName']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
+	$national_id = mysqli_real_escape_string($conn, $_POST['national_id']);
 	$birthday = mysqli_real_escape_string($conn, $_POST['birthday']);
 	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
 	$address = mysqli_real_escape_string($conn, $_POST['address']);
@@ -56,10 +56,10 @@ if(isset($_POST['update']))
 
 
 
-	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`password`='$email',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
+	// $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`national_id`='$national_id',`password`='$national_id',`gender`='$gender',`contact`='$contact',`nid`='$nid',`salary`='$salary',`address`='$address',`dept`='$dept',`degree`='$degree' WHERE id=$id");
 
 
-$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`email`='$email',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
+$result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`lastName`='$lastname',`national_id`='$national_id',`birthday`='$birthday',`gender`='$gender',`contact`='$contact',`address`='$address',`dept`='$dept' WHERE id=$id");
 	echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Updated Employee')
     </SCRIPT>");
@@ -83,7 +83,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
     $mainEmpId = $res['id'];
 	$firstname = $res['firstName'];
 	$lastname = $res['lastName'];
-	$email = $res['email'];
+	$national_id = $res['national_id'];
 	$contact = $res['contact'];
 	$address = $res['address'];
 	$gender = $res['gender'];

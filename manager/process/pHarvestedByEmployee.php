@@ -31,12 +31,12 @@ if(isset($_POST['update'])){
     $amtHarvested = $_POST['amtHarvested'];
     
     // Check if the employee ID exists in the database
-    $check_sql = "SELECT * FROM `rank` WHERE eid = $id";
+    $check_sql = "SELECT * FROM `employee_salary` WHERE eid = $id";
     $result = $conn->query($check_sql);
     
     if ($result->num_rows > 0) {
         // Update the record if the employee ID exists
-        $update_sql = "UPDATE `rank` SET points = '$amtHarvested' WHERE eid = $id";
+        $update_sql = "UPDATE `employee_salary` SET total_kgs_harvested = '$amtHarvested' WHERE eid = $id";
         
         if ($conn->query($update_sql) === TRUE) {
             echo "Record updated successfully.";

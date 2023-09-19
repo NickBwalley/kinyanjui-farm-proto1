@@ -128,7 +128,7 @@ if ($result) {
                         </div>
 
                         <div class="input-group">
-                            <input class="input--style-1" type="text" name="national_id" value="<?php echo $national_id;?>" required>
+                            <input class="input--style-1" type="tel" name="national_id" value="<?php echo $national_id;?>" required>
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
@@ -137,15 +137,13 @@ if ($result) {
                                 </div>
                             </div>
                             
-                            <div class="col-2">
-                                <div class="input-group">
-                                    <input class="input--style-1" type="text" name="gender" value="<?php echo $gender;?>" readonly>
-                                </div>
-                            </div>
+                           
+                                    <input class="input--style-1" type="hidden" name="gender" value="<?php echo $gender;?>" readonly>
+                            
                         </div>
                         
                         <div class="input-group">
-                            <input class="input--style-1" type="number" name="contact" value="<?php echo $contact;?>" required>
+                            <input class="input--style-1" type="tel" name="contact" value="<?php echo $contact;?>" required>
                         </div>
 
                         <div class="input-group">
