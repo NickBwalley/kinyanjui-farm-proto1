@@ -19,12 +19,12 @@ header("Pragma: no-cache");
 	 $employeen = mysqli_fetch_array($result1);
 	//  $empName = ($employeen['firstName']);
 
-	$sql = "SELECT id, firstName, lastName,  points FROM employee, rank WHERE rank.eid = employee.id order by rank.points desc";
+	$sql = "SELECT id, firstName, lastName,  total_kgs_harvested FROM employee, employee_salary WHERE employee_salary.eid = employee.id order by employee_salary.total_kgs_harvested desc";
 	$sql1 = "SELECT `pname`, `duedate` FROM `project` WHERE eid = $id and status = 'Due'";
 
 	$sql2 = "Select * From employee, employee_leave Where employee.id = $id and employee_leave.id = $id order by employee_leave.id";
 
-	$sql3 = "SELECT * FROM `salary` WHERE id = $id";
+	$sql3 = "SELECT * FROM `employee_salary_base` WHERE id = $id";
 
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
@@ -82,7 +82,7 @@ $result4 = mysqli_query($conn, $sql4);
 				<th align = "center">Seq.</th>
 				<th align = "center">Emp. ID</th>
 				<th align = "center">Name</th>
-				<th align = "center">Total Harvested (Kgs) - points</th>
+				<th align = "center">Total Harvested (Kgs)</th>
 				<th align = "center">Amt to Pay</th>
 				<th align = "center">Payments</th>
 
@@ -101,11 +101,11 @@ $result4 = mysqli_query($conn, $sql4);
 					
 					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
 					
-					echo "<td>".$employee['points']."</td>";
+					echo "<td>".$employee['total_kgs_harvested']."</td>";
 
-					// Multiply $employee['points'] by 8 and display the result
-					$pointsMultiplied = $employee['points'] * 8;
-					echo "<td>" . $pointsMultiplied . "</td>";
+					// Multiply $employee['total_kgs_harvested'] by 8 and display the result
+					$total_kgs_harvestedMultiplied = $employee['total_kgs_harvested'] * 8;
+					echo "<td>" . $total_kgs_harvestedMultiplied . "</td>";
 					echo "<td><a href=\"employeePayment.php?id=$employee[id]\">Pay</a></td>";
 					
 					$seq+=1;

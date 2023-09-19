@@ -47,9 +47,9 @@ $result = mysqli_query($conn, $sql);
 
 $last_id = $conn->insert_id;
 
-$sqlS = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$last_id','$salary',0,'$salary')";
+$sqlS = "INSERT INTO `employee_salary_base`(`id`, `base`) VALUES ('$last_id','$salary')";
 $salaryQ = mysqli_query($conn, $sqlS);
-$rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
+$rank = mysqli_query($conn, "INSERT INTO `employee_salary`(`eid`, `total_kgs_harvested`) VALUES ('$last_id', 0, 0)");
 
 
 if(($result) == 1){
@@ -78,9 +78,9 @@ $result = mysqli_query($conn, $sql);
 
 $last_id = $conn->insert_id;
 
-$sqlS = "INSERT INTO `salary`(`id`, `base`, `bonus`, `total`) VALUES ('$last_id','$salary',0,'$salary')";
+$sqlS = "INSERT INTO `employee_salary_base`(`id`, `base`) VALUES ('$last_id','$salary')";
 $salaryQ = mysqli_query($conn, $sqlS);
-$rank = mysqli_query($conn, "INSERT INTO `rank`(`eid`) VALUES ('$last_id')");
+$rank = mysqli_query($conn, "INSERT INTO `employee_salary`(`eid`, `total_kgs_harvested`, `total_amt_payable`) VALUES ('$last_id', 0, 0)");
 
 
 if(($result) == 1){

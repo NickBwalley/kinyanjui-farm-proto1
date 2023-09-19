@@ -145,12 +145,20 @@ if (!empty($id)) {
                         </div>
 
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Salary (price Ksh8 per kg)" readonly name="salary">
-                        </div>
+                        
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="file" placeholder="file" name="file">
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="number" placeholder="KSH 8 per kg - READ-ONLY" readonly name="salary">
+                                   
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="file" placeholder="file" name="file">
+                                </div>
+                            </div>
                         </div>
 
 
