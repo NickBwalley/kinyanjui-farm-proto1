@@ -91,8 +91,7 @@ if (isset($_SESSION['manID'])) {
                         <h2 class="title"> Assign Employees to Farm Sections </h2>
 
                         <div class="input-group">
-                            <!-- <input class="input--style-1" type="text" placeholder="What is the section name" name="secname" required="required"> -->
-                            <select name="sectionname">
+                            <select name="sectionname" required>
                                 <option value="">---Select Farm Section to assign---</option>
                                 <?php
                                 require_once('process/dbh.php');
@@ -107,12 +106,12 @@ if (isset($_SESSION['manID'])) {
                                 }
                                 ?>
                             </select>
-
                         </div>
+
 
                         <div class="input-group">
                             
-                            <select name="empname">
+                            <select name="empname" required>
                                 <option value="">---Select Employee to Work on a Section---</option>
                                 <?php
                                 require_once('process/dbh.php');
@@ -136,7 +135,7 @@ if (isset($_SESSION['manID'])) {
 
 
                         <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="create" onclick="createFarm()">Assign Section</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="create" >Assign Section</button>
                         </div>
                     </form>
                 </div>
