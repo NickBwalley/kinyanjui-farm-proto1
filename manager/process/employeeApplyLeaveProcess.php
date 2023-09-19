@@ -15,20 +15,23 @@ if (isset($_SESSION['manID'])) {
     echo "User ID not found in session.";
 }
 
-//getting id of the data from url
-$id = $_POST['empid'];
-//echo $id;
-$reason = $_POST['reason'];
+if (isset($_POST['apply'])) {
 
-$start = $_POST['start'];
-//echo "$reason";
-$end = $_POST['end'];
+    // empname 
+    $empname = $_POST['empname'];
+    //echo $id;
+    $reason = $_POST['reason'];
 
-$sql = "INSERT INTO `employee_leave`(`id`,`token`, `start`, `end`, `reason`, `status`) VALUES ('$id','','$start','$end','$reason','Pending')";
+    $start = $_POST['start'];
+    //echo "$reason";
+    $end = $_POST['end'];
 
-$result = mysqli_query($conn, $sql);
+    $sql = "INSERT INTO `employee_leave`(`id`,`empName`, `start`, `end`, `reason`, `status`) VALUES ('','$empname','$start','$end','$reason','Pending')";
 
-//redirecting to the display page (index.php in our case)
-header("Location: ../managerEmployeeLeave.php?id=$userID");
+    $result = mysqli_query($conn, $sql);
+
+    //redirecting to the display page (index.php in our case)
+    header("Location: ../managerEmployeeLeave.php?id=$userID");
+}
 ?>
 
