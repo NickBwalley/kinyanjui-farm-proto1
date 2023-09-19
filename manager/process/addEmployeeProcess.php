@@ -18,12 +18,13 @@ if (isset($_SESSION['manID'])) {
 
 $firstname = $_POST['firstName'];
 $lastName = $_POST['lastName'];
-$email = $_POST['email'];
+$national_id = $_POST['national_id'];
 $contact = $_POST['contact'];
 $address = $_POST['address'];
 $gender = $_POST['gender'];
 
 $dept = $_POST['dept'];
+$status = $_POST['status'];
 
 $salary = $_POST['salary'];
 $birthday =$_POST['birthday'];
@@ -41,7 +42,7 @@ if(in_array($filecheck, $fileextstored)){
     $destinationfile = 'images/'.$filename;
     move_uploaded_file($filetemp, $destinationfile);
 
-    $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `address`, `dept`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$dept','$degree','$destinationfile')";
+    $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `national_id`, `birthday`, `gender`, `contact`, `address`, `dept`, `status`, `pic`) VALUES ('','$firstname','$lastName','$national_id','$birthday','$gender','$contact','$address','$dept', '$status','$degree','$destinationfile')";
 
 $result = mysqli_query($conn, $sql);
 
@@ -72,7 +73,7 @@ else{
 
 else{
 
-      $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `address`, `dept`,`pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$address','$dept','images/no.jpg')";
+      $sql = "INSERT INTO `employee`(`id`, `firstName`, `lastName`, `national_id`, `birthday`, `gender`, `contact`, `address`, `dept`, `status`, `pic`) VALUES ('','$firstname','$lastName','$national_id','$birthday','$gender','$contact','$address','$dept', '$status', 'images/no.jpg')";
 
 $result = mysqli_query($conn, $sql);
 
