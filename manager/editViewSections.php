@@ -2,9 +2,9 @@
 session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
-// Fetch employees and their ranks using JOIN
+// Fetch employees and their employee_salarys using JOIN
 $sql = "SELECT * FROM `employee` e
-        JOIN `rank` r ON e.id = r.eid";
+        JOIN `employee_salary` r ON e.id = r.eid";
 $result = mysqli_query($conn, $sql);
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
@@ -126,13 +126,13 @@ $result = mysqli_query($conn, "UPDATE `farm_section` SET `section_name`='$sectio
                         
                             <div class="col-2">
                                 <div class="input-group">
-                                     <input class="input--style-1" type="text" name="section_name" value="<?php echo $section_name;?>" >
+                                     <input class="input--style-1" type="text" name="section_name" value="<?php echo $section_name;?> required" >
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <input class="input--style-1" type="number" name="max_people" value="<?php echo $max_people;?>">
-                                    <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
+                                    <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required">
                                 </div>
                             </div>
                        

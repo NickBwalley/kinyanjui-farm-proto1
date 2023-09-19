@@ -59,12 +59,13 @@ if (!empty($id)) {
 				<th align = "center">Emp. ID</th>
 				<th align = "center">Picture</th>
 				<th align = "center">Name</th>
-				<th align = "center">Email</th>
+				<th align = "center">ID-Number</th>
 				<th align = "center">Birthday</th>
 				<th align = "center">Gender</th>
 				<th align = "center">Contact</th>
 				<th align = "center">Address</th>
 				<th align = "center">Department</th>
+				<th align = "center">Status</th>
 				<!-- <th align = "center">Harvested (KSH)</th> -->
 				
 				
@@ -78,15 +79,18 @@ if (!empty($id)) {
 					echo "<td><img src='../process/".$employee['pic']."' height = 60px width = 60px></td>";
 					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
 					
-					echo "<td>".$employee['email']."</td>";
+					echo "<td>".$employee['national_id']."</td>";
 					echo "<td>".$employee['birthday']."</td>";
 					echo "<td>".$employee['gender']."</td>";
 					echo "<td>".$employee['contact']."</td>";
 					echo "<td>".$employee['address']."</td>";
 					echo "<td>".$employee['dept']."</td>";
+					echo "<td>".$employee['status']."</td>";
 					// echo "<td>".$employee['points']."</td>";
 
-					echo "<td><a href=\"editEmployee.php?id=$employee[id]\">Edit</a> | <a href=\"deleteEmployee.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+					// echo "<td><a href=\"editEmployee.php?id=$employee[id]\">Edit</a> | <a href=\"deleteEmployee.php?id=$employee[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+
+					echo "<td><a href=\"editEmployee.php?id=$employee[id]\">EDIT</a></td>";
 
 				}
 

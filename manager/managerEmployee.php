@@ -108,7 +108,7 @@ if (!empty($id)) {
 
 
                         <div class="input-group">
-                            <input class="input--style-1" type="email" placeholder="Email" name="email" required="required">
+                            <input class="input--style-1" type="number" placeholder="National ID Number" name="national_id" required="required">
                         </div>
                         <p>Birthday</p>
                         <div class="row row-space">
@@ -133,24 +133,32 @@ if (!empty($id)) {
                         </div>
                         
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Contact Number" name="contact" required="required" >
-                        </div>
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Address" name="address" required="required">
-                        </div>
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Department" name="dept" required="required">
+                            <input class="input--style-1" type="tel" placeholder="Phone Number" name="contact" required="required" maxlength="10">
                         </div>
 
 
                         <div class="input-group">
-                            <input class="input--style-1" type="number" placeholder="Salary (price Ksh8 per kg)" readonly name="salary">
+                            <input class="input--style-1" type="text" placeholder="Home Address" name="address" required="required">
+                            <input class="input--style-1" type="hidden" name="dept" value="picking" required="required">
+                            <input class="input--style-1" type="hidden" name="status" value="active" required="required">
                         </div>
+                       
 
-                        <div class="input-group">
-                            <input class="input--style-1" type="file" placeholder="file" name="file">
+                        <div class="row row-space">
+                            
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="file" placeholder="file" name="file">
+                                </div>
+                            </div>
+                        
+                            <div class="col-2">
+                                <!-- <div class="input-group"> -->
+                                    <input class="input--style-1" type="number" placeholder="NOTE: KSH 8/=Kg - READ-ONLY" readonly name="salary">
+                                   
+                                <!-- </div> -->
+                            </div>
+                            
                         </div>
 
 
