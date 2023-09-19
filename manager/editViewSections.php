@@ -126,7 +126,7 @@ $result = mysqli_query($conn, "UPDATE `farm_section` SET `section_name`='$sectio
                         
                             <div class="col-2">
                                 <div class="input-group">
-                                     <input class="input--style-1" type="text" name="section_name" value="<?php echo $section_name;?>" >
+                                     <input class="input--style-1" type="text" name="section_name" value="<?php echo $section_name;?> required" >
                                 </div>
                             </div>
                             <div class="col-2">
