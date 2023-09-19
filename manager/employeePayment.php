@@ -43,9 +43,6 @@ if (isset($_POST['approve'])) {
     // Assuming you have a unique identifier for the person, let's call it 'id'
     $id = $_POST['id']; // Replace with your actual form field name
 
-    // Start a transaction
-    mysqli_begin_transaction($conn);
-
     // Update the 'salary' table
     $sql1 = "UPDATE salary SET base = 8, bonus = 0, total = 0 WHERE id = $id";
     
@@ -85,18 +82,18 @@ if($result1){
 	
 }
 }
-if(isset($_POST['update']))
-{
+// if(isset($_POST['update']))
+// {
 
-	$id = mysqli_real_escape_string($conn, $_POST['id']);
-	$firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
-	$lastname = mysqli_real_escape_string($conn, $_POST['lastName']);
-	$email = mysqli_real_escape_string($conn, $_POST['email']);
-	$birthday = mysqli_real_escape_string($conn, $_POST['birthday']);
-	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
-	$address = mysqli_real_escape_string($conn, $_POST['address']);
-	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
-	$dept = mysqli_real_escape_string($conn, $_POST['dept']);
+// 	$id = mysqli_real_escape_string($conn, $_POST['id']);
+// 	$firstname = mysqli_real_escape_string($conn, $_POST['firstName']);
+// 	$lastname = mysqli_real_escape_string($conn, $_POST['lastName']);
+// 	$email = mysqli_real_escape_string($conn, $_POST['email']);
+// 	$birthday = mysqli_real_escape_string($conn, $_POST['birthday']);
+// 	$contact = mysqli_real_escape_string($conn, $_POST['contact']);
+// 	$address = mysqli_real_escape_string($conn, $_POST['address']);
+// 	$gender = mysqli_real_escape_string($conn, $_POST['gender']);
+// 	$dept = mysqli_real_escape_string($conn, $_POST['dept']);
 	//$salary = mysqli_real_escape_string($conn, $_POST['salary']);
 
 
@@ -115,7 +112,7 @@ if(isset($_POST['update']))
 
 
 	
-}
+// }
 ?>
 
 
