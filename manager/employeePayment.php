@@ -107,7 +107,13 @@ if (isset($_POST['approve'])) {
     }
 
     // Insert the payment details into the 'employee_paid' table
-    $sql0 = "INSERT INTO `employee_paid`(`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`) VALUES('', '$empName', '$total_kgs_harvested', '$amt_paid', '$date' )";
+    $sql0 = "INSERT INTO `employee_paid`(`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`)
+         VALUES('', '$empName', '$total_kgs_harvested', '$amt_paid', '$date')
+         ON DUPLICATE KEY UPDATE `empName`='$empName', `total_kgs_harvested`='$total_kgs_harvested', `amt_paid`='$amt_paid', `date`='$date'";
+    // $sql0 = "INSERT INTO `employee_paid`(`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`)
+    //      VALUES(NULL, '$empName', '$total_kgs_harvested', '$amt_paid', '$date')";
+
+
     $sql1 = "UPDATE employee_salary_base SET base = 8 WHERE id = $id";
 
     // Update the 'employee_salary' table
@@ -271,7 +277,7 @@ function confirmAction() {
     if (confirmation) {
         // If the user clicked "OK," perform the action here
         // For example, you can submit the form or execute any other desired action
-        alert("Successfully approved!");
+        // alert("Successfully approved!");
         return true; // Allow the form submission to proceed
     } else {
         // If the user clicked "Cancel," you can handle this case if needed
