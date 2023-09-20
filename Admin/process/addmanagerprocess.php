@@ -22,8 +22,7 @@ $contact = $_POST['contact'];
 $address = $_POST['address'];
 $gender = $_POST['gender'];
 $nid = $_POST['nid'];
-$dept = $_POST['dept'];
-$degree = $_POST['degree'];
+$status = $_POST['status'];
 // $salary = $_POST['salary'];
 $birthday =$_POST['birthday'];
 //echo "$birthday";
@@ -40,7 +39,7 @@ if(in_array($filecheck, $fileextstored)){
     $destinationfile = 'images/'.$filename;
     move_uploaded_file($filetemp, $destinationfile);
 
-    $sql = "INSERT INTO `manager`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `dept`, `degree`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$dept','$degree','$destinationfile')";
+    $sql = "INSERT INTO `manager`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `status`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address', '$status','$destinationfile')";
 
 $result = mysqli_query($conn, $sql);
 
@@ -70,7 +69,7 @@ else{
 
 else{
 
-      $sql = "INSERT INTO `manager`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `dept`, `degree`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$dept','$degree','images/no.jpg')";
+      $sql = "INSERT INTO `manager`(`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`,  `address`, `status`, `pic`) VALUES ('','$firstname','$lastName','$email','1234','$birthday','$gender','$contact','$nid','$address','$status','images/no.jpg')";
 
 $result = mysqli_query($conn, $sql);
 
@@ -84,7 +83,7 @@ if(($result) == 1){
     
     echo ("<SCRIPT LANGUAGE='JavaScript'>
     window.alert('Succesfully Registered')
-    window.location.href='..//viewManager.php?id=$admID';
+    window.location.href='../viewManager.php?id=$admID';
     </SCRIPT>");
     //header("Location: ..//adminHome.php");
 }
