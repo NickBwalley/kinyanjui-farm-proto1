@@ -27,7 +27,8 @@ header("Pragma: no-cache");
 	$sql3 = "SELECT * FROM `employee_salary_base` WHERE id = $id";
 	$sql5 = "SELECT * FROM employee_paid";
 	$sql6 = "SELECT * FROM employee_leave";
-	$sql7 = "SELECT * FROM farm_section";
+	$sql7 = "SELECT * FROM farm_section_assigned";
+	$sql8 = "SELECT * FROM farm_section";
 	
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
@@ -38,6 +39,7 @@ $result4 = mysqli_query($conn, $sql4);
 $result5 = mysqli_query($conn, $sql5);
 $result6 = mysqli_query($conn, $sql6);
 $result7 = mysqli_query($conn, $sql7);
+$result8 = mysqli_query($conn, $sql8);
 
 // Check if the query executed successfully
 // if ($result1) {
@@ -220,6 +222,44 @@ $result7 = mysqli_query($conn, $sql7);
    
 	</div>
 
+	<div id="divimg">
+	<div>
+		<!-- <h2>Welcome <?php echo "$empName"; ?> </h2> -->
+
+		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;"> Farm Section Assigned - Employees </h2>
+    	<table>
+
+			<tr bgcolor="#000">
+				<!-- <th align = "center">Seq.</th> -->
+				<th align = "center">Emp.ID</th>
+				<th align = "center">Section Assigned</th>
+				<th align = "center">EmpName</th>
+
+			</tr>
+
+			
+
+			<?php
+				$seq = 1;
+				while ($employee = mysqli_fetch_assoc($result7)) {
+					echo "<tr>";
+					
+					echo "<td>".$employee['id']."</td>";
+					
+					echo "<td>".$employee['section_assigned']."</td>";
+					
+					echo "<td>".$employee['empName']."</td>";
+
+					
+				}
+
+
+			?>
+
+		</table>
+   
+	</div>
+
 	<!-- <div class="divider"></div> -->
 	<div id="divimg">
 	<div>
@@ -242,7 +282,7 @@ $result7 = mysqli_query($conn, $sql7);
 
 			<?php
 				$seq = 1;
-				while ($employee = mysqli_fetch_assoc($result7)) {
+				while ($employee = mysqli_fetch_assoc($result8)) {
 					echo "<tr>";
 					
 					echo "<td>".$employee['id']."</td>";
