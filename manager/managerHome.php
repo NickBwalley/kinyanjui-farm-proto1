@@ -21,6 +21,7 @@ header("Pragma: no-cache");
 
 	$sql = "SELECT id, firstName, lastName,  total_kgs_harvested FROM employee, employee_salary WHERE employee_salary.eid = employee.id order by employee_salary.total_kgs_harvested desc";
 	$sql1 = "SELECT `pname`, `duedate` FROM `project` WHERE eid = $id and status = 'Due'";
+	$sql5 = "SELECT * FROM employee_paid";
 
 	$sql2 = "Select * From employee, employee_leave Where employee.id = $id and employee_leave.id = $id order by employee_leave.id";
 
@@ -32,6 +33,7 @@ $result1 = mysqli_query($conn, $sql1);
 $result2 = mysqli_query($conn, $sql2);
 $result3 = mysqli_query($conn, $sql3);
 $result4 = mysqli_query($conn, $sql4);
+$result5 = mysqli_query($conn, $sql5);
 
 // Check if the query executed successfully
 // if ($result1) {
@@ -115,8 +117,59 @@ $result4 = mysqli_query($conn, $sql4);
 			?>
 
 		</table>
+
+
+		<br><br><br><br>
+	<!-- <div class="divider"></div> -->
+	<div id="divimg">
+	<div>
+		<!-- <h2>Welcome <?php echo "$empName"; ?> </h2> -->
+
+		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Employees Paid - Latest </h2>
+    	<table>
+
+			<tr bgcolor="#000">
+				<!-- <th align = "center">Seq.</th> -->
+				<th align = "center">Emp.ID</th>
+				<th align = "center">Emp Name</th>
+				<th align = "center">Total KGS Harvested</th>
+				<th align = "center">Amount Paid</th>
+				<th align = "center">Date</th>
+
+				
+
+			</tr>
+
+			
+
+			<?php
+				$seq = 1;
+				while ($employee = mysqli_fetch_assoc($result5)) {
+					echo "<tr>";
+					
+					echo "<td>".$employee['id']."</td>";
+					
+					echo "<td>".$employee['empName']."</td>";
+					
+					echo "<td>".$employee['total_kgs_harvested']."</td>";
+
+					echo "<td>".$employee['amt_paid']."</td>";
+
+					echo "<td>".$employee['date']."</td>";
+
+					
+				}
+
+
+			?>
+
+		</table>
    
-    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Due Projects</h2>
+	</div>
+
+
+   
+    	<!-- <h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Due Projects</h2>
     	
 
     	<table>
@@ -229,9 +282,9 @@ $result4 = mysqli_query($conn, $sql4);
 				
 
 
-			?>
+			?> -->
 
-		</table>
+		<!-- </table> -->
 
 
 

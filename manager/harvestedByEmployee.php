@@ -75,7 +75,6 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
 
 
 <?php
-    $myID = (isset($_GET['id']) ? $_GET['id'] : '');
 	$id = (isset($_GET['id']) ? $_GET['id'] : '');
 	$sql = "SELECT * from `employee` WHERE id=$id";
 	$result = mysqli_query($conn, $sql);
@@ -160,7 +159,7 @@ $result = mysqli_query($conn, "UPDATE `employee` SET `firstName`='$firstname',`l
                         
                         <div class="input-group">
                             <input class="input--style-1" type="text" name="empName" value="<?php echo $empName;?>" readonly>
-                            <input class="input--style-1" type="text" name="uid" value="<?php echo $myID;?>" readonly>
+                            <input class="input--style-1" type="text" name="uid" value="<?php echo $id;?>" readonly>
                         </div>
 
                        
