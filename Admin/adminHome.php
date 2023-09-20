@@ -19,7 +19,7 @@ header("Pragma: no-cache");
 	 $employeen = mysqli_fetch_array($result1);
 	//  $empName = ($employeen['firstName']);
 
-	$sql = "SELECT id, firstName, lastName,  total_kgs_harvested FROM employee, employee_salary WHERE employee_salary.eid = employee.id order by employee_salary.total_kgs_harvested desc";
+	$sql = "SELECT * FROM manager";
 	$sql1 = "SELECT `pname`, `duedate` FROM `project` WHERE eid = $id and status = 'Due'";
 	
 	$sql2 = "Select * From employee, employee_leave Where employee.id = $id and employee_leave.id = $id order by employee_leave.id";
@@ -84,16 +84,20 @@ $result8 = mysqli_query($conn, $sql8);
 	<div>
 		<!-- <h2>Welcome <?php echo "$empName"; ?> </h2> -->
 
-		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Employee Dashboard - Highlights </h2>
+		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Admin's Dashboard - Highlights </h2>
     	<table>
 
 			<tr bgcolor="#000">
-				<th align = "center">Seq.</th>
-				<th align = "center">Emp. ID</th>
-				<th align = "center">Name</th>
-				<th align = "center">Total Harvested (Kgs)</th>
-				<th align = "center">Amt to Pay</th>
-				<th align = "center">Payments</th>
+				<th align = "center">Emp.ID</th>
+				<th align = "center">firstName</th>
+				<th align = "center">lastName</th>
+				<th align = "center">email</th>
+				<th align = "center">Birthday</th>
+				<th align = "center">Gender</th>
+				<th align = "center">Contact</th>
+				<th align = "center">National ID</th>
+				<th align = "center">Address</th>
+				<th align = "center">Status</th>
 
 				
 
@@ -105,28 +109,65 @@ $result8 = mysqli_query($conn, $sql8);
 				$seq = 1;
 				while ($employee = mysqli_fetch_assoc($result)) {
 					echo "<tr>";
-					echo "<td>".$seq."</td>";
+					
 					echo "<td>".$employee['id']."</td>";
-					
-					echo "<td>".$employee['firstName']." ".$employee['lastName']."</td>";
-					
-					echo "<td>".$employee['total_kgs_harvested']."</td>";
 
-					// Multiply $employee['total_kgs_harvested'] by 8 and display the result
-					$total_kgs_harvestedMultiplied = $employee['total_kgs_harvested'] * 8;
-					echo "<td>" . $total_kgs_harvestedMultiplied . "</td>";
-					echo "<td><a href=\"employeePayment.php?id=$employee[id]\">Pay</a></td>";
+					echo "<td>".$employee['firstName']."</td>";
+
+					echo "<td>".$employee['lastName']."</td>";
+
+					echo "<td>".$employee['email']."</td>";
+
+					echo "<td>".$employee['birthday']."</td>";
+
+					echo "<td>".$employee['gender']."</td>";
+
+					echo "<td>".$employee['contact']."</td>";
+
+					echo "<td>".$employee['nid']."</td>";
+
+					echo "<td>".$employee['address']."</td>";
+
+					echo "<td>".$employee['status']."</td>";
 					
-					$seq+=1;
 				}
 
 
 			?>
 
 		</table>
+	<!-- QUERY TO GET THE TOTAL AMOUNT PAID AND DISPLAY IT TO THE ADMIN TO SEE  -->
+	<?php
+		require_once('process/dbh.php'); // Include your database connection file
+
+		// Step 1: Retrieve Data from the Database
+		$sql = "SELECT amt_paid FROM employee_paid";
+		$result = mysqli_query($conn, $sql);
+
+		if ($result) {
+			$totalAmount = 0; // Initialize a variable to store the total amount
+
+			// Step 2: Perform Computation
+			while ($row = mysqli_fetch_assoc($result)) {
+				// Assuming 'amt_paid' is the column you want to calculate the total for
+				$amount = $row['amt_paid'];
+				$totalAmount += $amount; // Add the current amount to the total
+			}
+
+			// Step 3: Display the Result
+			// echo "Total Amount: KSH" . number_format($totalAmount, 2); // Format the result as currency
+		} else {
+			echo "Query error: " . mysqli_error($conn);
+		}
+
+		// Close the database connection
+		mysqli_close($conn);
+	?>
 
 
-	
+
+
+	<br>
 	<!-- <div class="divider"></div> -->
 	<div id="divimg">
 	<div>
@@ -166,6 +207,7 @@ $result8 = mysqli_query($conn, $sql8);
 
 					
 				}
+			echo "<p style='font-weight: bold; font-size: 24px;'>Total Amount PAID: KSH " . number_format($totalAmount, 2) . "</p>";
 
 
 			?>
