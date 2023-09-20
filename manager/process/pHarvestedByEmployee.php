@@ -36,6 +36,7 @@ if(isset($_POST['update'])){
     
     if ($result->num_rows > 0) {
         // Update the record if the employee ID exists
+        // TODO: FIX ISSUE OF CANNOT DOUBLE ASSIGN SECTION AND PAY EMPLOYEE SYSTEM ERROR. 502
         $update_sql = "UPDATE `employee_salary` SET total_kgs_harvested = '$amtHarvested' WHERE eid = $id";
         
         if ($conn->query($update_sql) === TRUE) {
