@@ -126,14 +126,7 @@
                         
                          <div class="input-group">
                             <input class="input--style-1" type="text" placeholder="Address" name="address" required="required">
-                        </div>
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Department" name="dept" required="required">
-                        </div>
-
-                        <div class="input-group">
-                            <input class="input--style-1" type="text" placeholder="Degree" name="degree" required="required">
+                            <input class="input--style-1" type="hidden"  name="status" value="active" required="required" readonly>
                         </div>
 
                         <!-- <div class="input-group">

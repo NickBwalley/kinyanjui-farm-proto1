@@ -52,8 +52,7 @@ if (isset($_SESSION['admID'])) {
 				<th align = "center">Contact</th>
 				
 				<th align = "center">Address</th>
-				<th align = "center">Department</th>
-				
+				<th align = "center">Status</th>
 				<th align = "center">Options</th>
 			</tr>
 
@@ -70,9 +69,7 @@ if (isset($_SESSION['admID'])) {
 					echo "<td>".$manager['contact']."</td>";
 					
 					echo "<td>".$manager['address']."</td>";
-					echo "<td>".$manager['dept']."</td>";
-					
-					
+					echo "<td>".$manager['status']."</td>";
 
 					echo "<td><a href=\"edit.php?id=$manager[id]\">Edit</a> | <a href=\"deleteman.php?id=$manager[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
 
