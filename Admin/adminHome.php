@@ -265,43 +265,6 @@ $result8 = mysqli_query($conn, $sql8);
    
 	</div>
 
-	<div id="divimg">
-	<div>
-		<!-- <h2>Welcome <?php echo "$empName"; ?> </h2> -->
-
-		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;"> Farm Section Assigned - Employees </h2>
-    	<table>
-
-			<tr bgcolor="#000">
-				<!-- <th align = "center">Seq.</th> -->
-				<th align = "center">Emp.ID</th>
-				<th align = "center">Section Assigned</th>
-				<th align = "center">EmpName</th>
-
-			</tr>
-
-			
-
-			<?php
-				$seq = 1;
-				while ($employee = mysqli_fetch_assoc($result7)) {
-					echo "<tr>";
-					
-					echo "<td>".$employee['id']."</td>";
-					
-					echo "<td>".$employee['section_assigned']."</td>";
-					
-					echo "<td>".$employee['empName']."</td>";
-
-					
-				}
-
-
-			?>
-
-		</table>
-   
-	</div>
 
 	<!-- <div class="divider"></div> -->
 	<div id="divimg">
