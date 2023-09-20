@@ -27,6 +27,7 @@ header("Pragma: no-cache");
 	$sql3 = "SELECT * FROM `employee_salary_base` WHERE id = $id";
 	$sql5 = "SELECT * FROM employee_paid";
 	$sql6 = "SELECT * FROM employee_leave";
+	$sql7 = "SELECT * FROM farm_section";
 	
 //echo "$sql";
 $result = mysqli_query($conn, $sql);
@@ -36,6 +37,7 @@ $result3 = mysqli_query($conn, $sql3);
 $result4 = mysqli_query($conn, $sql4);
 $result5 = mysqli_query($conn, $sql5);
 $result6 = mysqli_query($conn, $sql6);
+$result7 = mysqli_query($conn, $sql7);
 
 // Check if the query executed successfully
 // if ($result1) {
@@ -207,6 +209,47 @@ $result6 = mysqli_query($conn, $sql6);
 					echo "<td>".$employee['reason']."</td>";
 
 					echo "<td>".$employee['status']."</td>";
+
+					
+				}
+
+
+			?>
+
+		</table>
+   
+	</div>
+
+	<!-- <div class="divider"></div> -->
+	<div id="divimg">
+	<div>
+		<!-- <h2>Welcome <?php echo "$empName"; ?> </h2> -->
+
+		    	<h2 style="font-family: 'Montserrat', sans-serif; font-size: 25px; text-align: center;">Farm Sections </h2>
+    	<table>
+
+			<tr bgcolor="#000">
+				<!-- <th align = "center">Seq.</th> -->
+				<th align = "center">Section ID</th>
+				<th align = "center">Section Name</th>
+				<th align = "center">Maximum People per Section</th>
+
+				
+
+			</tr>
+
+			
+
+			<?php
+				$seq = 1;
+				while ($employee = mysqli_fetch_assoc($result7)) {
+					echo "<tr>";
+					
+					echo "<td>".$employee['id']."</td>";
+					
+					echo "<td>".$employee['section_name']."</td>";
+					
+					echo "<td>".$employee['max_people']."</td>";
 
 					
 				}
