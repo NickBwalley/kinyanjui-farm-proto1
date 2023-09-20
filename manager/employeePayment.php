@@ -248,7 +248,8 @@ if($result1){
                         <input type="hidden" name="id" id="textField" value="<?php echo $id;?>" required="required"><br><br>
                         <div class="p-t-20">
                             <div class="p-t-20">
-                            <button class="btn btn--radius btn--green" type="submit" name="approve" onclick="confirmAction()">Approve</button>
+                            <button class="btn btn--radius btn--green" type="submit" name="approve" onclick="return confirmAction()">Approve</button>
+
 							<button class="btn btn--radius btn--red" type="submit" name="decline" onclick="declineAction()">Cancel</button>
 
                         </div>
@@ -261,6 +262,7 @@ if($result1){
 
 
     <script>
+
 function confirmAction() {
     // Display a confirmation dialog
     var confirmation = confirm("Are you sure you want to approve this transaction?");
@@ -268,15 +270,17 @@ function confirmAction() {
     // Check the result of the confirmation dialog
     if (confirmation) {
         // If the user clicked "OK," perform the action here
-        // For example, you can submit a form or execute any other desired action
-        // Replace the following line with your specific action
+        // For example, you can submit the form or execute any other desired action
         alert("Successfully approved!");
+        return true; // Allow the form submission to proceed
     } else {
         // If the user clicked "Cancel," you can handle this case if needed
         // For example, you can choose not to perform any action
-        alert("Payment canceled.");
+        // alert("Payment canceled.");
+        return false; // Prevent the form submission
     }
 }
+
 
 function declineAction() {
     // Display a confirmation dialog
