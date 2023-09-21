@@ -3,12 +3,17 @@
 session_start();
 require_once('process/dbh.php'); // Make sure this file includes your database connection ($conn).
 
+$adminID = $_SESSION['manID'];
+	
+
 // Fetch employees and their employee_salarys using JOIN
 $sql = "SELECT * FROM `employee` e
         JOIN `employee_salary` r ON e.id = r.eid";
 $result = mysqli_query($conn, $sql);
 
 $id = isset($_GET['id']) ? mysqli_real_escape_string($conn, $_GET['id']) : '';
+	// $adminID = $_SESSION['manID'] = $id;
+	echo "$adminID";
 
 if (!empty($id)) {
     $employeeSql = "SELECT * FROM `manager` WHERE id = '$id'";
@@ -23,16 +28,16 @@ if (!empty($id)) {
 }
 
 // Check if the session variable 'userID' is set
-if (isset($_SESSION['admID'])) {
-    // Access the userID from the session
-    $admID = $_SESSION['admID'];
+// if (isset($_SESSION['admID'])) {
+//     // Access the userID from the session
+//     $admID = $_SESSION['admID'];
 
-    // Now you can use $userID in your code
-    echo "Admin ID: $admID";
-} else {
-    // Handle the case where the session variable is not set
-    echo "Admin ID not found in session.";
-}
+//     // Now you can use $userID in your code
+//     echo "Admin ID: $admID";
+// } else {
+//     // Handle the case where the session variable is not set
+//     echo "Admin ID not found in session.";
+// }
 
 $sql = "SELECT * FROM `manager` WHERE 1";
 
@@ -115,9 +120,9 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
 		<nav>
 			<h1>Kinyanjui Farm.</h1>
 			<ul id="navli">
-				<li><a class="homeblack" href="adminHome.php?id=<?php echo $id?>"">HOME</a></li>
-				<li><a class="homered" href="adminViewEmployee.php?id=<?php echo $id?>"">View Employee</a></li>
-				<li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
+				<li><a class="homeblack" href="adminHome.php?id=<?php echo $adminID?>"">HOME</a></li>
+				<li><a class="homered" href="adminViewEmployee.php?id=<?php echo $adminID?>"">View Employee</a></li>
+				<li><a class="homeblack" href="admin.html">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>

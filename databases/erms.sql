@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2023 at 04:19 PM
+-- Generation Time: Sep 21, 2023 at 06:53 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -291,8 +291,8 @@ CREATE TABLE `employee` (
 --
 
 INSERT INTO `employee` (`id`, `firstName`, `lastName`, `national_id`, `birthday`, `gender`, `contact`, `address`, `dept`, `status`, `pic`) VALUES
-(1, 'Sarah', 'sashy', 38228838, '1999-03-02', 'Male', '0733888888', 'Kisumu', 'picking', 'not_active', 'images/no.jpg'),
-(2, 'Fel', 'Lee', 38883998, '2000-03-02', 'Male', '0733838380', 'Kisii', 'picking', 'active', 'images/no.jpg');
+(7, 'Sarah', 'sashy', 35889988, '1999-03-09', 'Male', '0733838380', 'Nairobi', 'picking', 'active', 'images/no.jpg'),
+(8, 'Alex ', 'Kamau', 38998899, '1999-03-03', 'Male', '0788998998', 'Mumias', 'picking', 'active', 'images/no.jpg');
 
 -- --------------------------------------------------------
 
@@ -400,6 +400,13 @@ CREATE TABLE `employee_leave` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
+-- Dumping data for table `employee_leave`
+--
+
+INSERT INTO `employee_leave` (`id`, `empName`, `start`, `end`, `reason`, `status`) VALUES
+(7, 'Sarah sashy', '2023-09-30', '2023-10-07', 'Go back to school', 'Approved');
+
+--
 -- Triggers `employee_leave`
 --
 DELIMITER $$
@@ -436,10 +443,8 @@ CREATE TABLE `employee_paid` (
 --
 
 INSERT INTO `employee_paid` (`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`) VALUES
-(2, '', '', 0, '2023-09-19'),
-(3, '', '', 0, '2023-09-19'),
-(4, '', '', 0, '2023-09-19'),
-(5, '', '', 0, '2023-09-19');
+(7, 'Sarah sashy', '33', 264, '2023-09-20'),
+(8, 'Alex  Kamau', '150', 1200, '2023-09-20');
 
 --
 -- Triggers `employee_paid`
@@ -476,8 +481,8 @@ CREATE TABLE `employee_salary` (
 --
 
 INSERT INTO `employee_salary` (`eid`, `total_kgs_harvested`, `total_amt_payable`) VALUES
-(1, 0, 0),
-(2, 0, 0);
+(7, 0, 0),
+(8, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -495,8 +500,8 @@ CREATE TABLE `employee_salary_base` (
 --
 
 INSERT INTO `employee_salary_base` (`id`, `base`) VALUES
-(1, 8),
-(2, 8);
+(7, 8),
+(8, 8);
 
 -- --------------------------------------------------------
 
@@ -578,7 +583,8 @@ CREATE TABLE `farm_section` (
 --
 
 INSERT INTO `farm_section` (`id`, `section_name`, `max_people`) VALUES
-(32, 'Section A', '23');
+(34, 'Section A', '12'),
+(35, 'Section B', '11');
 
 -- --------------------------------------------------------
 
@@ -598,14 +604,14 @@ CREATE TABLE `farm_section_assigned` (
 --
 
 INSERT INTO `farm_section_assigned` (`id`, `section_assigned`, `empName`, `employee_id`) VALUES
-(1, 'Section A', 'Sarah sashy', 0),
-(2, 'Section A', 'Fel Lee', 0);
+(7, 'Section A', 'Sarah sashy', 0),
+(8, 'Section B', 'Alex  Kamau', 0);
 
 --
 -- Triggers `farm_section_assigned`
 --
 DELIMITER $$
-CREATE TRIGGER `generate_farm_section_assigned_id` BEFORE INSERT ON `farm_section_assigned` FOR EACH ROW BEGIN
+CREATE TRIGGER `generate_farm_section_assigned_trigger` BEFORE INSERT ON `farm_section_assigned` FOR EACH ROW BEGIN
     DECLARE employee_id INT;
     
     -- Get the employee ID from the employee table based on the employee's full name.
@@ -636,8 +642,7 @@ CREATE TABLE `manager` (
   `contact` varchar(20) NOT NULL,
   `nid` int(20) NOT NULL,
   `address` varchar(100) DEFAULT NULL,
-  `dept` varchar(100) NOT NULL,
-  `degree` varchar(100) NOT NULL,
+  `status` varchar(100) NOT NULL,
   `pic` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
@@ -645,11 +650,13 @@ CREATE TABLE `manager` (
 -- Dumping data for table `manager`
 --
 
-INSERT INTO `manager` (`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`, `address`, `dept`, `degree`, `pic`) VALUES
-(116, 'Lesley', 'Tulienge ', 'les.hack@gmail.com', '1234', '2023-08-30', 'Male', '714888999', 255, 'Kitale', 'SCES', 'BBIT', 'images/no.jpg'),
-(117, 'Nick', 'Bwalley', 'nickbwalley@gmail.com', '1234', '2023-08-30', 'Male', '711333999', 35998393, 'Nairobi', 'CEO', 'BBIT', 'images/no.jpg'),
-(119, 'Tom', 'Kahigu', 'tomkahigu@gmail.com', '1234', '2023-09-12', 'Male', '5333222333', 35223355, 'Kiambu', 'Manager', 'LLB', 'images/no.jpg'),
-(120, 'Ian', 'Job', 'ianjob@gmail.com', '1234', '2023-09-12', 'Male', '722333555', 23445522, 'Nairobi', 'SCES', 'BBIT', 'images/no.jpg');
+INSERT INTO `manager` (`id`, `firstName`, `lastName`, `email`, `password`, `birthday`, `gender`, `contact`, `nid`, `address`, `status`, `pic`) VALUES
+(116, 'Lesley', 'Tulienge ', 'les.hack@gmail.com', '1234', '2023-08-30', 'Male', '714888999', 255, 'Kitale', 'active', 'images/no.jpg'),
+(117, 'Nick', 'Bwalley', 'nickbwalley@gmail.com', '1234', '2023-08-30', 'Male', '711333999', 35998393, 'Nairobi', 'active', 'images/no.jpg'),
+(119, 'Tom', 'Kahigu', 'tomkahigu@gmail.com', '1234', '2023-09-12', 'Male', '5333222333', 35223355, 'Kiambu', 'active', 'images/no.jpg'),
+(120, 'Ian', 'Job', 'ianjob@gmail.com', '1234', '2023-09-12', 'Male', '722333555', 23445522, 'Nairobi', 'active', 'images/no.jpg'),
+(124, 'Gail ', 'Kim', 'gailkim@gmail.com', '1234', '1999-03-03', 'Female', '078839938', 9900399, 'Canada', 'active', 'images/no.jpg'),
+(125, 'Emmanuel', 'Blyton', 'emmanuel@gmail.com', '1234', '1999-03-08', 'Male', '0733838380', 35889988, 'Kisumu', 'active', 'images/no.jpg');
 
 -- --------------------------------------------------------
 
@@ -4799,7 +4806,7 @@ ALTER TABLE `alogin`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `employee_leave`
@@ -4811,7 +4818,7 @@ ALTER TABLE `employee_leave`
 -- AUTO_INCREMENT for table `employee_paid`
 --
 ALTER TABLE `employee_paid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `farm_productivity`
@@ -4823,19 +4830,19 @@ ALTER TABLE `farm_productivity`
 -- AUTO_INCREMENT for table `farm_section`
 --
 ALTER TABLE `farm_section`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
 
 --
 -- AUTO_INCREMENT for table `farm_section_assigned`
 --
 ALTER TABLE `farm_section_assigned`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=173;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=124;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
 
 --
 -- AUTO_INCREMENT for table `profit_trends`
