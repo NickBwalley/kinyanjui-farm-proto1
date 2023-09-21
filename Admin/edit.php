@@ -122,7 +122,7 @@ $result = mysqli_query($conn, "UPDATE `manager` SET `firstName`='$firstname',`la
 			<ul id="navli">
 				<li><a class="homeblack" href="adminHome.php?id=<?php echo $adminID?>"">HOME</a></li>
 				<li><a class="homered" href="adminViewEmployee.php?id=<?php echo $adminID?>"">View Employee</a></li>
-				<li><a class="homeblack" href="managerlogin.html">Log Out</a></li>
+				<li><a class="homeblack" href="admin.html">Log Out</a></li>
 			</ul>
 		</nav>
 	</header>

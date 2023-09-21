@@ -8,7 +8,7 @@ $result = mysqli_query($conn, $sql);
 $id = (isset($_GET['id']) ? $_GET['id'] : '');
 
 	$managerID = $_SESSION['manID'] = $id;
-	echo "$managerID";
+	// echo "$managerID";
 // Check if the session variable 'userID' is set
 // if (isset($_SESSION['admID'])) {
 //     // Access the userID from the session
@@ -74,7 +74,7 @@ $id = (isset($_GET['id']) ? $_GET['id'] : '');
 					echo "<td>".$manager['address']."</td>";
 					echo "<td>".$manager['status']."</td>";
 
-					echo "<td><a href=\"edit.php?id=$manager[id]\">Edit</a> | <a href=\"deleteman.php?id=$manager[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";
+					echo "<td><a href=\"edit.php?id=$manager[id]\">Edit</a> | <a href=\"deleteman.php?id=$manager[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Disable</a></td>";
 
 				}
 
