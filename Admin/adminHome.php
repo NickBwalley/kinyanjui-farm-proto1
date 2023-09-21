@@ -12,7 +12,7 @@ header("Pragma: no-cache");
 	require_once ('../process/dbh.php');
 	$id = (isset($_GET['id']) ? $_GET['id'] : '');
 	$managerID = $_SESSION['manID'] = $id;
-	// echo "$managerID";
+	echo "$managerID";
 	 $sql4 = "SELECT * FROM `manager` where id = '$id'";
 	 
 	 $result1 = mysqli_query($conn, $sql4);
