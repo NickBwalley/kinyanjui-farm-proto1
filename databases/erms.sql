@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 21, 2023 at 06:53 AM
+-- Generation Time: Sep 24, 2023 at 06:28 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -292,7 +292,8 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` (`id`, `firstName`, `lastName`, `national_id`, `birthday`, `gender`, `contact`, `address`, `dept`, `status`, `pic`) VALUES
 (7, 'Sarah', 'sashy', 35889988, '1999-03-09', 'Male', '0733838380', 'Nairobi', 'picking', 'active', 'images/no.jpg'),
-(8, 'Alex ', 'Kamau', 38998899, '1999-03-03', 'Male', '0788998998', 'Mumias', 'picking', 'active', 'images/no.jpg');
+(8, 'Alex ', 'Kamau', 38998899, '1999-03-03', 'Male', '0788998998', 'Mumias', 'picking', 'active', 'images/no.jpg'),
+(9, 'John ', 'Doe ', 36889988, '1999-03-01', 'Male', '0788998998', 'Nairobi', 'picking', 'active', 'images/no.jpg');
 
 -- --------------------------------------------------------
 
@@ -404,7 +405,8 @@ CREATE TABLE `employee_leave` (
 --
 
 INSERT INTO `employee_leave` (`id`, `empName`, `start`, `end`, `reason`, `status`) VALUES
-(7, 'Sarah sashy', '2023-09-30', '2023-10-07', 'Go back to school', 'Approved');
+(7, 'Sarah sashy', '2023-09-30', '2023-10-07', 'Go back to school', 'Approved'),
+(9, 'John  Doe ', '2023-09-21', '2023-11-30', 'Go back to school', 'Approved');
 
 --
 -- Triggers `employee_leave`
@@ -444,7 +446,8 @@ CREATE TABLE `employee_paid` (
 
 INSERT INTO `employee_paid` (`id`, `empName`, `total_kgs_harvested`, `amt_paid`, `date`) VALUES
 (7, 'Sarah sashy', '33', 264, '2023-09-20'),
-(8, 'Alex  Kamau', '150', 1200, '2023-09-20');
+(8, 'Alex  Kamau', '150', 1200, '2023-09-20'),
+(9, 'John  Doe ', '40', 320, '2023-09-21');
 
 --
 -- Triggers `employee_paid`
@@ -482,7 +485,8 @@ CREATE TABLE `employee_salary` (
 
 INSERT INTO `employee_salary` (`eid`, `total_kgs_harvested`, `total_amt_payable`) VALUES
 (7, 0, 0),
-(8, 0, 0);
+(8, 0, 0),
+(9, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -501,7 +505,8 @@ CREATE TABLE `employee_salary_base` (
 
 INSERT INTO `employee_salary_base` (`id`, `base`) VALUES
 (7, 8),
-(8, 8);
+(8, 8),
+(9, 8);
 
 -- --------------------------------------------------------
 
@@ -584,7 +589,8 @@ CREATE TABLE `farm_section` (
 
 INSERT INTO `farm_section` (`id`, `section_name`, `max_people`) VALUES
 (34, 'Section A', '12'),
-(35, 'Section B', '11');
+(35, 'Section B', '11'),
+(36, 'Section F', '10');
 
 -- --------------------------------------------------------
 
@@ -605,7 +611,8 @@ CREATE TABLE `farm_section_assigned` (
 
 INSERT INTO `farm_section_assigned` (`id`, `section_assigned`, `empName`, `employee_id`) VALUES
 (7, 'Section A', 'Sarah sashy', 0),
-(8, 'Section B', 'Alex  Kamau', 0);
+(8, 'Section B', 'Alex  Kamau', 0),
+(9, 'Section F', 'John  Doe ', 0);
 
 --
 -- Triggers `farm_section_assigned`
@@ -656,7 +663,8 @@ INSERT INTO `manager` (`id`, `firstName`, `lastName`, `email`, `password`, `birt
 (119, 'Tom', 'Kahigu', 'tomkahigu@gmail.com', '1234', '2023-09-12', 'Male', '5333222333', 35223355, 'Kiambu', 'active', 'images/no.jpg'),
 (120, 'Ian', 'Job', 'ianjob@gmail.com', '1234', '2023-09-12', 'Male', '722333555', 23445522, 'Nairobi', 'active', 'images/no.jpg'),
 (124, 'Gail ', 'Kim', 'gailkim@gmail.com', '1234', '1999-03-03', 'Female', '078839938', 9900399, 'Canada', 'active', 'images/no.jpg'),
-(125, 'Emmanuel', 'Blyton', 'emmanuel@gmail.com', '1234', '1999-03-08', 'Male', '0733838380', 35889988, 'Kisumu', 'active', 'images/no.jpg');
+(125, 'Emmanuel', 'Blyton', 'emmanuel@gmail.com', '1234', '1999-03-08', 'Male', '0733838380', 35889988, 'Kisumu', 'active', 'images/no.jpg'),
+(126, 'Bob', 'Lee ', 'bob@gmail.com', '1234', '2023-09-19', 'Male', '0733838380', 36889988, 'Nairobi', 'active', 'images/no.jpg');
 
 -- --------------------------------------------------------
 
@@ -4806,7 +4814,7 @@ ALTER TABLE `alogin`
 -- AUTO_INCREMENT for table `employee`
 --
 ALTER TABLE `employee`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `employee_leave`
@@ -4818,7 +4826,7 @@ ALTER TABLE `employee_leave`
 -- AUTO_INCREMENT for table `employee_paid`
 --
 ALTER TABLE `employee_paid`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `farm_productivity`
@@ -4830,7 +4838,7 @@ ALTER TABLE `farm_productivity`
 -- AUTO_INCREMENT for table `farm_section`
 --
 ALTER TABLE `farm_section`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=36;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT for table `farm_section_assigned`
@@ -4842,7 +4850,7 @@ ALTER TABLE `farm_section_assigned`
 -- AUTO_INCREMENT for table `manager`
 --
 ALTER TABLE `manager`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=126;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=127;
 
 --
 -- AUTO_INCREMENT for table `profit_trends`
